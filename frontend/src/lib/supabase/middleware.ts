@@ -50,6 +50,11 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
+  // Permitir acesso a /register (pagina de convite) sem redirecionar
+  if (request.nextUrl.pathname === '/register') {
+    return supabaseResponse
+  }
+
   // Se está autenticado e tenta acessar login
   if (user && request.nextUrl.pathname === '/login') {
     const url = request.nextUrl.clone()

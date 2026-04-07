@@ -20,7 +20,10 @@ import {
   Pencil,
   Trash2,
   X,
-  AlertTriangle
+  AlertTriangle,
+  Send,
+  Copy,
+  Check
 } from 'lucide-react'
 
 interface UserWithEmail extends UserProfile {
@@ -35,6 +38,19 @@ export default function AdminPage() {
   const [showModal, setShowModal] = useState(false)
   const [editingUser, setEditingUser] = useState<UserWithEmail | null>(null)
   const [deletingUser, setDeletingUser] = useState<UserWithEmail | null>(null)
+  const [showInviteModal, setShowInviteModal] = useState(false)
+  const [inviteLink, setInviteLink] = useState<string | null>(null)
+  const [copied, setCopied] = useState(false)
+
+  // Invite form state
+  const [inviteData, setInviteData] = useState({
+    email: '',
+    full_name: '',
+    company: '',
+    role: 'viewer' as 'admin' | 'viewer'
+  })
+  const [inviteError, setInviteError] = useState<string | null>(null)
+  const [isInviting, setIsInviting] = useState(false)
 
   // Form state
   const [formData, setFormData] = useState({
@@ -195,6 +211,60 @@ export default function AdminPage() {
     setFormError(null)
   }
 
+  const handleInviteUser = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setInviteError(null)
+    setIsInviting(true)
+
+    try {
+      const response = await fetch('/api/admin/invite', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(inviteData)
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Erro ao convidar usuario')
+      }
+
+      setInviteLink(data.invite_link)
+      await loadUsers()
+    } catch (error) {
+      setInviteError(error instanceof Error ? error.message : 'Erro desconhecido')
+    } finally {
+      setIsInviting(false)
+    }
+  }
+
+  const handleCopyLink = async () => {
+    if (!inviteLink) return
+    try {
+      await navigator.clipboard.writeText(inviteLink)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // Fallback para navegadores sem clipboard API
+      const textArea = document.createElement('textarea')
+      textArea.value = inviteLink
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
+  }
+
+  const openInviteModal = () => {
+    setInviteData({ email: '', full_name: '', company: '', role: 'viewer' })
+    setInviteError(null)
+    setInviteLink(null)
+    setCopied(false)
+    setShowInviteModal(true)
+  }
+
   const openCreateModal = () => {
     setEditingUser(null)
     resetForm()
@@ -233,10 +303,16 @@ export default function AdminPage() {
             Gerencie os usuarios que tem acesso ao dashboard
           </p>
         </div>
-        <Button onClick={openCreateModal}>
-          <UserPlus className="w-4 h-4" />
-          Novo Usuario
-        </Button>
+        <div className="flex items-center gap-3">
+          <Button variant="outline" onClick={openInviteModal}>
+            <Send className="w-4 h-4" />
+            Convidar
+          </Button>
+          <Button onClick={openCreateModal}>
+            <UserPlus className="w-4 h-4" />
+            Novo Usuario
+          </Button>
+        </div>
       </div>
 
       {/* Lista de usuarios */}
@@ -515,6 +591,147 @@ export default function AdminPage() {
                   </button>
                 </div>
               </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Modal de convite */}
+      <AnimatePresence>
+        {showInviteModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/50"
+              onClick={() => setShowInviteModal(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-4"
+            >
+              <div className="flex items-center justify-between p-6 border-b border-[var(--border-light)]">
+                <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                  Convidar Usuario
+                </h3>
+                <button
+                  onClick={() => setShowInviteModal(false)}
+                  className="p-2 hover:bg-[var(--bg-light)] rounded-lg transition-colors"
+                >
+                  <X className="w-5 h-5 text-[var(--text-muted)]" />
+                </button>
+              </div>
+
+              {inviteLink ? (
+                <div className="p-6 space-y-4">
+                  <div className="flex items-center gap-2 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
+                    <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>Convite gerado para <strong>{inviteData.email}</strong></span>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
+                      Link de convite
+                    </label>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={inviteLink}
+                        readOnly
+                        className="flex-1 px-3 py-2 text-sm bg-[var(--bg-light)] border border-[var(--border-light)] rounded-lg text-[var(--text-primary)] truncate"
+                      />
+                      <Button
+                        variant={copied ? 'secondary' : 'outline'}
+                        onClick={handleCopyLink}
+                        className="shrink-0"
+                      >
+                        {copied ? (
+                          <>
+                            <Check className="w-4 h-4" />
+                            Copiado
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-4 h-4" />
+                            Copiar
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                    <p className="text-xs text-[var(--text-muted)] mt-2">
+                      Envie este link para o usuario. Ele podera definir sua senha e acessar o dashboard.
+                    </p>
+                  </div>
+
+                  <div className="flex justify-end pt-2">
+                    <Button
+                      variant="ghost"
+                      onClick={() => setShowInviteModal(false)}
+                    >
+                      Fechar
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={handleInviteUser}>
+                  <div className="p-6 space-y-4">
+                    <Input
+                      label="Email"
+                      type="email"
+                      value={inviteData.email}
+                      onChange={(e) => setInviteData({ ...inviteData, email: e.target.value })}
+                      icon={<Mail className="w-5 h-5" />}
+                      placeholder="usuario@empresa.com"
+                      required
+                    />
+
+                    <Input
+                      label="Nome completo"
+                      value={inviteData.full_name}
+                      onChange={(e) => setInviteData({ ...inviteData, full_name: e.target.value })}
+                    />
+
+                    <Input
+                      label="Empresa"
+                      value={inviteData.company}
+                      onChange={(e) => setInviteData({ ...inviteData, company: e.target.value })}
+                    />
+
+                    <Select
+                      label="Funcao"
+                      value={inviteData.role}
+                      onChange={(e) => setInviteData({ ...inviteData, role: e.target.value as 'admin' | 'viewer' })}
+                      options={[
+                        { value: 'viewer', label: 'Viewer - Apenas visualizacao' },
+                        { value: 'admin', label: 'Admin - Acesso total' }
+                      ]}
+                    />
+
+                    {inviteError && (
+                      <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                        {inviteError}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex items-center justify-end gap-3 p-6 border-t border-[var(--border-light)]">
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      onClick={() => setShowInviteModal(false)}
+                    >
+                      Cancelar
+                    </Button>
+                    <Button type="submit" isLoading={isInviting}>
+                      <Send className="w-4 h-4" />
+                      Gerar Convite
+                    </Button>
+                  </div>
+                </form>
+              )}
             </motion.div>
           </div>
         )}

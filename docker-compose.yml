@@ -7,6 +7,8 @@ services:
       - FASTAPI_URL=http://backend:8000
       - NEXT_PUBLIC_SUPABASE_URL=${SUPABASE_URL}
       - NEXT_PUBLIC_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - NEXT_PUBLIC_APP_URL=${APP_URL:-http://localhost:3000}
     depends_on:
       backend:
         condition: service_healthy
