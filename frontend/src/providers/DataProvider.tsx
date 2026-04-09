@@ -45,6 +45,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
 
   const produtos = useDashboardStore(state => state.produtos)
   const setProdutos = useDashboardStore(state => state.setProdutos)
+  const setFamilias = useDashboardStore(state => state.setFamilias)
   const setIsLoadingProdutos = useDashboardStore(state => state.setIsLoadingProdutos)
   const setProdutoSelecionado = useDashboardStore(state => state.setProdutoSelecionado)
 
@@ -127,6 +128,17 @@ export function DataProvider({ children }: { children: ReactNode }) {
 
         setProdutos(produtosList)
 
+        // Extrair familias unicas
+        const familiasUnicas = Array.from(
+          new Set(
+            produtosList
+              .map(p => p.familia_produtos)
+              .filter((f): f is string => f !== null && f.trim() !== '')
+          )
+        ).sort((a, b) => a.localeCompare(b))
+        setFamilias(familiasUnicas)
+        console.log(`[DataProvider] Encontradas ${familiasUnicas.length} familias`)
+
         if (produtosList.length > 0) {
           setProdutoSelecionado(produtosList[0].nome_produto)
         }
@@ -139,7 +151,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
     }
 
     loadProdutos()
-  }, [user, produtos.length, setProdutos, setIsLoadingProdutos, setProdutoSelecionado])
+  }, [user, produtos.length, setProdutos, setFamilias, setIsLoadingProdutos, setProdutoSelecionado])
 
   return (
     <DataContext.Provider value={{ loaded: produtosLoaded }}>

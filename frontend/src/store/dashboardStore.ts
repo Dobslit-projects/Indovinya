@@ -1,15 +1,21 @@
 import { create } from 'zustand'
-import type { ModoVisualizacao, Produto, Ensaio, DadosEstudo, AnalysisResult } from '@/types'
+import type { ModoVisualizacao, AbaAtiva, FiltroTipo, Produto, Ensaio, DadosEstudo, AnalysisResult } from '@/types'
 
 interface DashboardState {
+  // Navegação
+  abaAtiva: AbaAtiva
+  filtroTipo: FiltroTipo
+
   // Seleções
   modo: ModoVisualizacao
   produtoSelecionado: string | null
   ensaioSelecionado: string | null
   categoriaSelecionada: string | null
+  familiaSelecionada: string | null
 
   // Dados
   produtos: Produto[]
+  familias: string[]
   ensaios: Ensaio[]
   dadosAcelerado: DadosEstudo[]
   dadosLonga: DadosEstudo[]
@@ -29,11 +35,15 @@ interface DashboardState {
   analysisCache: Record<string, AnalysisResult>
 
   // Actions
+  setAbaAtiva: (aba: AbaAtiva) => void
+  setFiltroTipo: (tipo: FiltroTipo) => void
   setModo: (modo: ModoVisualizacao) => void
   setProdutoSelecionado: (produto: string | null) => void
   setEnsaioSelecionado: (ensaio: string | null) => void
   setCategoriaSelecionada: (categoria: string | null) => void
+  setFamiliaSelecionada: (familia: string | null) => void
   setProdutos: (produtos: Produto[]) => void
+  setFamilias: (familias: string[]) => void
   setEnsaios: (ensaios: Ensaio[]) => void
   setDadosAcelerado: (dados: DadosEstudo[]) => void
   setDadosLonga: (dados: DadosEstudo[]) => void
@@ -51,11 +61,15 @@ interface DashboardState {
 }
 
 const initialState = {
+  abaAtiva: 'ensaios' as AbaAtiva,
+  filtroTipo: 'produto' as FiltroTipo,
   modo: 'acelerado' as ModoVisualizacao,
   produtoSelecionado: null,
   ensaioSelecionado: null,
   categoriaSelecionada: null,
+  familiaSelecionada: null,
   produtos: [],
+  familias: [] as string[],
   ensaios: [],
   dadosAcelerado: [],
   dadosLonga: [],
@@ -74,6 +88,18 @@ const initialState = {
 export const useDashboardStore = create<DashboardState>((set) => ({
   ...initialState,
 
+  setAbaAtiva: (aba) => set({ abaAtiva: aba }),
+  setFiltroTipo: (tipo) => set((state) => ({
+    filtroTipo: tipo,
+    // Limpar selecoes ao trocar tipo de filtro
+    ...(tipo === 'produto'
+      ? { familiaSelecionada: null }
+      : { produtoSelecionado: null }),
+    ensaioSelecionado: null,
+    analysisCache: {},
+    analysisResult: null,
+    analysisError: null
+  })),
   setModo: (modo) => set((state) => ({
     modo,
     ...(state.modo === 'analise' && modo !== 'analise'
@@ -89,7 +115,15 @@ export const useDashboardStore = create<DashboardState>((set) => ({
   }),
   setEnsaioSelecionado: (ensaio) => set({ ensaioSelecionado: ensaio }),
   setCategoriaSelecionada: (categoria) => set({ categoriaSelecionada: categoria, ensaioSelecionado: null }),
+  setFamiliaSelecionada: (familia) => set({
+    familiaSelecionada: familia,
+    ensaioSelecionado: null,
+    analysisCache: {},
+    analysisResult: null,
+    analysisError: null
+  }),
   setProdutos: (produtos) => set({ produtos }),
+  setFamilias: (familias) => set({ familias }),
   setEnsaios: (ensaios) => set({ ensaios }),
   setDadosAcelerado: (dados) => set({ dadosAcelerado: dados }),
   setDadosLonga: (dados) => set({ dadosLonga: dados }),

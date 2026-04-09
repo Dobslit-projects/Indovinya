@@ -14,6 +14,21 @@ class AnalysisRequest(BaseModel):
     model_name: str | None = None  # None = auto; ou "Linear"/"Exponential"/"Logistic"/"Mean"
 
 
+class CustomDataPoint(BaseModel):
+    periodo_dias: int
+    valor: float
+    periodo: str = ""
+
+
+class CustomAnalysisRequest(BaseModel):
+    data_points: list[CustomDataPoint]
+    spec_min: float | None = None
+    spec_max: float | None = None
+    spec_tipo: str | None = None
+    especificacao: str | None = None
+    model_name: str | None = None
+
+
 class DataPoint(BaseModel):
     periodo: str
     periodo_dias: int

@@ -1,61 +1,48 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { motion } from 'framer-motion'
+import { useMemo } from 'react'
 import { useShallow } from 'zustand/react/shallow'
 import { cn } from '@/lib/utils/cn'
 import { useDashboardStore } from '@/store/dashboardStore'
-import { useAuth } from '@/hooks/useAuth'
-import { MODOS_VISUALIZACAO, MODOS_VISIVEIS, type ModoVisualizacao } from '@/types'
+import { calcularMetricas } from '@/lib/utils/conformidade'
 import { Combobox } from '@/components/ui/Combobox'
 import {
-  LayoutDashboard,
-  Users,
+  Package,
+  FolderTree,
   BarChart3,
-  LogOut,
-  Zap,
   Calendar,
-  Scale,
-  Shuffle,
-  FlaskConical
+  CheckCircle,
+  AlertTriangle
 } from 'lucide-react'
 
-const modeIcons: Record<ModoVisualizacao, React.ReactNode> = {
-  acelerado: <Zap className="w-4 h-4" />,
-  longa: <Calendar className="w-4 h-4" />,
-  comparar: <Scale className="w-4 h-4" />,
-  mesclar: <Shuffle className="w-4 h-4" />,
-  analise: <FlaskConical className="w-4 h-4" />
-}
-
 export function Sidebar() {
-  const pathname = usePathname()
-  const { user, profile, isAdmin, signOut } = useAuth()
   const {
-    modo,
-    setModo,
+    filtroTipo,
+    setFiltroTipo,
     produtos,
+    familias,
     produtoSelecionado,
     setProdutoSelecionado,
-    isLoadingProdutos
+    familiaSelecionada,
+    setFamiliaSelecionada,
+    isLoadingProdutos,
+    dadosAcelerado,
+    dadosLonga,
+    isLoadingDados
   } = useDashboardStore(useShallow(state => ({
-    modo: state.modo,
-    setModo: state.setModo,
+    filtroTipo: state.filtroTipo,
+    setFiltroTipo: state.setFiltroTipo,
     produtos: state.produtos,
+    familias: state.familias,
     produtoSelecionado: state.produtoSelecionado,
     setProdutoSelecionado: state.setProdutoSelecionado,
-    isLoadingProdutos: state.isLoadingProdutos
+    familiaSelecionada: state.familiaSelecionada,
+    setFamiliaSelecionada: state.setFamiliaSelecionada,
+    isLoadingProdutos: state.isLoadingProdutos,
+    dadosAcelerado: state.dadosAcelerado,
+    dadosLonga: state.dadosLonga,
+    isLoadingDados: state.isLoadingDados
   })))
-
-  const navItems = [
-    { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    ...(isAdmin ? [
-      { href: '/admin', label: 'Usuarios', icon: Users },
-      { href: '/admin/analytics', label: 'Analytics', icon: BarChart3 }
-    ] : [])
-  ]
 
   const produtoOptions = produtos.map(p => ({
     value: p.nome_produto,
@@ -63,173 +50,215 @@ export function Sidebar() {
     sublabel: p.familia_produtos || undefined
   }))
 
+  const familiaOptions = familias.map(f => ({
+    value: f,
+    label: f
+  }))
+
   const produtoInfo = produtos.find(p => p.nome_produto === produtoSelecionado)
 
+  const produtosDaFamilia = familiaSelecionada
+    ? produtos.filter(p => p.familia_produtos === familiaSelecionada)
+    : []
+
+  // Metricas do selecionado
+  const metricas = useMemo(() => {
+    if (isLoadingDados || (dadosAcelerado.length === 0 && dadosLonga.length === 0)) return null
+    return calcularMetricas([...dadosAcelerado, ...dadosLonga])
+  }, [dadosAcelerado, dadosLonga, isLoadingDados])
+
+  const temSelecao = filtroTipo === 'produto' ? !!produtoSelecionado : !!familiaSelecionada
+
   return (
-    <aside className="fixed left-0 top-0 h-screen w-72 gradient-sidebar border-r-4 border-[var(--accent)] flex flex-col">
-      {/* Logo */}
-      <div className="p-6 border-b border-white/10">
-        <div className="relative w-full h-12 mb-2">
-          <Image
-            src="/logo-dobslit.png"
-            alt="Dobslit"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
-        <p className="text-xs text-white/60 text-center">
-          Dashboard de Estabilidade
-        </p>
-      </div>
-
-      {/* Seletor de Modo */}
+    <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-72 gradient-sidebar border-r-4 border-[var(--accent)] flex flex-col overflow-y-auto">
+      {/* Toggle Produto / Familia */}
       <div className="p-4 border-b border-white/10">
-        <p className="text-xs font-medium text-white/60 uppercase tracking-wider mb-3">
-          Modo de Visualização
-        </p>
-        <div className="grid grid-cols-2 gap-2">
-          {MODOS_VISIVEIS.map((modoKey) => {
-            const config = MODOS_VISUALIZACAO[modoKey]
-            const isActive = modo === modoKey || (modoKey === 'comparar' && modo === 'mesclar')
-
-            return (
-              <motion.button
-                key={modoKey}
-                onClick={() => setModo(modoKey === 'comparar' && modo === 'mesclar' ? 'comparar' : modoKey)}
-                className={cn(
-                  'relative flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-200',
-                  'border-2',
-                  isActive
-                    ? 'bg-white/15 border-white/40 text-white'
-                    : 'bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white/80'
-                )}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="text-lg mb-1">{modeIcons[modoKey]}</span>
-                <span className="text-xs font-medium">{config.label}</span>
-                {isActive && (
-                  <motion.div
-                    layoutId="activeMode"
-                    className="absolute inset-0 rounded-lg border-2 border-[var(--accent)]"
-                    initial={false}
-                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  />
-                )}
-              </motion.button>
-            )
-          })}
+        <div className="flex bg-white/10 rounded-lg p-1">
+          <button
+            onClick={() => setFiltroTipo('produto')}
+            className={cn(
+              'flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-xs font-medium transition-all',
+              filtroTipo === 'produto'
+                ? 'bg-white/20 text-white shadow-sm'
+                : 'text-white/50 hover:text-white/70'
+            )}
+          >
+            <Package className="w-3.5 h-3.5" />
+            Produto
+          </button>
+          <button
+            onClick={() => setFiltroTipo('familia')}
+            className={cn(
+              'flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-xs font-medium transition-all',
+              filtroTipo === 'familia'
+                ? 'bg-white/20 text-white shadow-sm'
+                : 'text-white/50 hover:text-white/70'
+            )}
+          >
+            <FolderTree className="w-3.5 h-3.5" />
+            Familia
+          </button>
         </div>
       </div>
 
-      {/* Seletor de Produto */}
+      {/* Seletor de Produto ou Familia */}
       <div className="p-4 border-b border-white/10">
-        <p className="text-xs font-medium text-white/60 uppercase tracking-wider mb-3">
-          Produto {produtos.length > 0 && `(${produtos.length})`}
-        </p>
-        {isLoadingProdutos ? (
-          <div className="flex items-center justify-center py-3">
-            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-          </div>
-        ) : (
-          <Combobox
-            options={produtoOptions}
-            value={produtoSelecionado}
-            onChange={setProdutoSelecionado}
-            placeholder="Selecione um produto"
-            searchPlaceholder="Buscar produto..."
-            emptyMessage="Nenhum produto encontrado"
-          />
-        )}
-
-        {/* Info do Produto */}
-        {produtoInfo && (
-          <div className="mt-4 space-y-2">
-            {[
-              { label: 'Família', value: produtoInfo.familia_produtos },
-              { label: 'Etoxilação', value: produtoInfo.grau_etoxilacao },
-              { label: 'Início', value: produtoInfo.data_inicial_estudo }
-            ].map(({ label, value }) => value && (
-              <div key={label} className="bg-white/5 rounded-lg p-2">
-                <p className="text-[10px] text-white/40 uppercase">{label}</p>
-                <p className="text-xs text-white/80 truncate">{value}</p>
+        {filtroTipo === 'produto' ? (
+          <>
+            <p className="text-xs font-medium text-white/60 uppercase tracking-wider mb-3">
+              Produto {produtos.length > 0 && `(${produtos.length})`}
+            </p>
+            {isLoadingProdutos ? (
+              <div className="flex items-center justify-center py-3">
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               </div>
-            ))}
+            ) : (
+              <Combobox
+                options={produtoOptions}
+                value={produtoSelecionado}
+                onChange={setProdutoSelecionado}
+                placeholder="Selecione um produto"
+                searchPlaceholder="Buscar produto..."
+                emptyMessage="Nenhum produto encontrado"
+              />
+            )}
 
-            {/* Indicadores de disponibilidade */}
-            <div className="flex gap-2 mt-3">
-              <span className={cn(
-                'text-[10px] px-2 py-1 rounded-full',
-                produtoInfo.tem_acelerado
-                  ? 'bg-[var(--accent)]/20 text-[var(--accent)]'
-                  : 'bg-white/10 text-white/30'
-              )}>
-                Acelerado
-              </span>
-              <span className={cn(
-                'text-[10px] px-2 py-1 rounded-full',
-                produtoInfo.tem_longa
-                  ? 'bg-[var(--success)]/20 text-[var(--success)]'
-                  : 'bg-white/10 text-white/30'
-              )}>
-                Longa
-              </span>
-            </div>
-          </div>
+            {produtoInfo && (
+              <div className="mt-4 space-y-2">
+                {[
+                  { label: 'Familia', value: produtoInfo.familia_produtos },
+                  { label: 'Etoxilacao', value: produtoInfo.grau_etoxilacao },
+                  { label: 'Inicio', value: produtoInfo.data_inicial_estudo }
+                ].map(({ label, value }) => value && (
+                  <div key={label} className="bg-white/5 rounded-lg p-2">
+                    <p className="text-[10px] text-white/40 uppercase">{label}</p>
+                    <p className="text-xs text-white/80 truncate">{value}</p>
+                  </div>
+                ))}
+
+                <div className="flex gap-2 mt-3">
+                  <span className={cn(
+                    'text-[10px] px-2 py-1 rounded-full',
+                    produtoInfo.tem_acelerado
+                      ? 'bg-[var(--accent)]/20 text-[var(--accent)]'
+                      : 'bg-white/10 text-white/30'
+                  )}>
+                    Acelerado
+                  </span>
+                  <span className={cn(
+                    'text-[10px] px-2 py-1 rounded-full',
+                    produtoInfo.tem_longa
+                      ? 'bg-[var(--success)]/20 text-[var(--success)]'
+                      : 'bg-white/10 text-white/30'
+                  )}>
+                    Longa
+                  </span>
+                </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            <p className="text-xs font-medium text-white/60 uppercase tracking-wider mb-3">
+              Familia {familias.length > 0 && `(${familias.length})`}
+            </p>
+            {isLoadingProdutos ? (
+              <div className="flex items-center justify-center py-3">
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              </div>
+            ) : (
+              <Combobox
+                options={familiaOptions}
+                value={familiaSelecionada}
+                onChange={setFamiliaSelecionada}
+                placeholder="Selecione uma familia"
+                searchPlaceholder="Buscar familia..."
+                emptyMessage="Nenhuma familia encontrada"
+              />
+            )}
+
+            {familiaSelecionada && (
+              <div className="mt-4 space-y-2">
+                <div className="bg-white/5 rounded-lg p-2">
+                  <p className="text-[10px] text-white/40 uppercase">Produtos na familia</p>
+                  <p className="text-xs text-white/80">{produtosDaFamilia.length} produto(s)</p>
+                </div>
+                {produtosDaFamilia.length > 0 && (
+                  <div className="bg-white/5 rounded-lg p-2 max-h-32 overflow-y-auto">
+                    <p className="text-[10px] text-white/40 uppercase mb-1">Lista</p>
+                    {produtosDaFamilia.map(p => (
+                      <p key={p.nome_produto} className="text-[11px] text-white/60 truncate">
+                        {p.nome_produto}
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </>
         )}
       </div>
 
-      {/* Navegação */}
-      <nav className="flex-1 p-4">
-        <ul className="space-y-1">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href
-            const Icon = item.icon
-
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={cn(
-                    'flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-200',
-                    isActive
-                      ? 'bg-white/15 text-white'
-                      : 'text-white/60 hover:bg-white/10 hover:text-white'
-                  )}
-                >
-                  <Icon className="w-5 h-5" />
-                  <span className="text-sm font-medium">{item.label}</span>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
-
-      {/* Usuário e Logout */}
-      <div className="p-4 border-t border-white/10">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white font-semibold">
-            {profile?.full_name?.charAt(0) || user?.email?.charAt(0).toUpperCase() || 'U'}
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-white truncate">
-              {profile?.full_name || 'Usuário'}
-            </p>
-            <p className="text-xs text-white/50 truncate">
-              {user?.email}
-            </p>
-          </div>
+      {/* Resumo de Metricas */}
+      {temSelecao && (
+        <div className="p-4 border-b border-white/10">
+          <p className="text-xs font-medium text-white/60 uppercase tracking-wider mb-3">
+            Resumo
+          </p>
+          {isLoadingDados ? (
+            <div className="space-y-2">
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className="bg-white/5 rounded-lg p-2 animate-pulse">
+                  <div className="h-3 w-16 bg-white/10 rounded mb-1" />
+                  <div className="h-4 w-10 bg-white/10 rounded" />
+                </div>
+              ))}
+            </div>
+          ) : metricas ? (
+            <div className="space-y-2">
+              <div className="bg-white/5 rounded-lg p-2.5 flex items-center gap-2.5">
+                <BarChart3 className="w-4 h-4 text-[var(--accent)] shrink-0" />
+                <div>
+                  <p className="text-[10px] text-white/40 uppercase">Ensaios</p>
+                  <p className="text-sm font-semibold text-white">{metricas.total_ensaios}</p>
+                </div>
+              </div>
+              <div className="bg-white/5 rounded-lg p-2.5 flex items-center gap-2.5">
+                <Calendar className="w-4 h-4 text-[var(--secondary)] shrink-0" style={{ color: '#0055a4' }} />
+                <div>
+                  <p className="text-[10px] text-white/40 uppercase">Periodos</p>
+                  <p className="text-sm font-semibold text-white">{metricas.total_periodos}</p>
+                </div>
+              </div>
+              <div className="bg-white/5 rounded-lg p-2.5 flex items-center gap-2.5">
+                <CheckCircle className="w-4 h-4 shrink-0" style={{ color: 'var(--success)' }} />
+                <div className="flex-1">
+                  <p className="text-[10px] text-white/40 uppercase">Conformidade</p>
+                  <div className="flex items-baseline gap-1.5">
+                    <p className="text-sm font-semibold text-white">{metricas.pct_conforme.toFixed(1)}%</p>
+                    <p className="text-[10px] text-white/40">{metricas.conformes}/{metricas.total_verificaveis}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white/5 rounded-lg p-2.5 flex items-center gap-2.5">
+                <AlertTriangle className="w-4 h-4 shrink-0" style={{ color: metricas.alertas > 0 ? 'var(--danger)' : 'var(--success)' }} />
+                <div>
+                  <p className="text-[10px] text-white/40 uppercase">Alertas</p>
+                  <p className={cn(
+                    'text-sm font-semibold',
+                    metricas.alertas > 0 ? 'text-red-400' : 'text-green-400'
+                  )}>
+                    {metricas.alertas > 0 ? `${metricas.alertas} fora da spec` : 'Tudo OK'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
-        <button
-          onClick={signOut}
-          className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/5 text-white/60 hover:bg-white/10 hover:text-white transition-all duration-200"
-        >
-          <LogOut className="w-4 h-4" />
-          <span className="text-sm">Sair</span>
-        </button>
-      </div>
+      )}
+
+      {/* Spacer */}
+      <div className="flex-1" />
     </aside>
   )
 }

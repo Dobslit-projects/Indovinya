@@ -107,6 +107,8 @@ export interface Metricas {
 // ============================================
 
 export type ModoVisualizacao = 'acelerado' | 'longa' | 'comparar' | 'mesclar' | 'analise'
+export type AbaAtiva = 'ensaios' | 'analise'
+export type FiltroTipo = 'produto' | 'familia'
 
 export interface ModoConfig {
   label: string
@@ -149,7 +151,8 @@ export const MODOS_VISUALIZACAO: Record<ModoVisualizacao, ModoConfig> = {
 }
 
 // Modos visíveis na navegação (mesclar é interno ao comparar)
-export const MODOS_VISIVEIS: ModoVisualizacao[] = ['acelerado', 'longa', 'comparar', 'analise']
+// Modos visiveis na navegacao (analise vive na aba propria, mesclar e interno ao comparar)
+export const MODOS_VISIVEIS: ModoVisualizacao[] = ['acelerado', 'longa', 'comparar']
 
 export const CATEGORIAS_ENSAIOS = [
   'Composição',

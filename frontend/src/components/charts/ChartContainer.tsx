@@ -6,12 +6,14 @@ import { useDashboardStore } from '@/store/dashboardStore'
 import { StabilityLineChart } from './LineChart'
 import { MergedChart } from './MergedChart'
 import { CompareView } from './CompareView'
+import { FamilyOverlayChart } from './FamilyOverlayChart'
 import { AnalysisView } from './AnalysisView'
 import { ModelComparisonModal } from './ModelComparisonModal'
 import { Select } from '@/components/ui/Select'
-import { filtrarEnsaiosPlotaveis } from '@/lib/utils/conformidade'
+import { filtrarEnsaiosPlotaveis, valorParaNumero } from '@/lib/utils/conformidade'
+import { ORDEM_PERIODOS } from '@/types'
 import { Card, CardContent } from '@/components/ui/Card'
-import { LineChart, Shuffle, Scale, Clock, AlertTriangle, Info, TrendingUp } from 'lucide-react'
+import { LineChart, Shuffle, Scale, Clock, AlertTriangle, Info, TrendingUp, Users, Package } from 'lucide-react'
 
 // Animacoes customizadas por transicao
 const mergeVariants = {
@@ -57,6 +59,8 @@ export function ChartContainer() {
   const {
     modo,
     setModo,
+    filtroTipo,
+    familiaSelecionada,
     dadosAcelerado,
     dadosLonga,
     ensaioSelecionado,
@@ -73,12 +77,19 @@ export function ChartContainer() {
   } = useDashboardStore()
 
   const [showCompareModal, setShowCompareModal] = useState(false)
+  const [familyAnalysisMode, setFamilyAnalysisMode] = useState<'media' | 'produto'>('media')
+  const [familySelectedProduct, setFamilySelectedProduct] = useState<string | null>(null)
 
   const prevModoRef = useRef(modo)
+
+  const produtos = useDashboardStore(state => state.produtos)
+  const produtoSelecionado = useDashboardStore(state => state.produtoSelecionado)
+  const setProdutoSelecionado = useDashboardStore(state => state.setProdutoSelecionado)
 
   const isMesclado = modo === 'mesclar'
   const isCompareGroup = modo === 'comparar' || modo === 'mesclar'
   const isAnalise = modo === 'analise'
+  const isFamilia = filtroTipo === 'familia'
 
   // Determinar animacao baseada na transicao
   const getVariants = () => {
@@ -112,6 +123,59 @@ export function ChartContainer() {
     label: `${e.ensaio_normalizado} (${e.categoria_ensaio})`
   }))
 
+  // Produtos da familia para o seletor de produto especifico
+  const produtosDaFamilia = useMemo(() => {
+    if (!isFamilia || !familiaSelecionada) return []
+    return produtos.filter(p => p.familia_produtos === familiaSelecionada)
+  }, [isFamilia, familiaSelecionada, produtos])
+
+  const familyProductOptions = produtosDaFamilia.map(p => ({
+    value: p.nome_produto,
+    label: p.nome_produto
+  }))
+
+  // Calcular pontos medios da familia para analise custom
+  const { customDataPoints, customSpec } = useMemo(() => {
+    if (!isAnalise || !isFamilia || familyAnalysisMode !== 'media' || !ensaioAtual) {
+      return { customDataPoints: undefined, customSpec: undefined }
+    }
+
+    const dados = analysisStudyType === 'Acelerado' ? dadosAcelerado : dadosLonga
+    const dadosEnsaio = dados.filter(d => d.ensaio_normalizado === ensaioAtual)
+    if (dadosEnsaio.length === 0) return { customDataPoints: undefined, customSpec: undefined }
+
+    const specInfo = dadosEnsaio[0]
+
+    // Agrupar por periodo e calcular media
+    const periodoMap = new Map<string, { valores: number[]; periodoDias: number }>()
+    dadosEnsaio.forEach(d => {
+      const val = valorParaNumero(d.valor)
+      if (val === null) return
+      if (!periodoMap.has(d.periodo)) {
+        periodoMap.set(d.periodo, { valores: [], periodoDias: d.periodo_dias })
+      }
+      periodoMap.get(d.periodo)!.valores.push(val)
+    })
+
+    const points = Array.from(periodoMap.entries())
+      .map(([periodo, { valores, periodoDias }]) => ({
+        periodo,
+        periodo_dias: periodoDias,
+        valor: valores.reduce((a, b) => a + b, 0) / valores.length
+      }))
+      .sort((a, b) => a.periodo_dias - b.periodo_dias)
+
+    return {
+      customDataPoints: points.length >= 3 ? points : undefined,
+      customSpec: {
+        spec_min: specInfo.spec_min,
+        spec_max: specInfo.spec_max,
+        spec_tipo: specInfo.spec_tipo,
+        especificacao: specInfo.especificacao
+      }
+    }
+  }, [isAnalise, isFamilia, familyAnalysisMode, ensaioAtual, analysisStudyType, dadosAcelerado, dadosLonga])
+
   // Shelf life inline
   const shelfLife = analysisResult?.shelf_life_months ?? null
   const shelfLifeError = analysisResult?.shelf_life_error ?? null
@@ -137,7 +201,7 @@ export function ChartContainer() {
         <CardContent className="h-full flex flex-col items-center justify-center">
           <LineChart className="w-16 h-16 text-[var(--text-muted)] mb-4" />
           <p className="text-[var(--text-secondary)]">
-            Nenhum ensaio disponivel para este produto
+            Nenhum ensaio disponivel para este {isFamilia ? 'familia' : 'produto'}
           </p>
         </CardContent>
       </Card>
@@ -166,7 +230,7 @@ export function ChartContainer() {
           <div className="w-px h-8 bg-[var(--border-light)]" />
         )}
 
-        {/* Tipo de estudo - só no modo análise */}
+        {/* Tipo de estudo - so no modo analise */}
         {isAnalise && (
           <>
             <label className="text-sm font-medium text-[var(--text-secondary)]">
@@ -182,7 +246,55 @@ export function ChartContainer() {
           </>
         )}
 
-        {/* Seletor de modelo - só no modo análise */}
+        {/* Toggle Media/Produto - familia + analise */}
+        {isAnalise && isFamilia && (
+          <>
+            <div className="w-px h-8 bg-[var(--border-light)]" />
+            <div className="flex bg-[var(--bg-light)] rounded-lg p-0.5">
+              <button
+                onClick={() => setFamilyAnalysisMode('media')}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
+                  familyAnalysisMode === 'media'
+                    ? 'bg-white shadow-sm text-[var(--text-primary)]'
+                    : 'text-[var(--text-muted)]'
+                }`}
+              >
+                <Users className="w-3.5 h-3.5" />
+                Media
+              </button>
+              <button
+                onClick={() => setFamilyAnalysisMode('produto')}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
+                  familyAnalysisMode === 'produto'
+                    ? 'bg-white shadow-sm text-[var(--text-primary)]'
+                    : 'text-[var(--text-muted)]'
+                }`}
+              >
+                <Package className="w-3.5 h-3.5" />
+                Produto
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* Seletor de produto da familia - quando analise + familia + modo produto */}
+        {isAnalise && isFamilia && familyAnalysisMode === 'produto' && (
+          <>
+            <div className="w-36">
+              <Select
+                options={familyProductOptions}
+                value={familySelectedProduct || ''}
+                onChange={(e) => {
+                  setFamilySelectedProduct(e.target.value)
+                  setProdutoSelecionado(e.target.value)
+                }}
+                placeholder="Produto..."
+              />
+            </div>
+          </>
+        )}
+
+        {/* Seletor de modelo - so no modo analise */}
         {isAnalise && (
           <>
             <div className="w-px h-8 bg-[var(--border-light)]" />
@@ -207,7 +319,7 @@ export function ChartContainer() {
           </>
         )}
 
-        {/* Shelf Life inline - só no modo análise com resultado */}
+        {/* Shelf Life inline - so no modo analise com resultado */}
         {isAnalise && analysisResult && !isLoadingAnalysis && (
           <>
             <div className="w-px h-8 bg-[var(--border-light)]" />
@@ -275,7 +387,7 @@ export function ChartContainer() {
         {/* Spacer */}
         <div className="flex-1" />
 
-        {/* Spec info - modos não-análise */}
+        {/* Spec info - modos nao-analise */}
         {!isAnalise && ensaioAtual && (
           <span className="text-sm text-[var(--text-muted)]">
             {ensaiosDisponiveis.find(e => e.ensaio_normalizado === ensaioAtual)?.especificacao || 'Sem especificacao'}
@@ -311,7 +423,7 @@ export function ChartContainer() {
           </motion.button>
         )}
 
-        {/* Botao Projeção - só no modo análise */}
+        {/* Botao Projecao - so no modo analise */}
         {isAnalise && (
           <button
             onClick={() => setShowProjection(!showProjection)}
@@ -327,7 +439,7 @@ export function ChartContainer() {
         )}
       </div>
 
-      {/* Modal de comparação de modelos */}
+      {/* Modal de comparacao de modelos */}
       {showCompareModal && analysisResult?.all_models && (
         <ModelComparisonModal
           allModels={analysisResult.all_models}
@@ -342,7 +454,7 @@ export function ChartContainer() {
       <AnimatePresence mode="wait">
         {ensaioAtual && (
           <motion.div
-            key={`${modo}-${ensaioAtual}`}
+            key={`${modo}-${ensaioAtual}-${filtroTipo}`}
             variants={variants}
             initial="initial"
             animate="animate"
@@ -352,40 +464,88 @@ export function ChartContainer() {
               ease: [0.4, 0, 0.2, 1]
             }}
           >
-            {modo === 'acelerado' && (
-              <StabilityLineChart
-                dados={dadosAcelerado}
+            {/* Modo Analise */}
+            {isAnalise && (
+              <AnalysisView
                 ensaio={ensaioAtual}
-                tipoEstudo="Acelerado"
+                customDataPoints={isFamilia && familyAnalysisMode === 'media' ? customDataPoints : undefined}
+                customSpec={isFamilia && familyAnalysisMode === 'media' ? customSpec : undefined}
               />
             )}
 
-            {modo === 'longa' && (
-              <StabilityLineChart
-                dados={dadosLonga}
-                ensaio={ensaioAtual}
-                tipoEstudo="Longa Duração"
-              />
+            {/* Modos nao-analise com Familia: FamilyOverlayChart */}
+            {!isAnalise && isFamilia && familiaSelecionada && (
+              <>
+                {modo === 'acelerado' && (
+                  <FamilyOverlayChart
+                    dados={dadosAcelerado}
+                    ensaio={ensaioAtual}
+                    tipoEstudo="Acelerado"
+                    familiaNome={familiaSelecionada}
+                  />
+                )}
+                {modo === 'longa' && (
+                  <FamilyOverlayChart
+                    dados={dadosLonga}
+                    ensaio={ensaioAtual}
+                    tipoEstudo="Longa Duracao"
+                    familiaNome={familiaSelecionada}
+                  />
+                )}
+                {(modo === 'comparar' || modo === 'mesclar') && (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <FamilyOverlayChart
+                      dados={dadosAcelerado}
+                      ensaio={ensaioAtual}
+                      tipoEstudo="Acelerado"
+                      familiaNome={familiaSelecionada}
+                    />
+                    <FamilyOverlayChart
+                      dados={dadosLonga}
+                      ensaio={ensaioAtual}
+                      tipoEstudo="Longa Duracao"
+                      familiaNome={familiaSelecionada}
+                    />
+                  </div>
+                )}
+              </>
             )}
 
-            {modo === 'comparar' && (
-              <CompareView
-                dadosAcelerado={dadosAcelerado}
-                dadosLonga={dadosLonga}
-                ensaio={ensaioAtual}
-              />
-            )}
+            {/* Modos nao-analise com Produto: graficos originais */}
+            {!isAnalise && !isFamilia && (
+              <>
+                {modo === 'acelerado' && (
+                  <StabilityLineChart
+                    dados={dadosAcelerado}
+                    ensaio={ensaioAtual}
+                    tipoEstudo="Acelerado"
+                  />
+                )}
 
-            {modo === 'mesclar' && (
-              <MergedChart
-                dadosAcelerado={dadosAcelerado}
-                dadosLonga={dadosLonga}
-                ensaio={ensaioAtual}
-              />
-            )}
+                {modo === 'longa' && (
+                  <StabilityLineChart
+                    dados={dadosLonga}
+                    ensaio={ensaioAtual}
+                    tipoEstudo="Longa Duração"
+                  />
+                )}
 
-            {modo === 'analise' && (
-              <AnalysisView ensaio={ensaioAtual} />
+                {modo === 'comparar' && (
+                  <CompareView
+                    dadosAcelerado={dadosAcelerado}
+                    dadosLonga={dadosLonga}
+                    ensaio={ensaioAtual}
+                  />
+                )}
+
+                {modo === 'mesclar' && (
+                  <MergedChart
+                    dadosAcelerado={dadosAcelerado}
+                    dadosLonga={dadosLonga}
+                    ensaio={ensaioAtual}
+                  />
+                )}
+              </>
             )}
           </motion.div>
         )}
