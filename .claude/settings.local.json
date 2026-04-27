@@ -3,7 +3,8 @@
     "allow": [
       "Bash(python:*)",
       "Bash(npx create-next-app:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(\"/c/Program Files/LibreOffice/program/soffice.exe\" --headless --convert-to pdf \"Indorama - ShelfLife Entrega.pptx\")"
     ],
     "deny": [],
     "ask": []

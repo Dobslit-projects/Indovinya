@@ -26,7 +26,14 @@ export interface PageEvent {
   id: string
   session_id: string
   user_id: string
-  event_type: 'page_view' | 'mode_change' | 'product_select' | 'test_select'
+  event_type:
+    | 'page_view'
+    | 'mode_change'
+    | 'product_select'
+    | 'test_select'
+    | 'report_view'
+    | 'report_download'
+    | 'report_filter_change'
   page_path: string
   metadata: Record<string, unknown>
   timestamp: string

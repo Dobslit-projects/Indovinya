@@ -17,12 +17,18 @@ import {
   Users,
   ChevronDown,
   TestTubes,
-  LayoutDashboard
+  LayoutDashboard,
+  FileText
 } from 'lucide-react'
 
-const ABAS: { key: AbaAtiva; label: string; icon: React.ReactNode }[] = [
-  { key: 'ensaios', label: 'Ensaios', icon: <TestTubes className="w-4 h-4" /> },
-  { key: 'analise', label: 'Analise', icon: <FlaskConical className="w-4 h-4" /> },
+type AbaItem =
+  | { kind: 'dashboard'; key: AbaAtiva; label: string; icon: React.ReactNode }
+  | { kind: 'route'; href: string; label: string; icon: React.ReactNode }
+
+const ABAS: AbaItem[] = [
+  { kind: 'dashboard', key: 'ensaios', label: 'Ensaios', icon: <TestTubes className="w-4 h-4" /> },
+  { kind: 'dashboard', key: 'analise', label: 'Analise', icon: <FlaskConical className="w-4 h-4" /> },
+  { kind: 'route', href: '/relatorios', label: 'Relatorios', icon: <FileText className="w-4 h-4" /> },
 ]
 
 export function Navbar() {
@@ -78,14 +84,25 @@ export function Navbar() {
         {/* Centro: Abas */}
         <nav className="flex items-center gap-1 bg-[var(--bg-light)] rounded-xl p-1">
           {ABAS.map((aba) => {
-            const isActive = isDashboard && abaAtiva === aba.key
+            const abaKey = aba.kind === 'dashboard' ? aba.key : aba.href
+            const isActive =
+              aba.kind === 'dashboard'
+                ? isDashboard && abaAtiva === aba.key
+                : pathname.startsWith(aba.href)
+
+            const handleClick = () => {
+              if (aba.kind === 'dashboard') {
+                setAbaAtiva(aba.key)
+                if (!isDashboard) router.push('/dashboard')
+              } else {
+                router.push(aba.href)
+              }
+            }
+
             return (
               <button
-                key={aba.key}
-                onClick={() => {
-                  setAbaAtiva(aba.key)
-                  if (!isDashboard) router.push('/dashboard')
-                }}
+                key={abaKey}
+                onClick={handleClick}
                 className={cn(
                   'relative flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-colors',
                   isActive

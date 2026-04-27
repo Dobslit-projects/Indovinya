@@ -1,0 +1,1349 @@
+=== PAGE 1 ===
+Análise Temporal de Shelf Life
+Ranking de Importância de Ensaios Físico-Químicos
+por Random Forest e XGBoost
+Versões: Com Limites e Sem Limites
+Relatório Técnico
+27 de março de 2026
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 1
+=== PAGE 2 ===
+Sumário
+1 Introdução 5
+2 Metodologia 6
+2.1 Visão Geral . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.2 Variáveis Temporais Criadas . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.3 Estrutura das Entradas do Modelo . . . . . . . . . . . . . . . . . . . . 7
+2.4 Versão com Limites . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.4.1 Regras de Inclusão por Família . . . . . . . . . . . . . . . . . . 8
+2.4.2 Regras de Inclusão por Ensaio . . . . . . . . . . . . . . . . . . . 8
+2.4.3 Descritores Utilizados . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.4.4 Ajuste do Modelo . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.4.5 Agregação das Importâncias . . . . . . . . . . . . . . . . . . . . 9
+2.5 Versão Sem Limites . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.6 Diferença Conceitual entre as Versões . . . . . . . . . . . . . . . . . . . 9
+2.7 Motivos de Exclusão de Famílias . . . . . . . . . . . . . . . . . . . . . . 10
+2.8 Avaliação do Desempenho Preditivo . . . . . . . . . . . . . . . . . . . . 10
+2.8.1 Papel das Métricas nesta Análise . . . . . . . . . . . . . . . . . 10
+2.8.2 Métricas de Ajuste — Random Forest . . . . . . . . . . . . . . . 11
+2.8.3 Métricas de Ajuste — XGBoost . . . . . . . . . . . . . . . . . . 11
+2.8.4 Interpretação dos Resultados . . . . . . . . . . . . . . . . . . . . 12
+3 Resultados — Versão com Limites 14
+3.1 Random Forest — Versão com Limites . . . . . . . . . . . . . . . . . . 14
+3.1.1 Cenário Acelerado . . . . . . . . . . . . . . . . . . . . . . . . . 14
+3.1.2 Cenário de Longa Duração . . . . . . . . . . . . . . . . . . . . . 15
+3.1.3 Cenário de Acompanhamento . . . . . . . . . . . . . . . . . . . 17
+3.1.4 Síntese Geral — RF com Limites . . . . . . . . . . . . . . . . . 19
+3.2 XGBoost — Versão com Limites . . . . . . . . . . . . . . . . . . . . . . 19
+3.2.1 Cenário de Longa Duração . . . . . . . . . . . . . . . . . . . . . 19
+3.2.2 Cenário Acelerado . . . . . . . . . . . . . . . . . . . . . . . . . 20
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 1
+=== PAGE 3 ===
+3.2.3 Cenário de Acompanhamento . . . . . . . . . . . . . . . . . . . 21
+3.2.4 Síntese Geral — XGBoost com Limites . . . . . . . . . . . . . . 22
+3.3 Comparativo RF vs. XGBoost — Versão com Limites . . . . . . . . . . 22
+4 Resultados — Versão Sem Limites 23
+4.1 Random Forest — Versão Sem Limites . . . . . . . . . . . . . . . . . . 23
+4.1.1 Cenário de Longa Duração . . . . . . . . . . . . . . . . . . . . . 23
+4.1.2 Cenário Acelerado . . . . . . . . . . . . . . . . . . . . . . . . . 24
+4.1.3 Cenário de Acompanhamento . . . . . . . . . . . . . . . . . . . 24
+4.1.4 Famílias Excluídas — RF Sem Limites . . . . . . . . . . . . . . 24
+4.1.5 Síntese Geral — RF Sem Limites . . . . . . . . . . . . . . . . . 26
+4.2 XGBoost — Versão Sem Limites . . . . . . . . . . . . . . . . . . . . . . 26
+4.2.1 Cenário de Longa Duração . . . . . . . . . . . . . . . . . . . . . 26
+4.2.2 Cenário Acelerado . . . . . . . . . . . . . . . . . . . . . . . . . 26
+4.2.3 Cenário de Acompanhamento . . . . . . . . . . . . . . . . . . . 27
+4.2.4 Síntese Geral — XGBoost Sem Limites . . . . . . . . . . . . . . 27
+5 Análise Sem Ensaios de Água 29
+5.1 Motivação e Ensaios Excluídos . . . . . . . . . . . . . . . . . . . . . . . 29
+5.2 Resultados — Versão com Limites . . . . . . . . . . . . . . . . . . . . . 29
+5.2.1 Random Forest — Com Limites, Sem Ensaios de Água . . . . . 30
+5.2.2 XGBoost — Com Limites, Sem Ensaios de Água . . . . . . . . . 33
+5.3 Resultados — Versão Sem Limites . . . . . . . . . . . . . . . . . . . . . 35
+5.3.1 Random Forest — Sem Limites, Sem Ensaios de Água . . . . . 35
+5.3.2 XGBoost — Sem Limites, Sem Ensaios de Água . . . . . . . . . 38
+5.4 Impacto da Exclusão da Água: Comparativo com a Análise Principal . 40
+5.5 Síntese Geral — Análise Sem Ensaios de Água . . . . . . . . . . . . . . 42
+6 Conclusão 43
+6.1 Achados Transversais . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+6.2 Padrão dos Descritores Temporais . . . . . . . . . . . . . . . . . . . . . 43
+6.3 Comparação entre Modelos e Versões . . . . . . . . . . . . . . . . . . . 44
+6.4 Recomendações . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 2
+=== PAGE 4 ===
+Lista de Figuras
+3.1 Importância relativa de features por família — Cenário Acelerado (RF
+vs. XGBoost, versão com limites). . . . . . . . . . . . . . . . . . . . . . 15
+3.2 Ranking detalhado de features por família — Cenário Acelerado. . . . . 15
+3.3 Importância relativa de features por família — Cenário de Longa Du-
+ração (RF vs. XGBoost, versão com limites). . . . . . . . . . . . . . . . 17
+3.4 Ranking detalhado de features por família — Cenário de Longa Duração. 17
+3.5 Importância relativa de features por família — Cenário de Acompan-
+hamento (RF vs. XGBoost, versão com limites). . . . . . . . . . . . . . 18
+3.6 Ranking detalhado de features por família — Cenário de Acompan-
+hamento. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+3.7 Heatmap de diferença de importância entre RF e XGBoost (RF−XG-
+Boost). Valores positivos (azul) indicam maior peso atribuído pelo RF;
+valores negativos (vermelho) indicam maior peso pelo XGBoost. . . . . 22
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 3
+=== PAGE 5 ===
+Lista de Tabelas
+2.1 Descritores temporais utilizados nos modelos. . . . . . . . . . . . . . . 7
+2.2 Comparação entre as versões com e sem limites. . . . . . . . . . . . . . 9
+2.3 Métricas de ajuste in-sample — Random Forest (com e sem limites). . 11
+2.4 Métricas de ajuste in-sample — XGBoost (com e sem limites). . . . . . 12
+4.1 Famílias excluídas da análise RF sem limites, por motivo e cenário. . . 25
+5.1 Ranking RF com limites, sem ensaios de água — todos os cenários. . . 32
+5.2 Ranking XGBoost com limites, sem ensaios de água — todos os cenários. 34
+5.3 Ranking RF sem limites, sem ensaios de água — famílias com maior
+confiabilidade (≥4produtos). . . . . . . . . . . . . . . . . . . . . . . . 37
+5.4 Ranking XGBoost sem limites, sem ensaios de água — famílias com
+maior confiabilidade (≥4produtos). . . . . . . . . . . . . . . . . . . . 39
+5.5 Impacto da exclusão dos ensaios de água por família — versão RF com
+limites. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+6.1 Resumo comparativo entre modelos e versões. . . . . . . . . . . . . . . 44
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 4
+=== PAGE 6 ===
+Capítulo 1
+Introdução
+Este relatório apresenta os resultados da análise temporal deShelf Liferealizada sobre
+três bases de dados distintas - cenários delonga duração,aceleradoeacompan-
+hamento- utilizando dois algoritmos de aprendizado de máquina:Random Forest
+eXGBoost.
+O objetivo central foi identificar, dentro de cada família de produtos, quais ensaios
+físico-químicos apresentam maior associação com oShelf Life, tratado como variável-
+alvo contínua. Para isso, o histórico temporal de cada ensaio foi convertido em de-
+scritores resumidos, e modelos de regressão foram ajustados separadamente por família
+de produtos.
+O relatório está organizado da seguinte forma:
+•Capítulo 2descreve a metodologia completa, incluindo a construção das var-
+iáveis temporais, as regras de inclusão, os dois algoritmos utilizados e a avaliação
+do desempenho preditivo in-sample;
+•Capítulo 3apresenta os resultados da versão com limites, mais conservadora e
+interpretável;
+•Capítulo4apresentaosresultadosdaversãosemlimites, comcoberturamáxima
+e caráter mais exploratório;
+•Capítulo 5apresenta uma análise de sensibilidade com a exclusão dos ensaios
+relacionados à água, revelando os ensaios substitutos em cada família;
+•Capítulo 6sintetiza os achados gerais.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 5
+=== PAGE 7 ===
+Capítulo 2
+Metodologia
+2.1 Visão Geral
+A análise foi conduzida a partir de três bases processadas, correspondentes aos cenários
+de longa duração, acelerado e acompanhamento. Em todas as versões, o objetivo foi
+identificar, dentro de cada família de produtos, quais ensaios físico-químicos apresen-
+tavam maior associação com oShelf Life, tratado como variável-alvo contínua.
+A lógica central consistiu em transformar o histórico temporal de cada ensaio em um
+conjunto dedescritores resumidos, de forma que o modelo não utilizasse diretamente
+as observações brutas ao longo do tempo, mas sim medidas sintéticas que capturam o
+comportamento temporal de cada ensaio. Assim, o eixo do tempo entrou no modelo
+de forma indireta, por meio de variáveis derivadas da trajetória de cada ensaio.
+Em ambas as versões, a modelagem foi feitaseparadamente por família de
+produtos. Não foi treinado um único modelo global para todas as famílias. Para
+cada família, os produtos foram selecionados, suas variáveis temporais organizadas em
+formato tabular, e então foi ajustado um modelo específico para explicar oShelf Life
+naquele subconjunto.
+2.2 Variáveis Temporais Criadas
+As análises temporais se basearam em descritores construídos a partir da sequência de
+valores de cada ensaio ao longo de dias. A ideia foi resumir o comportamento do ensaio
+no tempo em variáveis numéricas mais informativas para o modelo.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 6
+=== PAGE 8 ===
+Tabela 2.1: Descritores temporais utilizados nos modelos.
+DescritorDefinição
+slopeInclinação da reta ajustada aos pontos do ensaio ao
+longo do tempo. Representa a tendência temporal.
+Positivo = aumento; negativo = queda; próximo de
+zero = pouca tendência linear.
+abs_slopeValor absoluto deslope. Capta a intensidade da mu-
+dança ao longo do tempo, independentemente da di-
+reção.
+delta_totalDiferença entre o último e o primeiro valor observado:
+∆ =x final −x inicial. Resume a mudança acumulada
+total.
+margin0_normMargem inicial normalizada até o limite de especi-
+ficação. Quando existem limite mínimo e máximo:
+min(|x0−Lmin|,|L max−x0|)
+Lmax−Lmin
+. Com limite unilateral, usa-se a
+distância absoluta.
+min_margin_normMenor margem observada ao longo de toda a série
+temporal. Captura o momento de maior aproximação
+aos limites de especificação durante o estudo.
+oos_anyVariável binária: 0 = nunca saiu de especificação; 1
+= saiu em pelo menos um momento.
+first_oos_dayPrimeiro dia em que o ensaio saiu de especificação.
+Ausente quando o ensaio nunca saiu da faixa.
+2.3 Estrutura das Entradas do Modelo
+O modelo não recebeu diretamente a tabela bruta em formato longo. Em vez disso, os
+dadosforamreorganizadosdemodoquecadalinhadamatrizdeentradacorrespondesse
+a um produto, e cada coluna a um ensaio combinado com um descritor temporal. Por
+exemplo:
+•Água, %p__slope
+•Água, %p__abs_slope
+•Água, %p__delta_total
+•Índice de acidez__slope
+•Índice de acidez__delta_total
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 7
+=== PAGE 9 ===
+•. . .
+A variável-alvoyfoi sempre oShelf Lifedo produto.
+2.4 Versão com Limites
+A versão com limites foi a versão mais conservadora e robusta da análise, desenhada
+para evitar rankings obtidos em famílias ou ensaios com suporte muito pequeno.
+2.4.1 Regras de Inclusão por Família
+Uma família só era modelada quando atendia simultaneamente às condições:
+•possuir pelo menos 5 produtos;
+•apresentar variação emShelf Lifedentro da família.
+Se todos os produtos da família tivessem o mesmoShelf Life, ela era excluída, pois o
+modelo não teria variação no alvo para aprender.
+2.4.2 Regras de Inclusão por Ensaio
+Dentro de cada família, cada ensaio precisava aparecer em pelo menos:
+max(2,⌈0,40×n produtos⌉)
+produtos, ou seja, em 40% dos produtos da família, respeitando um mínimo absoluto
+de 2 produtos.
+2.4.3 Descritores Utilizados
+Na versão com limites, os descritores usados como entrada do modelo foram:slope,
+abs_slope,delta_total,margin0_norm,min_margin_norm,oos_anyefirst_oos_day.
+2.4.4 Ajuste do Modelo
+Para cada família, foi treinado o modelo com:
+•n_estimators = 200
+•random_state = 42 + seed
+•O modelo foi repetido 12 vezes (variando a semente) para reduzir dependência
+de um único ajuste.
+•A importância final foi a média entre as 12 repetições.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 8
+=== PAGE 10 ===
+2.4.5 Agregação das Importâncias
+As importâncias de todos os descritores pertencentes ao mesmo ensaio foram somadas,
+gerando o ranking principal por ensaio. Adicionalmente, foi identificado, para cada en-
+saio, odescritor dominante— aquele que concentrou a maior parcela da importância
+agregada.
+2.5 Versão Sem Limites
+A versão sem limites foi construída para oferecercobertura máxima, reduzindo as
+exclusões por critérios conservadores. Foram removidos os filtros de mínimo de 5
+produtos por família e de presença mínima de 40% por ensaio.
+Mesmo assim, condições mínimas continuaram obrigatórias:
+•pelo menos 2 produtos por família;
+•variação emShelf Life;
+•pelo menos uma variável numérica utilizável após a montagem.
+Na versão sem limites, o conjunto de descritores foi mais amplo, incluindo também
+n_points,value0evalue_last.
+2.6 Diferença Conceitual entre as Versões
+Tabela 2.2: Comparação entre as versões com e sem limites.
+Característica Com Limites Sem Limites
+Mín. produtos por família 5 2
+Mín. presença por ensaio 40% Sem restrição
+Descritores utilizados 7 10
+Exibe descritor dominante Sim Não
+Robustez interpretativa Alta Variável
+Cobertura de famílias Menor Máxima
+Atenção — Interpretação dos Resultados
+A versão com limites é a mais apropriada paraconclusões sólidas. A versão
+sem limites é a mais apropriada para mostrartudo o que foi possível calcular,
+deixando claro o caráter mais exploratório de algumas famílias. Famílias com
+Peso 1 = 1,000 e demais pesos iguais a zero, especialmente em famílias com 2–3
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 9
+=== PAGE 11 ===
+produtos, não devem ser interpretadas como prova de dominância absoluta do
+ensaio.
+2.7 Motivos de Exclusão de Famílias
+As principais causas de exclusão de famílias do ranking são:
+1.Poucos produtos reais na família:o script exige um número mínimo de
+produtos para que o resultado não fique frágil.
+2.Shelf Lifesem variação:se todos os produtos da família tiverem o mesmo
+Shelf Life, o modelo não tem o que aprender.
+3.Pouca presença de ensaio na família:um ensaio precisa aparecer em fração
+mínima dos produtos.
+4.Valores numéricos ausentes ou inválidos:seResultado_Numericoestiver
+muito vazio ou não puder ser convertido corretamente.
+5.Poucas medições ao longo do tempo:para calcular inclinação, delta e mar-
+gens, é preciso histórico suficiente.
+6.Ensaios demais, mas muito esparsos:após filtros, sobram poucas ou nen-
+huma coluna robusta.
+7.Limites matemáticos ausentes:descritores como margem ao limite dependem
+deLimite_MineLimite_Max.
+2.8 Avaliação do Desempenho Preditivo
+2.8.1 Papel das Métricas nesta Análise
+O foco principal desta análise foi aidentificação dos ensaios físico-químicos mais
+associados aoShelf Life, por meio da importância de variáveis extraída dos modelos.
+Não se tratou, portanto, de um problema de predição em sentido estrito: o objetivo
+não foi construir um modelo para prever oShelf Lifede novos produtos, mas sim
+utilizar modelos de aprendizado de máquina como instrumentos dequantificação de
+associaçãoentre os descritores temporais dos ensaios e a variável-alvo.
+Ainda assim, a avaliação do desempenho preditivo in-sample cumpre uma função
+metodológica importante: ela serve comoverificação de sanidadedos rankings de
+importância obtidos. Importâncias extraídas de um modelo que não ajustou adequada-
+mente aos dados refletem, em grande parte, ruído e não sinal real. Por isso, reportar
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 10
+=== PAGE 12 ===
+as métricas de ajuste à base é essencial para demonstrar que os modelos capturaram
+estrutura real nos dados antes de qualquer extração de importâncias.
+É importante ressaltar que as métricas apresentadas nesta seção são dedesem-
+penho in-sample— calculadas sobre os mesmos dados utilizados no treinamento
+de cada modelo, dentro de cada família. Trata-se, portanto, de medidas deajuste
+à base, e não de generalização para novos dados. A interpretação adequada dessas
+métricas é: o modelo conseguiu capturar a variação observada noShelf Lifedentro
+do conjunto disponível, o que legitima a extração de importâncias. Uma análise de
+validação cruzada, voltada à capacidade preditiva propriamente dita, constituiria uma
+etapa complementar e distinta desta análise.
+2.8.2 Métricas de Ajuste — Random Forest
+A Tabela 2.3 apresenta as métricas de ajuste in-sample agregadas por cenário para o
+modelo Random Forest, nas versões com e sem limites. Os valores de MAE e RMSE
+estão expressos na mesma unidade doShelf Life(dias).
+Tabela 2.3: Métricas de ajuste in-sample — Random Forest (com e sem limites).
+V ersão Cenário F amílias Produtos MAE RMSER 2
+Com limites
+Longa duração 4 33 66,33 98,71 0,7482
+Acelerado 4 35 69,25 101,46 0,7214
+Acompanhamento 3 22 38,77 53,45 0,8583
+Geral 11 90 60,73 90,96 0,7531
+Sem limites
+Longa duração 12 57 63,78 88,15 0,7929
+Acelerado 13 63 62,99 86,99 0,7887
+Acompanhamento 8 35 95,91 158,74 0,7461
+Geral 33 155 70,71 107,81 0,7751
+2.8.3 Métricas de Ajuste — XGBoost
+A Tabela 2.4 apresenta as métricas correspondentes para o modelo XGBoost.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 11
+=== PAGE 13 ===
+Tabela 2.4: Métricas de ajuste in-sample — XGBoost (com e sem limites).
+V ersão Cenário F amílias Produtos MAE RMSER 2
+Com limites
+Longa duração 4 33 23,17 78,32 0,8415
+Acelerado 4 35 21,99 76,05 0,8435
+Acompanhamento 3 22 1,18 2,16 0,9998
+Geral 11 90 17,34 67,08 0,8658
+Sem limites
+Longa duração 12 57 13,90 59,61 0,9053
+Acelerado 13 63 12,70 56,71 0,9102
+Acompanhamento 8 35 32,79 130,90 0,8273
+Geral 33 155 17,68 80,52 0,8746
+2.8.4 Interpretação dos Resultados
+Em ambos os modelos e em todas as versões, os coeficientes de determinação (R2)
+situaram-se em patamares que confirmam a capacidade dos modelos de capturar vari-
+ação real noShelf Life. Para o Random Forest, os valores agregados ficaram entre 0,72
+e 0,86; para o XGBoost, entre 0,83 e 0,91, com exceção do cenário de acompanhamento
+com limites, que atingiuR2 = 0,9998.
+Esse valor extremamente elevado no XGBoost para o cenário de acompanhamento
+com limites — envolvendo apenas 3 famílias e 22 produtos — é consistente com o
+comportamentoesperadodessealgoritmoemconjuntosdedadospequenos: oXGBoost,
+por sua natureza de boosting sequencial, tende ao ajuste quase perfeito in-sample
+quando o número de amostras é reduzido. Esse resultado reforça a recomendação de
+utilizar as importâncias do XGBoost com cautela adicional em famílias pequenas, pois
+importâncias derivadas de um modelo com sobreajuste podem refletir particularidades
+do conjunto de treinamento e não padrões generalizáveis.
+Para o Random Forest, os valores deR2 na casa de 0,72–0,86 indicam ajuste sólido
+e equilibrado, coerente com a natureza mais regularizada desse algoritmo. O cenário de
+acompanhamento sem limites apresentou RMSE mais elevado (158,74 dias), em parte
+explicado pela inclusão de mais famílias heterogêneas — com diferentes escalas deShelf
+Life— na versão sem limites.
+De forma geral, os resultados confirmam que os modelos capturaram sinal inter-
+pretável nos dados, legitimando a extração e a análise das importâncias de variáveis
+reportadas nos capítulos seguintes.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 12
+=== PAGE 14 ===
+Atenção — Interpretação dos Resultados
+As métricas desta seção são dedesempenho in-samplee não devem ser lidas
+como estimativas de capacidade preditiva para novos produtos. Sua função é
+confirmar que os modelos ajustaram com qualidade suficiente para que as im-
+portâncias de variáveis sejam informativas. Uma avaliação preditiva formal exi-
+giria validação cruzada ou um conjunto de teste independente, o que constitui
+uma etapa complementar não realizada nesta análise.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 13
+=== PAGE 15 ===
+Capítulo 3
+Resultados — Versão com Limites
+3.1 Random Forest — Versão com Limites
+3.1.1 Cenário Acelerado
+No cenário acelerado, os resultados indicaram que diferentes famílias químicas apre-
+sentaram padrões distintos de associação entre os ensaios físico-químicos e oshelf life.
+EmOther ethoxylate, observou-se claro predomínio deÁgua, %p, com peso
+bastante superior aos demais ensaios. O principal descritor associado a esse ensaio foi
+amargem inicial normalizada em relação ao limite(margin0_norm), indicando
+que, nessa família, oshelf lifeparece estar fortemente relacionado à condição inicial
+do produto em relação à faixa de especificação. Em outras palavras, o fator mais
+informativo não foi necessariamente a velocidade de degradação, mas sim o quanto a
+variável já iniciava próxima ou distante do limite permitido. OÍndice de hidroxila
+apareceu em segundo plano, com importância bem menor, sendo mais associado à
+intensidade de variação ao longo do tempo.
+Na famíliaBlend - Crop, a interpretação mostrou um comportamento mais mul-
+tifatorial. Os dois ensaios com maior contribuição foramÁgua, %peCor Gard-
+ner, 25ºC, com pesos relativamente próximos, sugerindo que oshelf lifenão depende
+de um único marcador dominante, mas de pelo menos dois sinais relevantes. Para
+Água, %p, o descritor dominante foi a velocidade absoluta de mudança (abs_slope),
+enquanto paraCor Gardnerpredominou a menor margem normalizada ao limite
+(min_margin_norm). Esse padrão sugere que, para essa família, oshelf lifeestá asso-
+ciado simultaneamente à dinâmica temporal da água e à aproximação crítica da cor
+aos limites de especificação. OpH 1% p/p, aquoso, 25ºCapareceu como variável
+complementar, com contribuição secundária.
+Na famíliaAlkyl Ester, os resultados foram particularmente consistentes do ponto
+de vista técnico. Os ensaios mais relevantes foramÍndice de acidezeÍndice de
+saponificação, com pesos bastante próximos, seguidos porCor Gardnere, mais dis-
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 14
+=== PAGE 16 ===
+tante,Água, %p. Para oÍndice de acidez, o descritor dominante foi odelta_total,
+indicando que a mudança acumulada entre o início e o fim da série temporal foi o prin-
+cipal sinal relacionado aoshelf life. Para oÍndice de saponificaçãoe paraCor
+Gardner, predominou a velocidade absoluta de mudança (abs_slope).
+Por fim, emBlend - E&R, o resultado deve ser interpretado com cautela. Ape-
+nas um ensaio válido permaneceu após os filtros, e o peso observado foi praticamente
+nulo. Trata-se de um resultado exploratório, sem robustez suficiente para sustentar
+conclusões firmes.
+Figura 3.1: Importância relativa de features por família — Cenário Acelerado (RF vs.
+XGBoost, versão com limites).
+Figura 3.2: Ranking detalhado de features por família — Cenário Acelerado.
+3.1.2 Cenário de Longa Duração
+No cenário de longa duração, os resultados reforçaram alguns padrões observados no
+cenário acelerado, mas também evidenciaram mudanças importantes na forma como os
+ensaios se relacionam com oshelf lifeao longo de um horizonte temporal mais extenso.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 15
+=== PAGE 17 ===
+EmOther ethoxylate, o ensaioÁgua, %pvoltou a se destacar como o principal
+fator explicativo, com ampla superioridade em relação aos demais. Entretanto, difer-
+entemente do observado no cenário acelerado, o descritor dominante passou a ser a
+inclinação temporal com sinal(slope), indicando que, nessa condição, a tendência
+da água ao longo do tempo foi mais informativa do que a margem inicial até o limite.
+O segundo ensaio mais relevante foiRSN, Número de água, mL, associado prin-
+cipalmente à menor margem ao limite, sugerindo contribuição complementar ligada à
+proximidade crítica em relação à especificação.
+Na famíliaAlkyl Ester, o comportamento foi ainda mais claro do ponto de vista
+químico. O ensaio mais relevante foi oÍndice de saponificação, seguido peloÍndice
+de acidez, com contribuições menores deÁgua, %peCor Gardner. O descritor
+dominante doÍndice de saponificaçãofoi a inclinação temporal (slope), sugerindo
+que a direção e a intensidade da mudança desse ensaio ao longo do tempo representam
+o principal sinal associado aoshelf lifeda família. Para oÍndice de acidez, o principal
+descritor foi odelta_total, reforçando a importância da mudança acumulada ao longo
+do estudo. Esses resultados indicam que, em longa duração, oshelf lifedeAlkyl Ester
+parece ser fortemente governado por mecanismos de degradação química progressiva.
+EmBlend - Crop, novamente observou-se um padrão bifatorial, com forte partic-
+ipação deÁgua, %peCor Gardner, 25ºC. Os pesos ficaram bastante próximos,
+evidenciando que oshelf lifedessa família depende de mais de um eixo de variação.
+ParaÁgua, %p, o descritor dominante foi odelta_total, indicando que a variação
+acumulada entre o início e o final do estudo teve papel central. Já paraCor Gardner,
+o descritor mais importante foi a menor margem ao limite (min_margin_norm), sug-
+erindo que a cor se torna particularmente relevante quando se aproxima criticamente da
+especificação ao longo do tempo. OpHapareceu novamente como variável secundária.
+Assim como no cenário acelerado, a famíliaBlend - E&Rapresentou resultado
+pouco robusto.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 16
+=== PAGE 18 ===
+Figura 3.3: Importância relativa de features por família — Cenário de Longa Duração
+(RF vs. XGBoost, versão com limites).
+Figura 3.4: Ranking detalhado de features por família — Cenário de Longa Duração.
+3.1.3 Cenário de Acompanhamento
+No cenário de acompanhamento, os resultados mostraram um perfil mais distribuído
+entre diferentes ensaios, especialmente em famílias relacionadas a álcoois etoxilados.
+EmEthoxylated natural alcohol, o ensaio com maior importância foi oÍndice
+de hidroxila, seguido peloÍndice de acidez, enquantoÁgua, %pepHapareceram
+com relevância menor. O descritor dominante doÍndice de hidroxilafoi a menor
+margem normalizada ao limite (min_margin_norm), indicando que o fator mais infor-
+mativo foi a aproximação crítica desse ensaio à especificação ao longo do estudo. Já
+para oÍndice de acidez, predominou a inclinação temporal (slope), sugerindo que
+a tendência de evolução desse parâmetro também exerce influência importante sobre o
+shelf life. Esse conjunto de resultados indica que, nessa família, oshelf lifeparece estar
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 17
+=== PAGE 19 ===
+associado tanto à proximidade dos limites quanto à trajetória temporal de degradação
+química.
+Na famíliaEthoxylated synthetic alcohol, o comportamento foi claramente mul-
+tifatorial. O ensaioÓxido de Eteno, ppmapareceu em primeiro lugar, seguido de
+perto porÍndice de hidroxilaeÍndice de acidez, enquantoÁgua, %pteve con-
+tribuição moderada. Para oÓxido de Eteno, o descritor dominante foi a inclinação
+temporal (slope), sugerindo que a direção da mudança ao longo do tempo é um dos
+principais fatores associados aoshelf life. No caso doÍndice de hidroxila, o descritor
+dominante foi odelta_total. Assim, nessa família, oshelf lifeparece ser explicado
+por uma combinação de diferentes mecanismos de degradação, sem a presença de um
+único ensaio absolutamente dominante.
+EmEthoxylatednonylphenol, observou-seumresultadoequilibradoentrevários
+ensaios.Cor Pt-Co, 25°Capareceu em primeiro lugar, seguida porÁgua, %p,
+Índice de hidroxilaeÍndice de acidez, com pesos relativamente próximos entre
+si. ParaCor Pt-Co, o descritor dominante foi a velocidade absoluta de mudança
+(abs_slope), indicando que a intensidade da alteração de cor ao longo do tempo é um
+dos sinais mais associados aoshelf life. ParaÁgua, %p, predominou odelta_total,
+enquanto oÍndice de hidroxilase associou principalmente à menor margem ao limite
+e oÍndice de acidezà inclinação temporal.
+Figura 3.5: Importância relativa de features por família — Cenário de Acompan-
+hamento (RF vs. XGBoost, versão com limites).
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 18
+=== PAGE 20 ===
+Figura 3.6: Ranking detalhado de features por família — Cenário de Acompanhamento.
+3.1.4 Síntese Geral — RF com Limites
+Síntese
+Considerando conjuntamente os três cenários, observa-se que alguns ensaios
+aparecem de forma recorrente como relevantes para a explicação doshelf life:
+Água, %p,Índice de hidroxila,Índice de acidez,Índice de saponificação
+e variáveis associadas àcor. Em várias famílias, a importância não decorreu ape-
+nas da magnitude da variação ao longo do tempo, mas também da posição inicial
+do ensaio em relação ao limite ou da menor margem observada durante o estudo.
+Os resultados mostraram que algumas famílias são predominantemente expli-
+cadas por um único ensaio, como ocorreu emOther ethoxylate, enquanto out-
+ras apresentam comportamento claramente multifatorial, comoBlend - Crop,
+Ethoxylated synthetic alcoholeEthoxylated nonyl phenol. Em famílias
+comoAlkyl Ester, os resultados sugeriram forte relação entreshelf lifee
+parâmetros diretamente associados à degradação química. Por outro lado, al-
+guns casos, comoBlend - E&R, devem ser considerados exploratórios.
+3.2 XGBoost — Versão com Limites
+3.2.1 Cenário de Longa Duração
+No cenário de longa duração, os resultados do XGBoost indicaram padrões relativa-
+mente bem definidos em algumas famílias, com concentração mais forte da importância
+em poucos ensaios.
+EmOther ethoxylate, observou-se nítido predomínio deÁgua, %p, com peso
+muito superior aos demais ensaios. O descritor dominante foimargin0_norm, indicando
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 19
+=== PAGE 21 ===
+que, nessa família, oshelf lifeparece estar fortemente relacionado à posição inicial da
+água em relação ao limite de especificação. O segundo ensaio mais relevante foiRSN,
+Número de água, mL, associado principalmente adelta_total, enquanto oÍndice
+de hidroxilateve contribuição praticamente residual.
+Na famíliaAlkyl Ester, o XGBoost apresentou um resultado tecnicamente bas-
+tante consistente. O ensaio mais importante foi oÍndice de saponificação, seguido
+peloÍndice de acidez, ambos com descritor dominanteslope. Isso indica que, para
+essa família, oshelf lifeparece estar mais associado àtendência temporal desses
+parâmetrosdo que apenas à sua posição inicial.Água, %peCor Gardner, 25ºC
+também apareceram, porém com pesos bem menores. Trata-se de um dos resultados
+mais fortes do cenário de longa duração, pois aponta para uma relação consistente
+entreshelf lifee degradação química progressiva.
+Na famíliaBlend - Crop, o comportamento foi claramente multifatorial. Os dois
+ensaios mais relevantes foramÁgua, %peCor Gardner, 25ºC, com pesos muito
+próximos. No caso deÁgua, %p, o descritor dominante foiabs_slope, sugerindo
+que a intensidade da variação ao longo do tempo foi o principal sinal. Já paraCor
+Gardner, o descritor dominante foimin_margin_norm, indicando que a cor passou a
+ser particularmente importante quando se aproximou criticamente do limite de especi-
+ficação ao longo do estudo.
+EmBlend - E&R, o resultado não apresenta robustez interpretativa suficiente.
+Apenas um ensaio válido permaneceu após os filtros, e seu peso foi zero.
+Atenção — Interpretação dos Resultados
+Quando o XGBoost concentra fortemente a importância em uma variável, isso
+deve ser entendido como um forte indício de dominância dentro daquele conjunto
+de dados, e não necessariamente como prova de que os demais ensaios sejam
+irrelevantes na prática.
+3.2.2 Cenário Acelerado
+No cenário acelerado, o XGBoost manteve a tendência de concentrar a importância em
+poucos ensaios principais. EmOther ethoxylate, novamente houve forte predomínio
+deÁgua, %p, agora com descritor dominanteslope, indicando que, no acelerado, o
+principal sinal associado aoshelf lifefoi atendência temporal da água. OÍndice
+de hidroxilaapareceu como segundo ensaio, com descritor dominanteabs_slope,
+mas com contribuição muito menor.
+Na famíliaAlkyl Ester, o ensaio mais importante continuou sendo oÍndice de
+saponificação, mas o descritor dominante passou a sermin_margin_norm, o que rep-
+resenta uma diferença relevante em relação à longa duração. OÍndice de acidez
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 20
+=== PAGE 22 ===
+continuou em segundo lugar, agora com descritor dominanteslope, enquantoCor
+Gardner, 25ºCeÁgua, %papareceram em posições posteriores. A leitura global
+permanece coerente com a ideia de que, nessa família, oshelf lifeestá ligado a processos
+de degradação química.
+Na famíliaBlend - Crop, o XGBoost apontouCor Gardner, 25ºCcomo prin-
+cipal ensaio, ligeiramente à frente deÁgua, %p, enquantopH 1% p/p, aquoso,
+25ºCapareceu em terceiro lugar. O descritor dominante da cor foimin_margin_norm,
+sugerindo que o principal sinal foi a aproximação crítica da cor ao limite ao longo do
+estudo. Já para a água e para o pH, o descritor dominante foiabs_slope.
+3.2.3 Cenário de Acompanhamento
+No cenário de acompanhamento, o comportamento do XGBoost foi mais heterogêneo
+entre as famílias. EmEthoxylated nonyl phenol, o modelo concentrou integral-
+mente a importância emCor Pt-Co, 25ºC, com peso igual a 1,000, enquanto todos
+os demais ensaios ficaram com peso zero. O descritor dominante foiabs_slope. Em-
+bora isso sugira um indício forte de que a cor tem papel central nessa família, esse
+resultado deve ser interpretado com cautela. O valor extremo de 1,000 não deve ser
+lido como prova de que apenas a cor importa, mas sim como indicação de que o XG-
+Boost encontrou nessa variável um caminho dominante de separação dentro de uma
+família ainda relativamente pequena.
+Na famíliaEthoxylated synthetic alcohol, os resultados ficaram mais distribuí-
+dos e interpretáveis. O ensaio mais importante foi oÍndice de acidez, com de-
+scritor dominanteslope, seguido peloÍndice de hidroxila, com descritor dominante
+abs_slope. Em terceiro lugar apareceuÁgua, %p, associada adelta_total. Esse
+padrão sugere que oshelf lifeestá ligado principalmente à tendência temporal da
+acidez, à intensidade de variação da hidroxila e, em menor grau, à mudança acumulada
+da água.
+EmEthoxylated natural alcohol, o ensaio mais importante foi oÍndice de
+hidroxila, cujo descritor dominante foimin_margin_norm. Em seguida vieramÍndice
+de acidezeÁgua, %p, ambos associados aslope, e depoisCor Pt-Co, 60ºC,
+associadaadelta_total. Esseconjuntosugerequeoshelf lifedessafamíliadependede
+uma combinação entre aproximação crítica da hidroxila ao limite, tendência temporal
+da acidez e da água e mudança acumulada da cor.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 21
+=== PAGE 23 ===
+3.2.4 Síntese Geral — XGBoost com Limites
+Síntese
+Considerando os três cenários, o XGBoost com limites destacou repetidamente
+ensaios comoÁgua, %p,Índice de acidez,Índice de hidroxila,Índice
+de saponificaçãoe variáveis decor. Os resultados mais convincentes foram
+observados emOther ethoxylate,Alkyl Ester,Blend - Crop,Ethoxylated
+synthetic alcoholeEthoxylated natural alcohol, pois nessas famílias houve
+um padrão interpretável e coerente com a lógica química dos ensaios.
+Já resultados comoBlend - E&R(em ambos os cenários) eEthoxylated
+nonyl phenolno acompanhamento devem ser apresentados com maior cautela:
+no primeiro caso, porque faltou base interpretável; no segundo, porque a concen-
+tração extrema do peso em uma única variável pode refletir mais a estrutura do
+modelo do que uma exclusividade real do ensaio na prática.
+3.3 Comparativo RF vs. XGBoost — Versão com Limites
+Figura 3.7: Heatmap de diferença de importância entre RF e XGBoost (RF−XG-
+Boost). Valores positivos (azul) indicam maior peso atribuído pelo RF; valores nega-
+tivos (vermelho) indicam maior peso pelo XGBoost.
+De forma geral, RF e XGBoost apresentaram boa concordância nas famílias com maior
+número de produtos e distribuição menos extrema dos pesos. As principais divergências
+ocorreram em casos onde o XGBoost concentrou a importância em uma única variável,
+ao passo que o RF distribuiu de forma mais equilibrada entre os ensaios — o que é
+esperado dado o comportamento distinto dos dois algoritmos.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 22
+=== PAGE 24 ===
+Capítulo 4
+Resultados — Versão Sem Limites
+Atenção — Interpretação dos Resultados
+Na versão sem limites, a principal mudança foi o aumento da cobertura analítica.
+Isso é útil porque permite mostrar praticamente tudo o que foi matematicamente
+possível calcular. No entanto, essa ampliação traz um custo interpretativo im-
+portante: vários resultados passam a ter caráter maisexploratóriodo que con-
+firmatório, especialmente nas famílias com apenas dois, três ou quatro produtos.
+Pesos extremos (Peso 1 = 1,000 e demais zerados) não devem ser lidos como
+prova de dominância absoluta.
+4.1 Random Forest — Versão Sem Limites
+4.1.1 Cenário de Longa Duração
+Alguns resultados continuaram bastante coerentes e tecnicamente úteis. A família
+Other ethoxylateapresentou um padrão relativamente consistente, com forte pre-
+dominância deÁgua, %pe participação secundária deRSN, Número de água,
+mL. A famíliaAlkyl Esterse destacou como uma das mais interpretáveis, com maior
+relevância deÍndice de saponificação, seguida porÍndice de acidez,Água, %p
+eCor Gardner.EOPO copolymermostrou um perfil dominado por variáveis de
+pHeÁgua, enquantoAlkylether Sulfateteve maior concentração emInsulfata-
+dos,Cloreto de sódioeSulfato de sódio. A famíliaBlend - Cropapresentou
+um padrão mais distribuído, com destaque paraÁgua, %p,pH,Sólidos,Ácido
+fosfórico livreeÍndice de aminas totais.
+A cautela é indispensável em algumas famílias.Blend - HPC(3 produtos) e
+Blend - E&R(5 produtos) exibiram Peso 1 = 1,000 paraÁgua, %pe todos os
+demais pesos iguais a zero. Situação parecida ocorre em famílias com apenas dois
+produtos, comoPhosphate ester, em que o ranking existe e pode servir como pista
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 23
+=== PAGE 25 ===
+exploratória, mas a robustez estatística é limitada.
+4.1.2 Cenário Acelerado
+A retirada dos limites aumentou de forma importante o número de famílias disponíveis
+para leitura. Algumas mantiveram padrão tecnicamente convincente.Other ethoxy-
+latevoltou a mostrar forte predominância deÁgua, %p, seguida porÍndice de
+hidroxilaeRSN.Alkylether Sulfateapresentou perfil concentrado emInsulfata-
+dos,Cloreto de sódioeSulfato de sódio.Blend - Cropseguiu com comporta-
+mento mais multifatorial, liderado porÁgua, %p, mas com contribuição relevante de
+pH,Índice de aminas totais,Ácido fosfórico livreeSólidos.Alkyl Estercon-
+tinuou coerente, comÍndice de acidez,Índice de saponificaçãoeCor Gardner
+formando o núcleo interpretativo principal.
+No entanto, famílias comoBlend - E&ReBlend - HPCvoltaram a aparecer
+com Peso 1 = 1,000 paraÁgua, %p, mas com número muito reduzido de produtos.
+4.1.3 Cenário de Acompanhamento
+A versão sem limites trouxe uma combinação interessante de famílias novas e famílias
+que já pareciam interpretáveis na versão mais rigorosa.Ethoxylated synthetic al-
+coholapresentou um padrão relativamente estável, comÓxido de Eteno,Índice de
+hidroxila,Água, %peÍndice de acidezformando o conjunto principal de variáveis.
+Ethoxylated natural alcoholdestacouÍndice de hidroxila,Índice de acideze
+Água.Ethoxylated nonyl phenolexibiu distribuição relativamente equilibrada
+entreCor Pt-Co,Índice de acidez,Índice de hidroxila,ÁguaepH.
+Os casos que mais exigem cautela sãoAlcohol(2 produtos, Peso 1 = 1,000 para
+Etanol, %p),Blend - Coatings(3 produtos, Peso 1 = 1,000 paraÁgua, %p) e
+Blend - E&R(todos os pesos iguais a zero, sem ranking interpretativamente útil).
+4.1.4 Famílias Excluídas — RF Sem Limites
+Mesmo na versão sem limites, ainda houve famílias excluídas por motivos estruturais:
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 24
+=== PAGE 26 ===
+Tabela 4.1: Famílias excluídas da análise RF sem limites, por motivo e cenário.
+F amília Cenário Motivo
+Alcohol, Alkanolamine, Alkyl
+Sulfonate, Amidoamine, Betaine,
+Break Fluid, Eth. Tallow amine,
+Eth. triestyryl phenol, Eth. co-
+conut amine, Fatty acid, Glycol,
+Natural fatty alcohol
+Longa duração Menos de 2 produtos
+Alkyl sulfate, Amine oxide,
+Blend - Coatings, Ester, Eth.
+natural alcohol, Eth. synthetic
+alcohol, Polysorbate, Sorbitan
+ester, Sultaine
+Longa duraçãoShelf Lifesem variação
+Alcohol, Alkyl Sulfonate, Ami-
+doamine, Betaine, Break Fluid,
+Eth. Tallow amine, Eth. tri-
+estyryl phenol, Eth. coconut
+amine, Fatty acid, Glycol, Nat-
+ural fatty alcohol
+Acelerado Menos de 2 produtos
+Alkyl sulfate, Amine oxide,
+Blend - Coatings, Ester, Eth.
+natural alcohol, Eth. synthetic
+alcohol, Polysorbate, Propoxy-
+lated natural alcohol, Sorbitan
+ester, Sultaine
+AceleradoShelf Lifesem variação
+Alkanolamine, Betaine, Eth. Tal-
+low amine, Eth. rapeseed oil,
+Glycol, Natural fatty alcohol,
+Nonylphenol, Other propoxylate,
+Polysorbate
+Acompanhamento Menos de 2 produtos
+Blend - Crop, Eth. Fatty acid,
+Eth. bisphenol, Eth. castor oil,
+Eth. triestyryl phenol, Glycol
+eter
+AcompanhamentoShelf Lifesem variação
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 25
+=== PAGE 27 ===
+4.1.5 Síntese Geral — RF Sem Limites
+Síntese
+A versão sem limites deve ser entendida como uma versão decobertura máx-
+ima com interpretação graduada. Ela é valiosa para mostrar ao cliente tudo
+o que foi possível calcular e para oferecer uma visão ampla dos ensaios que apare-
+cem com maior frequência entre as famílias — especialmenteÁgua, %p,pH,
+Índice de acidez,Índice de hidroxila,Índice de saponificaçãoe variáveis
+decor.
+A leitura deve sempre diferenciar três grupos: (1) famílias com resultados mais
+convincentes, (2) famílias com resultados exploratórios por baixa amostra, e
+(3) famílias que nem sequer puderam ser calculadas por ausência de base mínima.
+4.2 XGBoost — Versão Sem Limites
+4.2.1 Cenário de Longa Duração
+No cenário de longa duração, alguns resultados permaneceram tecnicamente bastante
+coerentes. A famíliaOther ethoxylatemostrou um padrão consistente, com forte pre-
+dominância deÁgua, %p, seguida porRSN, Número de água, mLe contribuição
+muito pequena depH 5% p/p, aquoso, 25ºC. Como essa família possui sete pro-
+dutos, o resultado pode ser considerado relativamente confiável, especialmente porque
+o peso não ficou totalmente colapsado em uma única variável.Alkyl Estercontin-
+uou apresentando um dos padrões mais interpretáveis do conjunto, com destaque para
+Índice de saponificação,Índice de acidez,Água, %peCor Gardner. A família
+Blend - Croptambém apresentou leitura robusta, com dominância deÁgua, %p,
+mas ainda com contribuição relevante deÍndice de aminas totais,Cor Gardner,
+pHeSólidos.
+Diversas famílias exigem interpretação muito cautelosa. EmGlycol eter,Ethoxy-
+lated nonyl phenol,Blend - HPC,Blend - E&RePhosphate ester, o XGBoost
+concentrou toda a importância em uma única variável, produzindo Peso 1 = 1,000 e
+pesos nulos para as demais. A maioria dessas famílias possui apenas dois ou três
+produtos.
+4.2.2 Cenário Acelerado
+Algumas famílias se mantiveram interpretáveis e coerentes.Other ethoxylatecon-
+tinuou apresentando forte protagonismo deÁgua, %p, mas agora com participação
+também deÍndice de hidroxila,pH 5%eRSN.Blend - Croptambém se destacou,
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 26
+=== PAGE 28 ===
+com dominância deÁgua, %p, seguida deUmidade,pH 1%eÍndice de aminas
+totais.Alkyl Esternovamente apareceu como uma das famílias mais consistentes,
+comÍndice de saponificaçãoeÍndice de acidezcomo ensaios principais.
+Por outro lado,Alkanolamine,Alkyl aryl Sulfonate,Alkylether Sulfate,
+Blend - HPC,Blend - E&R,Ethoxylated nonyl phenoleGlycol eterapresen-
+taram peso integral ou praticamente integral em um único ensaio, frequentemente com
+apenas dois ou três produtos na família.
+4.2.3 Cenário de Acompanhamento
+A leitura ficou um pouco mais equilibrada em algumas famílias.Ethoxylated nat-
+ural alcoholfoi uma das famílias mais convincentes, apresentando distribuição rel-
+ativamente razoável da importância entreÍndice de hidroxila,Índice de acidez,
+Cor Pt-Co, 60ºC,Água, %pepH, além de contar com onze produtos.Ethoxy-
+lated synthetic alcoholtambém mostrou um resultado interpretável, comÁgua,
+%p,Índice de acidezeÍndice de hidroxilaformando o núcleo principal do rank-
+ing. A famíliaEthoxylated nonyl phenolapresentou um padrão bifatorial, em que
+Água, %peCor Pt-Co, 25ºCpraticamente dividiram a importância.
+Em contrapartida,Alcohol(2 produtos),Alkylether Sulfate(3 produtos) e
+Blend - Coatings(3 produtos) apresentaram peso integral em um único ensaio.
+Blend - E&Rapareceu na tabela, mas com todos os pesos iguais a zero.
+4.2.4 Síntese Geral — XGBoost Sem Limites
+Síntese
+A versão sem limites com XGBoost mostrou que alguns ensaios aparecem de
+forma recorrente entre as primeiras posições, especialmenteÁgua, %p,Índice
+de acidez,Índice de hidroxila,Índice de saponificação,pHe variáveis de
+cor.
+Famíliascommaiornúmerodeprodutosepesosmaisdistribuídos—comoOther
+ethoxylate,Alkyl Ester,Blend - Crop,EOPO copolymer,Ethoxylated
+natural alcohol,Ethoxylated synthetic alcoholeEthoxylated nonyl
+phenol— permitem uma leitura mais convincente. Já famílias pequenas com
+apenas dois ou três produtos, especialmente quando exibem Peso 1 = 1,000 e
+todos os demais pesos iguais a zero, devem ser tratadas comoexploratórias.
+Em síntese, a versão sem limites com XGBoost é especialmente valiosa quando
+o objetivo é mostrar ao cliente acobertura máxima do que foi possível
+calcular, mas exige mais cautela interpretativa do que a versão com limites e,
+emcertoscasos, atémaiscauteladoqueaversãosemlimitescomRandomForest,
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 27
+=== PAGE 29 ===
+pois o XGBoost tende a ser mais agressivo na concentração das importâncias.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 28
+=== PAGE 30 ===
+Capítulo 5
+Análise Sem Ensaios de Água
+5.1 Motivação e Ensaios Excluídos
+A análise descrita nos capítulos anteriores revelou que ensaios relacionados à água —
+em especialÁgua, %p— ocuparam consistentemente as primeiras posições no ranking
+de importância em diversas famílias e cenários. Esse resultado, embora quimicamente
+coerente, levantou uma questão metodológica relevante:na ausência dos ensaios de
+água, quais outros parâmetros físico-químicos apresentam associação significativa com
+o Shelf Life?
+Para responder a essa pergunta, foi conduzida uma análise de sensibilidade na qual
+os cinco ensaios relacionados à água foram removidos antes do treinamento dos mod-
+elos. Todos os demais aspectos metodológicos — engenharia de variáveis temporais,
+estrutura dos modelos, regras de inclusão e algoritmos utilizados — foram mantidos
+exatamente como nas análises anteriores.
+Os ensaios excluídos foram:
+•Água, %p
+•Umidade, %p
+•Umidade ou Material Volátil, %p
+•Água+pesados, %p
+•RSN, Número de água, mL
+Os resultados desta análise complementar são apresentados a seguir, nas versões
+com limites e sem limites, para Random Forest e XGBoost.
+5.2 Resultados — Versão com Limites
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 29
+=== PAGE 31 ===
+5.2.1 Random Forest — Com Limites, Sem Ensaios de Água
+Cenário de Longa Duração
+Na versão com limites e sem ensaios de água, o cenário de longa duração retornou
+três famílias válidas. A exclusão dos ensaios de água provocou mudanças notáveis na
+composição dos rankings.
+EmAlkyl Ester, o padrão de importância se manteve altamente coerente com a
+análise original: oÍndice de saponificaçãocontinuou em primeiro lugar (peso 0,662),
+seguido peloÍndice de acidez(0,264) eCor Gardner, 25ºC(0,074). O descritor
+dominante do índice de saponificação passou deslopeparadelta_total, indicando
+que a mudança acumulada ao longo do estudo se torna o sinal mais relevante quando a
+água não compete pela importância. Esse resultado confirma que a degradação química
+progressiva desta família — captada por índices de acidez e saponificação — é um sinal
+independente da água e suficientemente forte para liderar o ranking.
+EmBlend - Crop, com a remoção de Água, %p, aCor Gardner, 25ºCpassou
+a ocupar o primeiro lugar (peso 0,613), seguida pelopH 1% p/p, aquoso, 25ºC
+(0,387). O descritor dominante da cor foimin_margin_norm, sugerindo que a prox-
+imidade crítica da cor ao limite de especificação durante o estudo é o principal sinal
+associado aoshelf lifedesta família quando a água é abstraída.
+EmOther ethoxylate, a exclusão da água deixou apenas oÍndice de hidroxila
+como ensaio válido, com peso praticamente zero. Trata-se de um resultado esperado:
+essa família dependia fortemente da água como variável explicativa, e sem ela o mod-
+elo não encontrou sinal suficiente para discriminar oshelf lifedentro dos critérios de
+inclusão.
+Cenário Acelerado
+No cenário acelerado, o padrão foi similar ao de longa duração, com três famílias
+retornando resultados válidos.
+EmOther ethoxylate, na ausência da água, oÍndice de hidroxilaassumiu
+toda a importância (peso 1,000), com descritor dominantemin_margin_norm. Esse
+resultado indica que a posição mínima de margem ao limite durante o estudo acelerado
+é o principal sinal de shelf life nessa família uma vez que a água é retirada da análise.
+Apesardopeso1,000indicarconcentraçãototal, afamíliapossui8produtos—contexto
+em que esse resultado tem interpretabilidade razoável.
+EmBlend - Crop, aCor Gardner, 25ºCficou em primeiro lugar (peso 0,580),
+commin_margin_normcomo descritor dominante, seguida pelopH 1% p/p, aquoso,
+25ºC(0,420), com descritorslope. O resultado é fortemente consistente com a longa
+duração, confirmando que esses dois ensaios formam o núcleo explicativo da família
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 30
+=== PAGE 32 ===
+Blend – Crop quando a água não está disponível.
+EmAlkyl Ester, oÍndice de acidezliderou (peso 0,400, descritordelta_total),
+seguido peloÍndice de saponificação(0,369, descritorabs_slope) eCor Gardner,
+25ºC(0,231, descritorabs_slope). Comparando com a análise original sem a exclusão
+da água, a posição relativa de acidez e saponificação se inverteu no acelerado, mas
+ambos continuam sendo os ensaios dominantes.
+Cenário de Acompanhamento
+No cenário de acompanhamento, a remoção dos ensaios de água não reduziu o número
+de famílias válidas, e os rankings se tornaram ainda mais distribuídos.
+EmEthoxylatednaturalalcohol, oÍndicedehidroxilapermaneceuemprimeiro
+lugar (peso 0,551, descritormin_margin_norm), seguido peloÍndice de acidez(0,365,
+descritorslope). OpH 1% p/p(0,046), oÓxido de Eteno, ppm(0,026) e aCor
+Pt-Co, 60ºC(0,012) completaram o Top 5. Nota-se que, nessa família, a remoção da
+água não alterou substancialmente o ranking: hidroxila e acidez já eram dominantes
+na análise original.
+EmEthoxylated synthetic alcohol, oÓxido de Eteno, ppmficou em primeiro
+(peso 0,406, descritormin_margin_norm), seguido peloÍndice de hidroxila(0,328,
+descritordelta_total) e peloÍndice de acidez(0,241, descritorslope). OPonto
+de névoa(0,008) e opH(0,006) completaram o ranking. A distribuição é muito
+próxima à observada na análise com água, confirmando que o Óxido de Eteno e o
+Índice de hidroxila são os sinais dominantes independentemente da presença da água.
+EmEthoxylated nonyl phenol, aCor Pt-Co, 25°Cliderou (peso 0,381, de-
+scritormin_margin_norm), seguidapeloÍndicedeacidez(0,272, descritordelta_total),
+peloÍndice de hidroxila(0,252, descritormin_margin_norm) e pelopH 1%(0,095,
+descritorabs_slope). Na análise original (com água), a ordem era praticamente idên-
+tica, o que indica que a Cor Pt-Co é o ensaio mais informativo desta família com ou
+sem a água.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 31
+=== PAGE 33 ===
+Tabela 5.1: Ranking RF com limites, sem ensaios de água — todos os cenários.
+Cenário F amília Pr. 1ºEnsaio Peso 2ºEnsaio Peso
+Longa duração
+Alkyl Ester 9 Índ. saponifi-
+cação
+0,662 Índ. acidez 0,264
+Blend – Crop 12 Cor Gardner,
+25ºC
+0,613 pH 1% p/p 0,387
+Other ethoxylate 7 Índ. hidroxila 0 – –
+Acelerado
+Other ethoxylate 8 Índ. hidroxila 1,000 – –
+Blend – Crop 13 Cor Gardner,
+25ºC
+0,580 pH 1% p/p 0,420
+Alkyl Ester 9 Índ. acidez 0,400 Índ. saponifi-
+cação
+0,369
+Acompanhamento
+Eth. natural alco-
+hol
+11 Índ. hidroxila 0,551 Índ. acidez 0,365
+Eth. synthetic al-
+cohol
+5 Óxido de
+Eteno
+0,406 Índ. hidroxila 0,328
+Eth. nonyl phenol 5 Cor Pt-Co,
+25°C
+0,381 Índ. acidez 0,272
+Síntese — RF com Limites Sem Água
+Síntese
+A análise RF com limites sem ensaios de água revelou que oÍndice de saponifi-
+caçãoe oÍndice de acidezmantêm protagonismo emAlkyl Esterem todos
+os cenários, confirmando que degradação química progressiva é o mecanismo
+dominante dessa família independentemente da água. ParaBlend – Crop, a
+Cor Gardnere opHemergem consistentemente como os principais ensaios
+substitutos. Nas famílias de álcoois etoxilados (acompanhamento), os rankings
+permanecerampraticamenteinalterados, sugerindoqueaáguatinhacontribuição
+secundária nesses casos. O principal impacto da exclusão da água foi emOther
+ethoxylate, onde o modelo ficou com pouquíssimos ensaios válidos em longa du-
+ração, enquanto no acelerado o Índice de hidroxila assumiu toda a importância.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 32
+=== PAGE 34 ===
+5.2.2 XGBoost — Com Limites, Sem Ensaios de Água
+Cenário de Longa Duração
+O XGBoost com limites e sem água produziu resultados tecnicamente coerentes nas
+três famílias disponíveis.
+EmAlkyl Ester, oÍndice de saponificaçãoconcentrou a maior parte da im-
+portância (peso 0,833, descritorslope), seguido peloÍndice de acidez(0,151, de-
+scritordelta_total) eCor Gardner, 25ºC(0,015, descritorabs_slope). O XG-
+Boost confirmou com ainda maior concentração o que o RF já indicava: a saponificação
+é o ensaio crítico de longa duração para esta família.
+EmBlend - Crop, a ordem se inverteu ligeiramente em relação ao RF: opH 1%
+p/p, aquoso, 25ºCficou em primeiro lugar (peso 0,536, descritorslope), enquanto
+aCor Gardner, 25ºCficou em segundo (0,464, descritormin_margin_norm). Os
+dois ensaios continuam sendo os únicos válidos na família após os filtros, e sua relativa
+paridade nos pesos indica que nenhum dos dois domina claramente.
+EmOtherethoxylate, oresultadofoiidênticoaoRF:apenasoÍndicedehidrox-
+ilarestou após os filtros, com peso zero.
+Cenário Acelerado
+No cenário acelerado, o XGBoost apresentou um padrão muito próximo ao observado
+no RF.
+EmOther ethoxylate, oÍndice de hidroxilanovamente concentrou toda a
+importância (peso 1,000), agora com descritordelta_total— diferente do RF, que
+identificoumin_margin_norm. A mudança de descritor dominante sugere que, para o
+XGBoost, avariaçãoacumuladaaolongodoestudoaceleradofoiosinalmaisexplorado,
+enquanto o RF priorizou a menor margem ao limite.
+EmAlkyl Ester, oÍndice de saponificaçãoliderou com clareza (peso 0,690, de-
+scritormin_margin_norm), seguidopeloÍndicedeacidez(0,195, descritordelta_total)
+eCor Gardner, 25ºC(0,116, descritormin_margin_norm).
+EmBlend - Crop, opH 1% p/p, aquoso, 25ºCficou em primeiro lugar (peso
+0,547, descritordelta_total), seguido pelaCor Gardner, 25ºC(0,453, descritor
+min_margin_norm). Esse padrão é consistente com a longa duração e com o RF.
+Cenário de Acompanhamento
+Os resultados do cenário de acompanhamento foram ligeiramente diferentes entre RF
+e XGBoost.
+EmEthoxylated nonyl phenol, o XGBoost concentrou toda a importância na
+Cor Pt-Co, 25°C(peso 1,000, descritordelta_total). Esse padrão de concentração
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 33
+=== PAGE 35 ===
+extrema é característico do XGBoost em famílias pequenas (5 produtos) e deve ser lido
+com cautela, ainda que o ensaio indicado seja o mesmo que o RF apontou em primeiro
+lugar.
+EmEthoxylated synthetic alcohol, os resultados foram mais distribuídos: o
+Índice de acidezficou em primeiro (peso 0,523, descritorslope), seguido peloÍndice
+de hidroxila(0,437, descritorabs_slope) e peloÓxido de Eteno(0,026). A ordem
+entre acidez e óxido de eteno se inverteu em relação ao RF, mas ambos os ensaios
+permanecem entre os mais relevantes.
+EmEthoxylatednaturalalcohol, oÍndicedehidroxilaficouemprimeiro(peso
+0,404, descritormin_margin_norm), seguido peloÍndice de acidez(0,292, descritor
+slope) e pelaCor Pt-Co, 60ºC(0,263, descritordelta_total). Comparando com
+o RF, a cor emergiu com peso maior no XGBoost, enquanto o pH recuou.
+Tabela 5.2: Ranking XGBoost com limites, sem ensaios de água — todos os cenários.
+Cenário F amília Pr. 1ºEnsaio Peso 2ºEnsaio Peso
+Longa duração
+Alkyl Ester 9 Índ. saponifi-
+cação
+0,833 Índ. acidez 0,151
+Blend – Crop 12 pH 1% p/p 0,536 Cor Gardner,
+25ºC
+0,464
+Other ethoxylate 7 Índ. hidroxila 0 – –
+Acelerado
+Other ethoxylate 8 Índ. hidroxila 1,000 – –
+Alkyl Ester 9 Índ. saponifi-
+cação
+0,690 Índ. acidez 0,195
+Blend – Crop 13 pH 1% p/p 0,547 Cor Gardner,
+25ºC
+0,453
+Acompanhamento
+Eth. nonyl phenol 5 Cor Pt-Co,
+25°C
+1,000 – –
+Eth. synthetic al-
+cohol
+5 Índ. acidez 0,523 Índ. hidroxila 0,437
+Eth. natural alco-
+hol
+11 Índ. hidroxila 0,404 Índ. acidez 0,292
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 34
+=== PAGE 36 ===
+Síntese — XGBoost com Limites Sem Água
+Síntese
+O XGBoost com limites sem água confirma as principais conclusões do RF:
+Índice de saponificaçãoeÍndice de acidezsão os ensaios mais importantes
+paraAlkyl Ester;Cor GardnerepHlideram emBlend – Crop; e os álcoois
+etoxilados mantêm seus rankings praticamente inalterados. O XGBoost tende a
+concentrar mais fortemente em poucos ensaios, mas os ensaios identificados são
+consistentes com o RF na grande maioria dos casos.
+5.3 Resultados — Versão Sem Limites
+Atenção — Interpretação dos Resultados
+Na versão sem limites sem água, a interpretação exige o mesmo cuidado já de-
+scrito no Capítulo 4: famílias com apenas dois ou três produtos e Peso 1 = 1,000
+devem ser tratadas como pistas exploratórias, não como conclusões robustas.
+5.3.1 Random Forest — Sem Limites, Sem Ensaios de Água
+Cenário de Longa Duração
+A versão sem limites ampliou o número de famílias analisadas para 12 no cenário de
+longa duração.
+Algumas famílias apresentaram resultados tecnicamente convincentes. EmAlkyl
+Ester(9 produtos), oÍndice de saponificaçãoliderou (peso 0,647), seguido pelo
+Índice de acidez(0,257) eCor Gardner, 25ºC(0,089). O padrão é coerente e
+consistente com a versão com limites.
+EmBlend - Crop(12 produtos), a distribuição foi mais dispersa do que na versão
+com limites:Sólidos, %pliderou (0,307), seguido porpH, tal qual, 25°C(0,203),
+Índice de aminas totais, IAT(0,107),Ácido fosfórico livre, %p(0,100) eCor
+Gardner, 25ºC(0,084). A ausência de água e o maior conjunto de ensaios disponíveis
+permitiu que a análise captasse um perfil mais multifatorial desta família.
+EmOther ethoxylate(7 produtos), sem a água, oÍndice de hidroxilaficou
+em primeiro (peso 0,650) e opH 5% p/p, aquoso, 25ºCem segundo (0,350). Esse
+resultado é mais informativo do que a versão com limites (onde apenas 1 ensaio era
+válido), e aponta para o pH e o índice de hidroxila como os ensaios substitutos.
+EmEOPO copolymer(4 produtos), opH 1% p/p, aquoso, 25ºCconcentrou
+66,2% da importância, com opH 2,5% aquosocompletando 33,8%.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 35
+=== PAGE 37 ===
+EmAlkylether Sulfate(4 produtos), um perfil totalmente distinto emergiu:In-
+sulfatados, %p(0,416),Cloreto de sódio, %p(0,293),Sulfato de sódio, %p
+(0,184),Insulfatados via GC(0,044) eDioxana, ppm(0,036). Esses ensaios
+são específicos da classe de surfactantes aniônicos e coerentes com os mecanismos de
+degradação esperados.
+EmPolyethylene glycol(4 produtos), o ranking foi distribuído:Índice de
+acidez(0,281),pH 5%(0,268),Índice de hidroxila(0,213),Cor Pt-Co 25ºC
+(0,170) eViscosidade(0,037).
+Os demais resultados (Phosphate ester, Alkyl aryl Sulfonate, Glycol eter, Ethoxy-
+lated nonyl phenol) devem ser tratados com cautela — famílias com 2 a 3 produtos.
+Blend – E&R e Blend – HPC não geraram rankings úteis (todos os pesos iguais a zero).
+Cenário Acelerado
+No acelerado sem limites, a análise expandiu para 12 famílias.
+EmOther ethoxylate(8 produtos), oÍndice de hidroxilaconcentrou 90,1% da
+importância, com opH 5%contribuindo com 9,9%. A forte dominância do índice de
+hidroxila no acelerado, já observada na versão com limites, se repete aqui.
+EmEOPO copolymer(4 produtos) ePhosphate ester(4 produtos), os ensaios
+de pH e ponto de névoa lideraram, respectivamente. EmAlkylether Sulfate, o perfil
+de insulfatados, cloreto de sódio e sulfato de sódio se repetiu, desta vez liderado por
+Insulfatados, %p(0,478).
+EmBlend - Crop(13 produtos), o ranking foi distribuído entrepH 1% p/p
+(0,223),Sólidos(0,178),pH tal qual(0,177),IAT(0,160) eÁcido fosfórico livre
+(0,102) — perfil bastante similar ao da longa duração.
+Cenário de Acompanhamento
+No acompanhamento, a versão sem limites produziu 6 famílias, com resultados de
+qualidade variada.
+EmEthoxylated natural alcohol(11 produtos), oÍndice de hidroxilaliderou
+(0,470), seguido peloÍndice de acidez(0,269),Peróxidos(0,077),pH 1%(0,045) e
+pH 10%(0,028). O aparecimento dePeróxidoscomo terceiro ensaio mais importante
+é notável — na análise com água ele não aparecia entre os primeiros cinco, sugerindo
+que a exclusão da água permitiu capturar um sinal adicional de oxidação.
+EmEthoxylated synthetic alcohol(5 produtos), oÓxido de Eteno, ppm
+ficou em primeiro (0,453), seguido peloÍndice de hidroxila(0,304) eÍndice de
+acidez(0,221). O padrão é consistente com a versão com limites.
+EmEthoxylated nonyl phenol(5 produtos), o resultado foi distribuído:Cor
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 36
+=== PAGE 38 ===
+Pt-Co, 25°C(0,336),Índice de acidez(0,270),Índice de hidroxila(0,268),pH
+1%(0,126). Sem a presença da água no ranking, a cor e a acidez se destacam com
+pesos próximos.
+EmAlkylether Sulfate(3 produtos), o perfil deDioxana(0,305),Sulfato de
+sódio(0,250),Insulfatados via GC(0,235) eCloreto de sódio(0,210) emergiu.
+EmEster(3 produtos) eAlcohol(2 produtos), os resultados devem ser tratados
+como exploratórios.
+Tabela 5.3: Ranking RF sem limites, sem ensaios de água — famílias com maior
+confiabilidade (≥4produtos).
+Cenário F amília Pr. 1ºEnsaio Peso 2ºEnsaio Peso
+Longa duração
+Alkyl Ester 9 Índ. saponifi-
+cação
+0,647 Índ. acidez 0,257
+Blend – Crop 12 Sólidos, %p 0,307 pH tal qual 0,203
+Other ethoxylate 7 Índ. hidroxila 0,650 pH 5% p/p 0,350
+AlkyletherSulfate 4 Insulfatados,
+%p
+0,416 Cloreto de só-
+dio
+0,293
+Polyethylene gly-
+col
+4 Índ. acidez 0,281 pH 5% p/p 0,268
+Acelerado
+Other ethoxylate 8 Índ. hidroxila 0,901 pH 5% p/p 0,099
+AlkyletherSulfate 4 Insulfatados,
+%p
+0,478 Cloreto de só-
+dio
+0,299
+Polyethylene gly-
+col
+4 pH 5% p/p 0,449 Índ. acidez 0,297
+EOPO copolymer 4 pH 1% p/p 0,666 pH 2,5% 0,334
+Blend – Crop 13 pH 1% p/p 0,223 Sólidos, %p 0,178
+Acompanhamento
+Eth. natural alco-
+hol
+11 Índ. hidroxila 0,470 Índ. acidez 0,269
+Eth. synthetic al-
+cohol
+5 Óxido de
+Eteno
+0,453 Índ. hidroxila 0,304
+Eth. nonyl phenol 5 Cor Pt-Co,
+25°C
+0,336 Índ. acidez 0,270
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 37
+=== PAGE 39 ===
+Síntese — RF Sem Limites Sem Água
+Síntese
+A versão RF sem limites sem água revelou ensaios antes obscurecidos pela dom-
+inância da água. Os achados mais relevantes incluem: o surgimento depH,
+SólidoseIATcomo ensaios centrais emBlend – Crop; a manutenção do per-
+fil deInsulfatados,Cloreto de sódioeSulfato de sódioemAlkylether
+Sulfate; o aparecimento dePeróxidosemEthoxylated natural alcohol; e a
+confirmação doÍndice de hidroxilaepHcomo principais substitutos da água
+emOther ethoxylate. ParaAlkyl Estere álcoois etoxilados, os rankings per-
+maneceram estáveis, mostrando independência em relação à presença dos ensaios
+de água.
+5.3.2 XGBoost — Sem Limites, Sem Ensaios de Água
+Cenário de Longa Duração
+No cenário de longa duração, o XGBoost sem limites e sem água apresentou resultados
+com concentração acentuada em algumas famílias.
+EmAlkyl Ester(9 produtos), o padrão foi coerente:Índice de saponificação
+(0,733),Índice de acidez(0,233) eCor Gardner, 25ºC(0,030). EmOther
+ethoxylate(7 produtos), o XGBoost dividiu a importância quase igualmente entre
+pH 5% p/p(0,506) eÍndice de hidroxila(0,494) — resultado diferente do RF, que
+priorizou mais fortemente o índice de hidroxila.
+EmBlend - Crop(12 produtos), oSólidos, %pconcentrou 41,8%, seguido pelo
+IAT(21,8%),Cor Gardner(21,8%),pH 1%(11,4%) eDensidade(3,2%). A
+distribuição é mais concentrada do que no RF, mas os ensaios são similares.
+Famílias com 2–3 produtos (Alkyl aryl Sulfonate, Alkylether Sulfate, Ethoxylated
+nonyl phenol, Glycol eter, Phosphate ester) apresentaram Peso 1 = 1,000 e devem ser
+interpretadas com cautela.
+Cenário Acelerado
+EmOther ethoxylate(8 produtos), o XGBoost apresentouÍndice de hidroxilaem
+primeiro lugar (0,794) epH 5%em segundo (0,206) — padrão idêntico ao RF, mas
+com pesos ligeiramente mais concentrados.
+EmAlkyl Ester(9 produtos), oÍndice de saponificaçãoliderou (0,633), seguido
+peloÍndice de acidez(0,175),Cor Gardner, 60ºC(0,119) eCor Gardner, 25ºC
+(0,072).
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 38
+=== PAGE 40 ===
+EmBlend - Crop(13 produtos), opH 1% p/pficou em primeiro (0,353), com
+IAT(0,311),Densidade(0,195) eCor Gardner(0,107) completando o ranking.
+Cenário de Acompanhamento
+EmEthoxylatednaturalalcohol(11produtos), orankingincluiuÍndicedehidrox-
+ila(0,443),Cor Pt-Co, 60ºC(0,280),Índice de acidez(0,240) epH 1%(0,037).
+Nota-se que aCor Pt-Coteve peso maior no XGBoost do que no RF nessa família.
+EmEthoxylated synthetic alcohol(5 produtos), a distribuição foi equilibrada
+entreÍndice de hidroxila(0,500) eÍndice de acidez(0,461), comÓxido de Eteno
+em terceiro (0,027). Comparando com o RF, o XGBoost inverteu a posição relativa de
+hidroxila e acidez.
+EmEthoxylated nonyl phenol(5 produtos), novamente o XGBoost concentrou
+toda a importância naCor Pt-Co, 25°C(1,000) — resultado consistente com a versão
+com limites.
+Tabela 5.4: Ranking XGBoost sem limites, sem ensaios de água — famílias com maior
+confiabilidade (≥4produtos).
+Cenário F amília Pr. 1ºEnsaio Peso 2ºEnsaio Peso
+Longa duração
+Alkyl Ester 9 Índ. saponifi-
+cação
+0,733 Índ. acidez 0,233
+Blend – Crop 12 Sólidos, %p 0,418 IAT 0,218
+Other ethoxylate 7 pH 5% p/p 0,506 Índ. hidroxila 0,494
+AlkyletherSulfate 4 Cloreto de só-
+dio
+1,000 – –
+EOPO copolymer 4 pH 1% p/p 0,945 pH 2,5% 0,055
+Acelerado
+Other ethoxylate 8 Índ. hidroxila 0,794 pH 5% p/p 0,206
+Alkyl Ester 9 Índ. saponifi-
+cação
+0,633 Índ. acidez 0,175
+Blend – Crop 13 pH 1% p/p 0,353 IAT 0,311
+AlkyletherSulfate 4 Cloreto de só-
+dio
+0,992 Insulfatados 0,008
+EOPO copolymer 4 pH 1% p/p 0,956 pH 2,5% 0,044
+Acompanhamento
+Eth. natural alco-
+hol
+11 Índ. hidroxila 0,443 Cor Pt-Co,
+60ºC
+0,280
+Eth. synthetic al-
+cohol
+5 Índ. hidroxila 0,500 Índ. acidez 0,461
+Eth. nonyl phenol 5 Cor Pt-Co,
+25°C
+1,000 – –
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 39
+=== PAGE 41 ===
+Síntese — XGBoost Sem Limites Sem Água
+Síntese
+O XGBoost sem limites sem água confirmou os principais achados do RF na
+mesma configuração, com a diferença esperada de maior concentração de im-
+portância em poucos ensaios. Para as famílias com maior número de produtos
+(Alkyl Ester,Blend – Crop,Other ethoxylate,Ethoxylated natural
+alcohol), os resultados foram consistentes entre os dois algoritmos. A maior
+discrepância foi observada emEOPO copolymereAlkylether Sulfate, onde
+o XGBoost tendeu a colapsar a importância em um único ensaio mesmo com 4
+produtos.
+5.4 Impacto da Exclusão da Água: Comparativo com a Análise
+Principal
+A comparação entre os rankings da análise original (com todos os ensaios) e a análise
+sem água permite identificar quais famílias dependiam fortemente da água e quais
+apresentavam sinais independentes.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 40
+=== PAGE 42 ===
+Tabela 5.5: Impacto da exclusão dos ensaios de água por família — versão RF com
+limites.
+Cenário F amília 1ºorig. (com
+água)
+1º(excl. água) Impacto da
+exclusão
+Longa duração
+Otherethoxylate Água, %p Índ. hidroxila
+(peso≈0)
+Alto: ranking
+praticamente
+vazio
+Alkyl Ester Índ. saponifi-
+cação
+Índ. saponifi-
+cação
+Baixo: mesmo
+ensaio líder
+Blend – Crop Água, %p Cor Gardner Médio: Cor
+Gardner emerge
+Acelerado
+Otherethoxylate Água, %p Índ. hidroxila
+(1,000)
+Alto: hidroxila
+assume posição
+Alkyl Ester Índ. acidez Índ. acidez Baixo: mesmo
+ensaio líder
+Blend – Crop Água, %p Cor Gardner Médio: Cor
+Gardner emerge
+Acompanhamento
+Eth. natural al-
+cohol
+Índ. hidroxila Índ. hidroxila Baixo: sem al-
+teração
+Eth. synthetic
+alcohol
+Óxido de Eteno Óxido de Eteno Baixo: sem al-
+teração
+Eth. nonyl phe-
+nol
+Cor Pt-Co Cor Pt-Co Baixo: sem al-
+teração
+A análise da Tabela 5.5 permite classificar as famílias em três grupos:
+1.Alta dependência da água—Other ethoxylate(longa duração): a remoção
+da água deixou o modelo praticamente sem sinal útil em longa duração, mas no
+acelerado o índice de hidroxila emergiu como substituto relevante.
+2.Dependência parcial da água—Blend – Crop: a água era o ensaio líder
+na análise original, mas a exclusão revelou queCor GardnerepH(ou Sólidos
+e IAT na versão sem limites) carregam sinal independente substancial.
+3.Independência da água—Alkyl Estere as três famílias de álcoois etoxilados
+no acompanhamento: os rankings foram praticamente idênticos com e sem a
+exclusão da água, demonstrando que os ensaios líderes nessas famílias possuem
+poder explicativo autônomo.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 41
+=== PAGE 43 ===
+5.5 Síntese Geral — Análise Sem Ensaios de Água
+Síntese
+Os principais achados desta análise complementar são:
+1. Robustez confirmada para Alkyl Ester:OÍndice de saponificação
+e oÍndice de acidezmantêm protagonismo em todos os cenários, tanto na
+análise com água quanto sem ela. Esse resultado consolida a hipótese de que
+a degradação química progressiva — não relacionada ao teor de umidade — é o
+mecanismo dominante de limitação doshelf lifenesta família.
+2. Ensaios substitutos para Other ethoxylate:Quando os ensaios de água
+são excluídos, oÍndice de hidroxilae opH 5% p/pemergem como os principais
+sinais substitutos. No cenário acelerado, o índice de hidroxila assume posição de
+liderança com peso relevante (0,794–1,000 entre RF e XGBoost), sugerindo que
+parte do poder preditivo da água nessa família pode ser recuperado por esses
+ensaios.
+3. Blend - Crop revela estrutura multifatorial:A exclusão da água desloca
+o primeiro ensaio paraCor Gardner(versão com limites) ou paraSólidos/pH
+(versão sem limites). A família não dependia exclusivamente da água e possui
+múltiplos eixos explicativos.
+4. Álcooisetoxiladossãoindependentesdaágua:ParaEthoxylated natural
+alcohol,Ethoxylated synthetic alcoholeEthoxylated nonyl phenol, os rankings
+foram praticamente inalterados, confirmando que os ensaios identificados como
+importantes são de fato os fatores primários doshelf lifenessas famílias.
+5. Novas perspectivas para monitoramento:O aparecimento dePeróxidos
+no ranking deEthoxylated natural alcohole de perfis específicos (Insulfatados,
+Dioxana,Cloreto de sódio) emAlkylether Sulfateindica que a análise sem água
+pode revelar mecanismos de degradação complementares não visíveis quando a
+umidade domina o ranking.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 42
+=== PAGE 44 ===
+Capítulo 6
+Conclusão
+6.1 Achados Transversais
+Em todos os cenários e em ambas as versões analisadas (com e sem limites), alguns
+ensaios se mostraram consistentemente relevantes para a explicação doShelf Life:
+•Água, %p— ensaio mais frequentemente dominante, aparecendo como fator
+principal em múltiplas famílias e cenários.
+•Índice de acidezeÍndice de saponificação— especialmente relevantes para
+Alkyl Ester, com forte indicação de vínculo à degradação química progressiva.
+•Índice de hidroxila— recorrente em famílias de álcoois etoxilados, frequente-
+mente associado à proximidade crítica do limite de especificação.
+•Cor GardnereCor Pt-Co— ensaios de cor mostraram relevância especial-
+mente emBlend - CropeEthoxylated nonyl phenol.
+•pH— aparece como variável secundária ou complementar em diversas famílias.
+6.2 Padrão dos Descritores Temporais
+Os resultados mostraram que a importância dos ensaios não decorreu apenas da mag-
+nitude da variação ao longo do tempo, mas também de dois outros tipos de sinal:
+•Posição inicial em relação ao limite(margin0_norm) — especialmente rele-
+vante emOther ethoxylateno cenário acelerado com RF e no cenário de longa
+duração com XGBoost.
+•Menor margem observada ao longo do estudo(min_margin_norm) — im-
+portanteparaCorGardneremBlend-CropeparaÍndicedesaponificação
+emAlkyl Esterno acelerado com XGBoost.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 43
+=== PAGE 45 ===
+•Mudança acumulada(delta_total) etendência temporal(slope) — fre-
+quentemente dominantes em famílias com trajetória química progressiva.
+6.3 Comparação entre Modelos e Versões
+Tabela 6.1: Resumo comparativo entre modelos e versões.
+Aspecto RF c/ Lim-
+ites
+XGBoost c/
+Limites
+RF s/ Lim-
+ites
+XGBoost s/
+Limites
+Cobertura de
+famílias
+Menor Menor Máxima Máxima
+Robustez geralAlta Alta Variável Variável
+Concentração de
+pesos
+Distribuída Concentrada Variável Muito concen-
+trada
+Exibe descritor
+dominante
+Sim Sim Não Não
+Uso recomendadoConclusões Conclusões Exploração Exploração
+6.4 Recomendações
+1.Usar a versão com limites como base principalpara conclusões e comuni-
+cações técnicas ao cliente.
+2.Usaraversãosemlimitescomocomplementoexploratório, apresentando-
+a com linguagem prudente e destacando o grau de robustez de cada família.
+3.Priorizar famílias com maior número de produtose com pesos menos
+extremos ao tomar decisões baseadas nos rankings.
+4.Não interpretar Peso 1 = 1,000 como exclusividade real do ensaio
+em famílias com 2–3 produtos; esses casos refletem limitações amostrais e não
+necessariamente dominância química.
+5.Explorar os descritores dominantes(especialmenteslope,delta_totale
+min_margin_norm) para entendercomocada ensaio se relaciona com oShelf Life,
+e não apenasqualensaio é mais importante.
+Shelf Life — Análise Temporal∥Documento Confidencial: DOBSLIT / Indovinya – Proibida a reprodução ou divulgação. 44
