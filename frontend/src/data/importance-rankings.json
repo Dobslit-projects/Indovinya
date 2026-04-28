@@ -1,0 +1,2030 @@
+{
+  "rf_com_limites_longa_duracao": [
+    {
+      "Família": "Other ethoxylate",
+      "Nº de produtos": 7,
+      "Nº de ensaios válidos": 3,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.729,
+      "Descritor dominante 1": "slope",
+      "Nº 2": "RSN, Número de água, mL",
+      "Peso 2": "0.269",
+      "Descritor dominante 2": "min_margin_norm",
+      "Nº 3": "Índice de hidroxila, mg KOH/g",
+      "Peso 3": "0.002",
+      "Descritor dominante 3": "margin0_norm",
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Alkyl Ester",
+      "Nº de produtos": 9,
+      "Nº de ensaios válidos": 4,
+      "Nº 1": "Índice de saponificação, mgKOH/g",
+      "Peso 1": 0.582,
+      "Descritor dominante 1": "slope",
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": "0.242",
+      "Descritor dominante 2": "delta_total",
+      "Nº 3": "Água, %p",
+      "Peso 3": "0.115",
+      "Descritor dominante 3": "abs_slope",
+      "Nº 4": "Cor Gardner, 25ºC",
+      "Peso 4": "0.062",
+      "Descritor dominante 4": "delta_total",
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Blend - Crop",
+      "Nº de produtos": 12,
+      "Nº de ensaios válidos": 3,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.492,
+      "Descritor dominante 1": "delta_total",
+      "Nº 2": "Cor Gardner, 25ºC",
+      "Peso 2": "0.462",
+      "Descritor dominante 2": "min_margin_norm",
+      "Nº 3": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 3": "0.046",
+      "Descritor dominante 3": "delta_total",
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 5,
+      "Nº de ensaios válidos": 1,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.0,
+      "Descritor dominante 1": "abs_slope",
+      "Nº 2": null,
+      "Peso 2": null,
+      "Descritor dominante 2": null,
+      "Nº 3": null,
+      "Peso 3": null,
+      "Descritor dominante 3": null,
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    }
+  ],
+  "rf_com_limites_acelerado": [
+    {
+      "Família": "Other ethoxylate",
+      "Nº de produtos": 8,
+      "Nº de ensaios válidos": 2,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.891,
+      "Descritor dominante 1": "margin0_norm",
+      "Nº 2": "Índice de hidroxila, mg KOH/g",
+      "Peso 2": "0.109",
+      "Descritor dominante 2": "abs_slope",
+      "Nº 3": null,
+      "Peso 3": null,
+      "Descritor dominante 3": null,
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Blend - Crop",
+      "Nº de produtos": 13,
+      "Nº de ensaios válidos": 3,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.472,
+      "Descritor dominante 1": "abs_slope",
+      "Nº 2": "Cor Gardner, 25ºC",
+      "Peso 2": "0.438",
+      "Descritor dominante 2": "min_margin_norm",
+      "Nº 3": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 3": "0.09",
+      "Descritor dominante 3": "min_margin_norm",
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Alkyl Ester",
+      "Nº de produtos": 9,
+      "Nº de ensaios válidos": 4,
+      "Nº 1": "Índice de acidez, mgKOH/g",
+      "Peso 1": 0.36,
+      "Descritor dominante 1": "delta_total",
+      "Nº 2": "Índice de saponificação, mgKOH/g",
+      "Peso 2": "0.349",
+      "Descritor dominante 2": "abs_slope",
+      "Nº 3": "Cor Gardner, 25ºC",
+      "Peso 3": "0.223",
+      "Descritor dominante 3": "abs_slope",
+      "Nº 4": "Água, %p",
+      "Peso 4": "0.068",
+      "Descritor dominante 4": "slope",
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 5,
+      "Nº de ensaios válidos": 1,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.0,
+      "Descritor dominante 1": "abs_slope",
+      "Nº 2": null,
+      "Peso 2": null,
+      "Descritor dominante 2": null,
+      "Nº 3": null,
+      "Peso 3": null,
+      "Descritor dominante 3": null,
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    }
+  ],
+  "rf_com_limites_acompanhamento": [
+    {
+      "Família": "Ethoxylated natural alcohol",
+      "Nº de produtos": 11,
+      "Nº de ensaios válidos": 6,
+      "Nº 1": "Índice de hidroxila, mg KOH/g",
+      "Peso 1": 0.493,
+      "Descritor dominante 1": "min_margin_norm",
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.343,
+      "Descritor dominante 2": "slope",
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.093,
+      "Descritor dominante 3": "abs_slope",
+      "Nº 4": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 4": 0.038,
+      "Descritor dominante 4": "margin0_norm",
+      "Nº 5": "Óxido de Eteno, ppm",
+      "Peso 5": 0.022,
+      "Descritor dominante 5": "abs_slope"
+    },
+    {
+      "Família": "Ethoxylated synthetic alcohol",
+      "Nº de produtos": 5,
+      "Nº de ensaios válidos": 9,
+      "Nº 1": "Óxido de Eteno, ppm",
+      "Peso 1": 0.356,
+      "Descritor dominante 1": "slope",
+      "Nº 2": "Índice de hidroxila, mg KOH/g",
+      "Peso 2": 0.307,
+      "Descritor dominante 2": "delta_total",
+      "Nº 3": "Índice de acidez, mgKOH/g",
+      "Peso 3": 0.202,
+      "Descritor dominante 3": "slope",
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.119,
+      "Descritor dominante 4": "delta_total",
+      "Nº 5": "Ponto de névoa, 10% p/p, EBDEG 25% p/p, ºC",
+      "Peso 5": 0.005,
+      "Descritor dominante 5": "delta_total"
+    },
+    {
+      "Família": "Ethoxylated nonyl phenol",
+      "Nº de produtos": 6,
+      "Nº de ensaios válidos": 5,
+      "Nº 1": "Cor Pt-Co, 25°C",
+      "Peso 1": 0.314,
+      "Descritor dominante 1": "abs_slope",
+      "Nº 2": "Água, %p",
+      "Peso 2": 0.232,
+      "Descritor dominante 2": "delta_total",
+      "Nº 3": "Índice de hidroxila, mg KOH/g",
+      "Peso 3": 0.198,
+      "Descritor dominante 3": "min_margin_norm",
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.195,
+      "Descritor dominante 4": "slope",
+      "Nº 5": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 5": 0.06,
+      "Descritor dominante 5": "abs_slope"
+    }
+  ],
+  "rf_sem_limites_longa_duracao": [
+    {
+      "Família": "Blend - HPC",
+      "Nº de produtos": 3,
+      "Nº de features": 86,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Cor gardner",
+      "Peso 2": 0.0,
+      "Nº 3": "Viscosidade, cP",
+      "Peso 3": 0.0,
+      "Nº 4": "pH 5% p/p, ISO em água 1:1 v/v",
+      "Peso 4": 0.0,
+      "Nº 5": "Índice de acidez, mgKOH/g",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 5,
+      "Nº de features": 144,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Benzotriazol, %",
+      "Peso 2": 0.0,
+      "Nº 3": "DEA, %",
+      "Peso 3": 0.0,
+      "Nº 4": "Cor Pt-Co, 25°C",
+      "Peso 4": 0.0,
+      "Nº 5": "Metiltriglicol, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Other ethoxylate",
+      "Nº de produtos": 7,
+      "Nº de features": 184,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.744,
+      "Nº 2": "RSN, Número de água, mL",
+      "Peso 2": 0.253,
+      "Nº 3": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 3": 0.002,
+      "Nº 4": "Índice de hidroxila, mg KOH/g",
+      "Peso 4": 0.001,
+      "Nº 5": "Anilina 1EO, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkyl Ester",
+      "Nº de produtos": 9,
+      "Nº de features": 187,
+      "Nº 1": "Índice de saponificação, mgKOH/g",
+      "Peso 1": 0.549,
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.227,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.141,
+      "Nº 4": "Cor Gardner, 25ºC",
+      "Peso 4": 0.075,
+      "Nº 5": "Cor Gardner, 60ºC",
+      "Peso 5": 0.008
+    },
+    {
+      "Família": "Phosphate ester",
+      "Nº de produtos": 2,
+      "Nº de features": 59,
+      "Nº 1": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 1": 0.514,
+      "Nº 2": "Água, %p",
+      "Peso 2": 0.486,
+      "Nº 3": "Ponto de névoa, 1% p/p, NaCl 5% p/p, ºC",
+      "Peso 3": 0.0,
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.0,
+      "Nº 5": "Cor Gardner, 25ºC",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "EOPO copolymer",
+      "Nº de produtos": 4,
+      "Nº de features": 130,
+      "Nº 1": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 1": 0.503,
+      "Nº 2": "Água, %p",
+      "Peso 2": 0.285,
+      "Nº 3": "pH 2,5% aquoso, p/p, 25ºC",
+      "Peso 3": 0.212,
+      "Nº 4": "Densidade, 25°C, g/cm³",
+      "Peso 4": 0.0,
+      "Nº 5": "Ponto de névoa, 10% p/p, aquoso, °C",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkylether Sulfate",
+      "Nº de produtos": 4,
+      "Nº de features": 217,
+      "Nº 1": "Insulfatados, %p",
+      "Peso 1": 0.416,
+      "Nº 2": "Cloreto de sódio, %p",
+      "Peso 2": 0.293,
+      "Nº 3": "Sulfato de sódio, %p",
+      "Peso 3": 0.184,
+      "Nº 4": "Insulfatados via GC (tal qual), %",
+      "Peso 4": 0.044,
+      "Nº 5": "Dioxana, ppm",
+      "Peso 5": 0.036
+    },
+    {
+      "Família": "Blend - Crop",
+      "Nº de produtos": 12,
+      "Nº de features": 380,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.385,
+      "Nº 2": "pH, tal qual, 25°C",
+      "Peso 2": 0.138,
+      "Nº 3": "Sólidos, %p",
+      "Peso 3": 0.11,
+      "Nº 4": "Ácido fosfórico livre, %p",
+      "Peso 4": 0.091,
+      "Nº 5": "Índice de aminas totais (IAT), mg KOH/g",
+      "Peso 5": 0.085
+    },
+    {
+      "Família": "Ethoxylated nonyl phenol",
+      "Nº de produtos": 2,
+      "Nº de features": 79,
+      "Nº 1": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 1": 0.277,
+      "Nº 2": "Índice de hidroxila, mg KOH/g",
+      "Peso 2": 0.277,
+      "Nº 3": "Índice de acidez, mgKOH/g",
+      "Peso 3": 0.23,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.216,
+      "Nº 5": "Cor Pt-Co, 25°C",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Glycol eter",
+      "Nº de produtos": 3,
+      "Nº de features": 148,
+      "Nº 1": "Índice de hidroxila, mg KOH/g",
+      "Peso 1": 0.276,
+      "Nº 2": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 2": 0.276,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.249,
+      "Nº 4": "Cor Pt-Co 10% aquoso, p/p, 25ºC",
+      "Peso 4": 0.199,
+      "Nº 5": "Acidez, como ácido acético, ppm",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Polyethylene glycol",
+      "Nº de produtos": 4,
+      "Nº de features": 130,
+      "Nº 1": "Índice de acidez, mgKOH/g",
+      "Peso 1": 0.244,
+      "Nº 2": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 2": 0.208,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.177,
+      "Nº 4": "Índice de hidroxila, mg KOH/g",
+      "Peso 4": 0.174,
+      "Nº 5": "Cor Pt-Co, 25ºC,solução aquosa, 25%",
+      "Peso 5": 0.142
+    },
+    {
+      "Família": "Alkyl aryl Sulfonate",
+      "Nº de produtos": 2,
+      "Nº de features": 40,
+      "Nº 1": "Índice de acidez, mgKOH/g",
+      "Peso 1": 0.242,
+      "Nº 2": "Matéria ativa (PM 322), %p",
+      "Peso 2": 0.22,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.194,
+      "Nº 4": "Insulfonados, %",
+      "Peso 4": 0.184,
+      "Nº 5": "Ácido sulfúrico, %p",
+      "Peso 5": 0.161
+    }
+  ],
+  "rf_sem_limites_acelerado": [
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 5,
+      "Nº de features": 140,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Benzotriazol, %",
+      "Peso 2": 0.0,
+      "Nº 3": "DEA, %",
+      "Peso 3": 0.0,
+      "Nº 4": "Cor Pt-Co, 25°C",
+      "Peso 4": 0.0,
+      "Nº 5": "Metiltriglicol, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Blend - HPC",
+      "Nº de produtos": 3,
+      "Nº de features": 76,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Viscosidade, cP",
+      "Peso 2": 0.0,
+      "Nº 3": "pH 5% p/p, ISO em água 1:1 v/v",
+      "Peso 3": 0.0,
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.0,
+      "Nº 5": "Açucares totais, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Other ethoxylate",
+      "Nº de produtos": 8,
+      "Nº de features": 193,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.74,
+      "Nº 2": "Índice de hidroxila, mg KOH/g",
+      "Peso 2": 0.158,
+      "Nº 3": "RSN, Número de água, mL",
+      "Peso 3": 0.086,
+      "Nº 4": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 4": 0.016,
+      "Nº 5": "Anilina 2EO, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkylether Sulfate",
+      "Nº de produtos": 4,
+      "Nº de features": 215,
+      "Nº 1": "Insulfatados, %p",
+      "Peso 1": 0.478,
+      "Nº 2": "Cloreto de sódio, %p",
+      "Peso 2": 0.299,
+      "Nº 3": "Sulfato de sódio, %p",
+      "Peso 3": 0.133,
+      "Nº 4": "Insulfatados via GC (tal qual), %",
+      "Peso 4": 0.034,
+      "Nº 5": "Dioxana, ppm",
+      "Peso 5": 0.032
+    },
+    {
+      "Família": "Phosphate ester",
+      "Nº de produtos": 4,
+      "Nº de features": 116,
+      "Nº 1": "Ponto de névoa, 1% p/p, NaCl 5% p/p, ºC",
+      "Peso 1": 0.461,
+      "Nº 2": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 2": 0.27,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.269,
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.0,
+      "Nº 5": "Monoester, %p",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "EOPO copolymer",
+      "Nº de produtos": 4,
+      "Nº de features": 128,
+      "Nº 1": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 1": 0.428,
+      "Nº 2": "Água, %p",
+      "Peso 2": 0.336,
+      "Nº 3": "pH 2,5% aquoso, p/p, 25ºC",
+      "Peso 3": 0.236,
+      "Nº 4": "Densidade, 25°C, g/cm³",
+      "Peso 4": 0.0,
+      "Nº 5": "Ponto de névoa, 10% p/p, aquoso, °C",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Blend - Crop",
+      "Nº de produtos": 13,
+      "Nº de features": 374,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.388,
+      "Nº 2": "pH, tal qual, 25°C",
+      "Peso 2": 0.116,
+      "Nº 3": "Índice de aminas totais (IAT), mg KOH/g",
+      "Peso 3": 0.11,
+      "Nº 4": "Ácido fosfórico livre, %p",
+      "Peso 4": 0.095,
+      "Nº 5": "Sólidos, %p",
+      "Peso 5": 0.084
+    },
+    {
+      "Família": "Alkyl Ester",
+      "Nº de produtos": 9,
+      "Nº de features": 182,
+      "Nº 1": "Índice de acidez, mgKOH/g",
+      "Peso 1": 0.344,
+      "Nº 2": "Índice de saponificação, mgKOH/g",
+      "Peso 2": 0.313,
+      "Nº 3": "Cor Gardner, 25ºC",
+      "Peso 3": 0.21,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.111,
+      "Nº 5": "Cor Gardner, 60ºC",
+      "Peso 5": 0.022
+    },
+    {
+      "Família": "Polyethylene glycol",
+      "Nº de produtos": 4,
+      "Nº de features": 135,
+      "Nº 1": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 1": 0.321,
+      "Nº 2": "Água, %p",
+      "Peso 2": 0.262,
+      "Nº 3": "Índice de acidez, mgKOH/g",
+      "Peso 3": 0.216,
+      "Nº 4": "Índice de hidroxila, mg KOH/g",
+      "Peso 4": 0.138,
+      "Nº 5": "Viscosidade, 98, 9ºC +/ - 0,3ºC, cSt",
+      "Peso 5": 0.037
+    },
+    {
+      "Família": "Ethoxylated nonyl phenol",
+      "Nº de produtos": 2,
+      "Nº de features": 76,
+      "Nº 1": "Índice de hidroxila, mg KOH/g",
+      "Peso 1": 0.285,
+      "Nº 2": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 2": 0.282,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.238,
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.195,
+      "Nº 5": "Cor Pt-Co, 25°C",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkanolamine",
+      "Nº de produtos": 2,
+      "Nº de features": 112,
+      "Nº 1": "Dietanolamina, %p",
+      "Peso 1": 0.285,
+      "Nº 2": "Água, %p",
+      "Peso 2": 0.249,
+      "Nº 3": "Monoetanolamina, %p",
+      "Peso 3": 0.244,
+      "Nº 4": "Densidade, 20/20ºC",
+      "Peso 4": 0.222,
+      "Nº 5": "Ferro, ppm",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Glycol eter",
+      "Nº de produtos": 3,
+      "Nº de features": 147,
+      "Nº 1": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 1": 0.276,
+      "Nº 2": "Índice de hidroxila, mg KOH/g",
+      "Peso 2": 0.268,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.263,
+      "Nº 4": "Cor Pt-Co 10% aquoso, p/p, 25ºC",
+      "Peso 4": 0.193,
+      "Nº 5": "Acidez, como ácido acético, ppm",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkyl aryl Sulfonate",
+      "Nº de produtos": 2,
+      "Nº de features": 39,
+      "Nº 1": "Índice de acidez, mgKOH/g",
+      "Peso 1": 0.252,
+      "Nº 2": "Ácido sulfúrico, %p",
+      "Peso 2": 0.198,
+      "Nº 3": "Insulfonados, %",
+      "Peso 3": 0.19,
+      "Nº 4": "Matéria ativa (PM 322), %p",
+      "Peso 4": 0.189,
+      "Nº 5": "Água, %p",
+      "Peso 5": 0.171
+    }
+  ],
+  "rf_sem_limites_acompanhamento": [
+    {
+      "Família": "Alcohol",
+      "Nº de produtos": 2,
+      "Nº de features": 63,
+      "Nº 1": "Etanol, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Acidez, como ácido acético, ppm",
+      "Peso 2": 0.0,
+      "Nº 3": "Cor Pt-Co, temperatura ambiente",
+      "Peso 3": 0.0,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.0,
+      "Nº 5": "Isobutanol, %p",
+      "Peso 5": "0"
+    },
+    {
+      "Família": "Blend - Coatings",
+      "Nº de produtos": 3,
+      "Nº de features": 49,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "DEG,%,",
+      "Peso 2": 0.0,
+      "Nº 3": "MEG,%P",
+      "Peso 3": 0.0,
+      "Nº 4": "Outros glicóis, %p",
+      "Peso 4": 0.0,
+      "Nº 5": "PH,20%P/P,AQUOSO,20ºC",
+      "Peso 5": "0"
+    },
+    {
+      "Família": "Ethoxylated synthetic alcohol",
+      "Nº de produtos": 5,
+      "Nº de features": 119,
+      "Nº 1": "Óxido de Eteno, ppm",
+      "Peso 1": 0.363,
+      "Nº 2": "Índice de hidroxila, mg KOH/g",
+      "Peso 2": 0.267,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.181,
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.174,
+      "Nº 5": "Ponto de névoa, 10% p/p, EBDEG 25% p/p, ºC",
+      "Peso 5": "0.005"
+    },
+    {
+      "Família": "Ethoxylated natural alcohol",
+      "Nº de produtos": 11,
+      "Nº de features": 275,
+      "Nº 1": "Índice de hidroxila, mg KOH/g",
+      "Peso 1": 0.323,
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.247,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.195,
+      "Nº 4": "Peróxidos, mmol O2/1000g",
+      "Peso 4": 0.063,
+      "Nº 5": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 5": "0.045"
+    },
+    {
+      "Família": "Alkylether Sulfate",
+      "Nº de produtos": 3,
+      "Nº de features": 157,
+      "Nº 1": "Dioxana, ppm",
+      "Peso 1": 0.311,
+      "Nº 2": "Sulfato de sódio, %p",
+      "Peso 2": 0.243,
+      "Nº 3": "Cloreto de sódio, %p",
+      "Peso 3": 0.241,
+      "Nº 4": "Insulfatados via GC (tal qual), %",
+      "Peso 4": 0.205,
+      "Nº 5": "%T,26% atETOH:H2O1:1cel 10 mm; 420 nm",
+      "Peso 5": "0"
+    },
+    {
+      "Família": "Ethoxylated nonyl phenol",
+      "Nº de produtos": 6,
+      "Nº de features": 74,
+      "Nº 1": "Cor Pt-Co, 25°C",
+      "Peso 1": 0.27,
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.228,
+      "Nº 3": "Índice de hidroxila, mg KOH/g",
+      "Peso 3": 0.222,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.195,
+      "Nº 5": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 5": "0.085"
+    },
+    {
+      "Família": "Ester",
+      "Nº de produtos": 3,
+      "Nº de features": 137,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.235,
+      "Nº 2": "Cor Pt-Co, temperatura ambiente",
+      "Peso 2": 0.233,
+      "Nº 3": "Antioxidante, ppm",
+      "Peso 3": 0.167,
+      "Nº 4": "Densidade, 20/20ºC",
+      "Peso 4": 0.151,
+      "Nº 5": "Acidez, como ácido acético, ppm",
+      "Peso 5": "0.147"
+    },
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 2,
+      "Nº de features": 36,
+      "Nº 1": "Cor Pt-Co, temperatura ambiente",
+      "Peso 1": 0.0,
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.0,
+      "Nº 3": "Índice de hidroxila, mg KOH/g",
+      "Peso 3": 0.0,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.0,
+      "Nº 5": null,
+      "Peso 5": null
+    }
+  ],
+  "rf_sem_limites_excluidas": [
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Alkanolamine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Alkyl Sulfonate",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Alkyl sulfate",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Amidoamine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Amine oxide",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Betaine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Blend - Coatings",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Break Fluid",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ester",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylated Tallow amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylated natural alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylated synthetic alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylated triestyryl phenol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylayted coconut amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Fatty acid",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Glycol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Natural fatty alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Polysorbate (Sorbitan ester ethoxylated)",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Sorbitan ester",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Sultaine",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Alkyl Sulfonate",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Alkyl sulfate",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Amidoamine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Amine oxide",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Betaine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Blend - Coatings",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Break Fluid",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ester",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylated Tallow amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylated natural alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylated synthetic alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylated triestyryl phenol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylayted coconut amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Fatty acid",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Glycol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Natural fatty alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Polysorbate (Sorbitan ester ethoxylated)",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Propoxylated natural alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Sorbitan ester",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Sultaine",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Alkanolamine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Betaine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Blend - Crop",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated Fatty acid",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated Tallow amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated bisphenol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated castor oil",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated rapeseed oil",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated triestyryl phenol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Glycol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Glycol eter",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Natural fatty alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Nonylphenol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Other propoxylate",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Polysorbate (Sorbitan ester ethoxylated)",
+      "Motivo": "Menos de 2 produtos"
+    }
+  ],
+  "xgb_com_limites_longa_duracao": [
+    {
+      "Família": "Other ethoxylate",
+      "Nº de produtos": 7,
+      "Nº de ensaios válidos": 3,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.851,
+      "Descritor dominante 1": "margin0_norm",
+      "Nº 2": "RSN, Número de água, mL",
+      "Peso 2": "0.148",
+      "Descritor dominante 2": "delta_total",
+      "Nº 3": "Índice de hidroxila, mg KOH/g",
+      "Peso 3": "0.001",
+      "Descritor dominante 3": "delta_total",
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Alkyl Ester",
+      "Nº de produtos": 9,
+      "Nº de ensaios válidos": 4,
+      "Nº 1": "Índice de saponificação, mgKOH/g",
+      "Peso 1": 0.716,
+      "Descritor dominante 1": "slope",
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": "0.201",
+      "Descritor dominante 2": "slope",
+      "Nº 3": "Água, %p",
+      "Peso 3": "0.057",
+      "Descritor dominante 3": "abs_slope",
+      "Nº 4": "Cor Gardner, 25ºC",
+      "Peso 4": "0.026",
+      "Descritor dominante 4": "margin0_norm",
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Blend - Crop",
+      "Nº de produtos": 12,
+      "Nº de ensaios válidos": 3,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.454,
+      "Descritor dominante 1": "abs_slope",
+      "Nº 2": "Cor Gardner, 25ºC",
+      "Peso 2": "0.433",
+      "Descritor dominante 2": "min_margin_norm",
+      "Nº 3": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 3": "0.113",
+      "Descritor dominante 3": "margin0_norm",
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 5,
+      "Nº de ensaios válidos": 1,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.0,
+      "Descritor dominante 1": "abs_slope",
+      "Nº 2": null,
+      "Peso 2": null,
+      "Descritor dominante 2": null,
+      "Nº 3": null,
+      "Peso 3": null,
+      "Descritor dominante 3": null,
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    }
+  ],
+  "xgb_com_limites_acelerado": [
+    {
+      "Família": "Other ethoxylate",
+      "Nº de produtos": 8,
+      "Nº de ensaios válidos": 2,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.893,
+      "Descritor dominante 1": "slope",
+      "Nº 2": "Índice de hidroxila, mg KOH/g",
+      "Peso 2": "0.107",
+      "Descritor dominante 2": "abs_slope",
+      "Nº 3": null,
+      "Peso 3": null,
+      "Descritor dominante 3": null,
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Alkyl Ester",
+      "Nº de produtos": 9,
+      "Nº de ensaios válidos": 4,
+      "Nº 1": "Índice de saponificação, mgKOH/g",
+      "Peso 1": 0.639,
+      "Descritor dominante 1": "min_margin_norm",
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": "0.168",
+      "Descritor dominante 2": "slope",
+      "Nº 3": "Cor Gardner, 25ºC",
+      "Peso 3": "0.1",
+      "Descritor dominante 3": "min_margin_norm",
+      "Nº 4": "Água, %p",
+      "Peso 4": "0.093",
+      "Descritor dominante 4": "abs_slope",
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Blend - Crop",
+      "Nº de produtos": 13,
+      "Nº de ensaios válidos": 3,
+      "Nº 1": "Cor Gardner, 25ºC",
+      "Peso 1": 0.442,
+      "Descritor dominante 1": "min_margin_norm",
+      "Nº 2": "Água, %p",
+      "Peso 2": "0.372",
+      "Descritor dominante 2": "abs_slope",
+      "Nº 3": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 3": "0.185",
+      "Descritor dominante 3": "abs_slope",
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    },
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 5,
+      "Nº de ensaios válidos": 1,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.0,
+      "Descritor dominante 1": "abs_slope",
+      "Nº 2": null,
+      "Peso 2": null,
+      "Descritor dominante 2": null,
+      "Nº 3": null,
+      "Peso 3": null,
+      "Descritor dominante 3": null,
+      "Nº 4": null,
+      "Peso 4": null,
+      "Descritor dominante 4": null,
+      "Nº 5": null,
+      "Peso 5": null,
+      "Descritor dominante 5": null
+    }
+  ],
+  "xgb_com_limites_acompanhamento": [
+    {
+      "Família": "Ethoxylated nonyl phenol",
+      "Nº de produtos": 6,
+      "Nº de ensaios válidos": 5,
+      "Nº 1": "Cor Pt-Co, 25°C",
+      "Peso 1": 1.0,
+      "Descritor dominante 1": "abs_slope",
+      "Nº 2": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 2": 0.0,
+      "Descritor dominante 2": "abs_slope",
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.0,
+      "Descritor dominante 3": "abs_slope",
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.0,
+      "Descritor dominante 4": "abs_slope",
+      "Nº 5": "Índice de hidroxila, mg KOH/g",
+      "Peso 5": 0.0,
+      "Descritor dominante 5": "abs_slope"
+    },
+    {
+      "Família": "Ethoxylated synthetic alcohol",
+      "Nº de produtos": 5,
+      "Nº de ensaios válidos": 9,
+      "Nº 1": "Índice de acidez, mgKOH/g",
+      "Peso 1": 0.456,
+      "Descritor dominante 1": "slope",
+      "Nº 2": "Índice de hidroxila, mg KOH/g",
+      "Peso 2": 0.373,
+      "Descritor dominante 2": "abs_slope",
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.162,
+      "Descritor dominante 3": "delta_total",
+      "Nº 4": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 4": 0.006,
+      "Descritor dominante 4": "margin0_norm",
+      "Nº 5": "Cor Pt-Co, 60ºC",
+      "Peso 5": 0.003,
+      "Descritor dominante 5": "abs_slope"
+    },
+    {
+      "Família": "Ethoxylated natural alcohol",
+      "Nº de produtos": 11,
+      "Nº de ensaios válidos": 6,
+      "Nº 1": "Índice de hidroxila, mg KOH/g",
+      "Peso 1": 0.323,
+      "Descritor dominante 1": "min_margin_norm",
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.293,
+      "Descritor dominante 2": "slope",
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.186,
+      "Descritor dominante 3": "slope",
+      "Nº 4": "Cor Pt-Co, 60ºC",
+      "Peso 4": 0.166,
+      "Descritor dominante 4": "delta_total",
+      "Nº 5": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 5": 0.031,
+      "Descritor dominante 5": "margin0_norm"
+    }
+  ],
+  "xgb_sem_limites_longa_duracao": [
+    {
+      "Família": "Glycol eter",
+      "Nº de produtos": 3,
+      "Nº de features": 148,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Acidez, como ácido acético, ppm",
+      "Peso 2": 0.0,
+      "Nº 3": "Cor Pt-Co, 25°C",
+      "Peso 3": 0.0,
+      "Nº 4": "Antioxidante, ppm",
+      "Peso 4": 0.0,
+      "Nº 5": "Faixa de destilação, PIE, °C",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Ethoxylated nonyl phenol",
+      "Nº de produtos": 2,
+      "Nº de features": 79,
+      "Nº 1": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 1": 1.0,
+      "Nº 2": "Cor Pt-Co, 25°C",
+      "Peso 2": 0.0,
+      "Nº 3": "Ponto de névoa, 1%p/p aquoso, °C",
+      "Peso 3": 0.0,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.0,
+      "Nº 5": "Índice de acidez, mgKOH/g",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Blend - HPC",
+      "Nº de produtos": 3,
+      "Nº de features": 86,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Cor gardner",
+      "Peso 2": 0.0,
+      "Nº 3": "Viscosidade, cP",
+      "Peso 3": 0.0,
+      "Nº 4": "pH 5% p/p, ISO em água 1:1 v/v",
+      "Peso 4": 0.0,
+      "Nº 5": "Índice de acidez, mgKOH/g",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 5,
+      "Nº de features": 144,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Benzotriazol, %",
+      "Peso 2": 0.0,
+      "Nº 3": "DEA, %",
+      "Peso 3": 0.0,
+      "Nº 4": "Cor Pt-Co, 25°C",
+      "Peso 4": 0.0,
+      "Nº 5": "Metiltriglicol, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Phosphate ester",
+      "Nº de produtos": 2,
+      "Nº de features": 59,
+      "Nº 1": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 1": 1.0,
+      "Nº 2": "Ponto de névoa, 1% p/p, NaCl 5% p/p, ºC",
+      "Peso 2": 0.0,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.0,
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.0,
+      "Nº 5": "Cor Gardner, 25ºC",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkylether Sulfate",
+      "Nº de produtos": 4,
+      "Nº de features": 217,
+      "Nº 1": "Cloreto de sódio, %p",
+      "Peso 1": 0.999,
+      "Nº 2": "Sulfato de sódio, %p",
+      "Peso 2": 0.001,
+      "Nº 3": "Insulfatados via GC (tal qual), %",
+      "Peso 3": 0.0,
+      "Nº 4": "Alcalinidade, NaOH, %p",
+      "Peso 4": 0.0,
+      "Nº 5": "Dioxana, ppm",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkyl aryl Sulfonate",
+      "Nº de produtos": 2,
+      "Nº de features": 40,
+      "Nº 1": "Insulfonados, %",
+      "Peso 1": 0.991,
+      "Nº 2": "Matéria ativa (PM 322), %p",
+      "Peso 2": 0.009,
+      "Nº 3": "Ácido sulfúrico, %p",
+      "Peso 3": 0.0,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.0,
+      "Nº 5": "Índice de acidez, mgKOH/g",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Polyethylene glycol",
+      "Nº de produtos": 4,
+      "Nº de features": 130,
+      "Nº 1": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 1": 0.984,
+      "Nº 2": "Resíduo de ignição, %p",
+      "Peso 2": 0.016,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.0,
+      "Nº 4": "Peso molecular médio, g/mol",
+      "Peso 4": 0.0,
+      "Nº 5": "Monoetilenoglicol e dietilenoglicol, %p",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Other ethoxylate",
+      "Nº de produtos": 7,
+      "Nº de features": 184,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.821,
+      "Nº 2": "RSN, Número de água, mL",
+      "Peso 2": 0.159,
+      "Nº 3": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 3": 0.02,
+      "Nº 4": "Índice de hidroxila, mg KOH/g",
+      "Peso 4": 0.0,
+      "Nº 5": "Anilina 1EO, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "EOPO copolymer",
+      "Nº de produtos": 4,
+      "Nº de features": 130,
+      "Nº 1": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 1": 0.627,
+      "Nº 2": "Água, %p",
+      "Peso 2": 0.322,
+      "Nº 3": "pH 2,5% aquoso, p/p, 25ºC",
+      "Peso 3": 0.051,
+      "Nº 4": "Densidade, 25°C, g/cm³",
+      "Peso 4": 0.0,
+      "Nº 5": "Ponto de névoa, 10% p/p, aquoso, °C",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkyl Ester",
+      "Nº de produtos": 9,
+      "Nº de features": 187,
+      "Nº 1": "Índice de saponificação, mgKOH/g",
+      "Peso 1": 0.559,
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.199,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.153,
+      "Nº 4": "Cor Gardner, 25ºC",
+      "Peso 4": 0.087,
+      "Nº 5": "Cor Gardner, 60ºC",
+      "Peso 5": 0.003
+    },
+    {
+      "Família": "Blend - Crop",
+      "Nº de produtos": 12,
+      "Nº de features": 380,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.53,
+      "Nº 2": "Índice de aminas totais (IAT), mg KOH/g",
+      "Peso 2": 0.228,
+      "Nº 3": "Cor Gardner, 25ºC",
+      "Peso 3": 0.091,
+      "Nº 4": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 4": 0.076,
+      "Nº 5": "Sólidos, %p",
+      "Peso 5": 0.044
+    }
+  ],
+  "xgb_sem_limites_acelerado": [
+    {
+      "Família": "Alkanolamine",
+      "Nº de produtos": 2,
+      "Nº de features": 112,
+      "Nº 1": "Densidade, 20/20ºC",
+      "Peso 1": 1.0,
+      "Nº 2": "Cor Pt-CO, 25ºC",
+      "Peso 2": 0.0,
+      "Nº 3": "Dietanolamina, %p",
+      "Peso 3": 0.0,
+      "Nº 4": "Ferro, ppm",
+      "Peso 4": 0.0,
+      "Nº 5": "Monoetanolamina, %p",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkyl aryl Sulfonate",
+      "Nº de produtos": 2,
+      "Nº de features": 39,
+      "Nº 1": "Insulfonados, %",
+      "Peso 1": 1.0,
+      "Nº 2": "Matéria ativa (PM 322), %p",
+      "Peso 2": 0.0,
+      "Nº 3": "Ácido sulfúrico, %p",
+      "Peso 3": 0.0,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.0,
+      "Nº 5": "Índice de acidez, mgKOH/g",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Alkylether Sulfate",
+      "Nº de produtos": 4,
+      "Nº de features": 215,
+      "Nº 1": "Cloreto de sódio, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Insulfatados via GC (tal qual), %",
+      "Peso 2": 0.0,
+      "Nº 3": "Alcalinidade, NaOH, %p",
+      "Peso 3": 0.0,
+      "Nº 4": "Dioxana, ppm",
+      "Peso 4": 0.0,
+      "Nº 5": "Ferro, ppm",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Blend - HPC",
+      "Nº de produtos": 3,
+      "Nº de features": 76,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Viscosidade, cP",
+      "Peso 2": 0.0,
+      "Nº 3": "pH 5% p/p, ISO em água 1:1 v/v",
+      "Peso 3": 0.0,
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.0,
+      "Nº 5": "Açucares totais, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 5,
+      "Nº de features": 140,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Benzotriazol, %",
+      "Peso 2": 0.0,
+      "Nº 3": "DEA, %",
+      "Peso 3": 0.0,
+      "Nº 4": "Cor Pt-Co, 25°C",
+      "Peso 4": 0.0,
+      "Nº 5": "Metiltriglicol, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Ethoxylated nonyl phenol",
+      "Nº de produtos": 2,
+      "Nº de features": 76,
+      "Nº 1": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 1": 1.0,
+      "Nº 2": "Cor Pt-Co, 25°C",
+      "Peso 2": 0.0,
+      "Nº 3": "Ponto de névoa, 1%p/p aquoso, °C",
+      "Peso 3": 0.0,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.0,
+      "Nº 5": "Índice de acidez, mgKOH/g",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Glycol eter",
+      "Nº de produtos": 3,
+      "Nº de features": 147,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Cor Pt-Co 10% aquoso, p/p, 25ºC",
+      "Peso 2": 0.0,
+      "Nº 3": "Acidez, como ácido acético, ppm",
+      "Peso 3": 0.0,
+      "Nº 4": "Antioxidante, ppm",
+      "Peso 4": 0.0,
+      "Nº 5": "Faixa de destilação, PIE, °C",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Phosphate ester",
+      "Nº de produtos": 4,
+      "Nº de features": 116,
+      "Nº 1": "Ponto de névoa, 1% p/p, NaCl 5% p/p, ºC",
+      "Peso 1": 0.987,
+      "Nº 2": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 2": 0.013,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.0,
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.0,
+      "Nº 5": "Monoester, %p",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Polyethylene glycol",
+      "Nº de produtos": 4,
+      "Nº de features": 135,
+      "Nº 1": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 1": 0.973,
+      "Nº 2": "Viscosidade, 98, 9ºC +/ - 0,3ºC, cSt",
+      "Peso 2": 0.026,
+      "Nº 3": "Água, %p",
+      "Peso 3": 0.001,
+      "Nº 4": "Dioxana, ppm",
+      "Peso 4": 0.0,
+      "Nº 5": "Resíduo de ignição, %p",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "EOPO copolymer",
+      "Nº de produtos": 4,
+      "Nº de features": 128,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.899,
+      "Nº 2": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 2": 0.066,
+      "Nº 3": "pH 2,5% aquoso, p/p, 25ºC",
+      "Peso 3": 0.035,
+      "Nº 4": "Densidade, 25°C, g/cm³",
+      "Peso 4": 0.0,
+      "Nº 5": "Ponto de névoa, 10% p/p, aquoso, °C",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Other ethoxylate",
+      "Nº de produtos": 8,
+      "Nº de features": 193,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.722,
+      "Nº 2": "Índice de hidroxila, mg KOH/g",
+      "Peso 2": 0.193,
+      "Nº 3": "pH 5% p/p, aquoso, 25ºC",
+      "Peso 3": 0.057,
+      "Nº 4": "RSN, Número de água, mL",
+      "Peso 4": 0.028,
+      "Nº 5": "Anilina 2EO, %",
+      "Peso 5": 0.0
+    },
+    {
+      "Família": "Blend - Crop",
+      "Nº de produtos": 13,
+      "Nº de features": 374,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.648,
+      "Nº 2": "Umidade, %p",
+      "Peso 2": 0.164,
+      "Nº 3": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 3": 0.121,
+      "Nº 4": "Índice de aminas totais (IAT), mg KOH/g",
+      "Peso 4": 0.066,
+      "Nº 5": "Cor Gardner, 25ºC",
+      "Peso 5": 0.001
+    },
+    {
+      "Família": "Alkyl Ester",
+      "Nº de produtos": 9,
+      "Nº de features": 182,
+      "Nº 1": "Índice de saponificação, mgKOH/g",
+      "Peso 1": 0.555,
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.216,
+      "Nº 3": "Cor Gardner, 25ºC",
+      "Peso 3": 0.078,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.076,
+      "Nº 5": "Cor Gardner, 60ºC",
+      "Peso 5": 0.075
+    }
+  ],
+  "xgb_sem_limites_acompanhamento": [
+    {
+      "Família": "Alcohol",
+      "Nº de produtos": 2,
+      "Nº de features": 63,
+      "Nº 1": "Etanol, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "Acidez, como ácido acético, ppm",
+      "Peso 2": 0.0,
+      "Nº 3": "Cor Pt-Co, temperatura ambiente",
+      "Peso 3": 0.0,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.0,
+      "Nº 5": "Isobutanol, %p",
+      "Peso 5": "0"
+    },
+    {
+      "Família": "Alkylether Sulfate",
+      "Nº de produtos": 3,
+      "Nº de features": 157,
+      "Nº 1": "Insulfatados via GC (tal qual), %",
+      "Peso 1": 1.0,
+      "Nº 2": "%T,26% atETOH:H2O1:1cel 10 mm; 420 nm",
+      "Peso 2": 0.0,
+      "Nº 3": "Cloreto de sódio, %p",
+      "Peso 3": 0.0,
+      "Nº 4": "Dioxana, ppm",
+      "Peso 4": 0.0,
+      "Nº 5": "Matéria ativa (PM 346), %p",
+      "Peso 5": "0"
+    },
+    {
+      "Família": "Blend - Coatings",
+      "Nº de produtos": 3,
+      "Nº de features": 49,
+      "Nº 1": "Água, %p",
+      "Peso 1": 1.0,
+      "Nº 2": "DEG,%,",
+      "Peso 2": 0.0,
+      "Nº 3": "MEG,%P",
+      "Peso 3": 0.0,
+      "Nº 4": "Outros glicóis, %p",
+      "Peso 4": 0.0,
+      "Nº 5": "PH,20%P/P,AQUOSO,20ºC",
+      "Peso 5": "0"
+    },
+    {
+      "Família": "Ester",
+      "Nº de produtos": 3,
+      "Nº de features": 137,
+      "Nº 1": "Cor Pt-Co, temperatura ambiente",
+      "Peso 1": 0.647,
+      "Nº 2": "Acidez, como ácido acético, ppm",
+      "Peso 2": 0.353,
+      "Nº 3": "Densidade, 20°C, g/cm³",
+      "Peso 3": 0.0,
+      "Nº 4": "Faixa de destilação, PIE, °C",
+      "Peso 4": 0.0,
+      "Nº 5": "Faixa de destilação, PS, ºC",
+      "Peso 5": "0"
+    },
+    {
+      "Família": "Ethoxylated synthetic alcohol",
+      "Nº de produtos": 5,
+      "Nº de features": 119,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.618,
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.249,
+      "Nº 3": "Índice de hidroxila, mg KOH/g",
+      "Peso 3": 0.125,
+      "Nº 4": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 4": 0.005,
+      "Nº 5": "Cor Pt-Co, 60ºC",
+      "Peso 5": "0.002"
+    },
+    {
+      "Família": "Ethoxylated nonyl phenol",
+      "Nº de produtos": 6,
+      "Nº de features": 74,
+      "Nº 1": "Água, %p",
+      "Peso 1": 0.549,
+      "Nº 2": "Cor Pt-Co, 25°C",
+      "Peso 2": 0.451,
+      "Nº 3": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 3": 0.0,
+      "Nº 4": "Índice de acidez, mgKOH/g",
+      "Peso 4": 0.0,
+      "Nº 5": "Índice de hidroxila, mg KOH/g",
+      "Peso 5": "0"
+    },
+    {
+      "Família": "Ethoxylated natural alcohol",
+      "Nº de produtos": 11,
+      "Nº de features": 275,
+      "Nº 1": "Índice de hidroxila, mg KOH/g",
+      "Peso 1": 0.358,
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.233,
+      "Nº 3": "Cor Pt-Co, 60ºC",
+      "Peso 3": 0.193,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.163,
+      "Nº 5": "pH 1% p/p, aquoso, 25ºC",
+      "Peso 5": "0.054"
+    },
+    {
+      "Família": "Blend - E&R",
+      "Nº de produtos": 2,
+      "Nº de features": 36,
+      "Nº 1": "Cor Pt-Co, temperatura ambiente",
+      "Peso 1": 0.0,
+      "Nº 2": "Índice de acidez, mgKOH/g",
+      "Peso 2": 0.0,
+      "Nº 3": "Índice de hidroxila, mg KOH/g",
+      "Peso 3": 0.0,
+      "Nº 4": "Água, %p",
+      "Peso 4": 0.0,
+      "Nº 5": null,
+      "Peso 5": null
+    }
+  ],
+  "xgb_sem_limites_excluidas": [
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Alkanolamine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Alkyl Sulfonate",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Alkyl sulfate",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Amidoamine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Amine oxide",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Betaine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Blend - Coatings",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Break Fluid",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ester",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylated Tallow amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylated natural alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylated synthetic alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylated triestyryl phenol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Ethoxylayted coconut amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Fatty acid",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Glycol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Natural fatty alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Polysorbate (Sorbitan ester ethoxylated)",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Sorbitan ester",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_longa_duracao_processado_com_limites.xlsx",
+      "Família": "Sultaine",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Alkyl Sulfonate",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Alkyl sulfate",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Amidoamine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Amine oxide",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Betaine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Blend - Coatings",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Break Fluid",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ester",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylated Tallow amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylated natural alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylated synthetic alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylated triestyryl phenol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Ethoxylayted coconut amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Fatty acid",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Glycol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Natural fatty alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Polysorbate (Sorbitan ester ethoxylated)",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Propoxylated natural alcohol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Sorbitan ester",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acelerado_processado_com_limites.xlsx",
+      "Família": "Sultaine",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Alkanolamine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Betaine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Blend - Crop",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated Fatty acid",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated Tallow amine",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated bisphenol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated castor oil",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated rapeseed oil",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Ethoxylated triestyryl phenol",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Glycol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Glycol eter",
+      "Motivo": "Shelf Life sem variação"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Natural fatty alcohol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Nonylphenol",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Other propoxylate",
+      "Motivo": "Menos de 2 produtos"
+    },
+    {
+      "Arquivo": "dataset_acompanhamento_processado_com_limites.xlsx",
+      "Família": "Polysorbate (Sorbitan ester ethoxylated)",
+      "Motivo": "Menos de 2 produtos"
+    }
+  ]
+}

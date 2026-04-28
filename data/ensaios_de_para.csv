@@ -1,0 +1,251 @@
+﻿ensaio_original;ensaio_normalizado;categoria;is_quantitativo;unidade;temperatura;concentracao;frequencia
+Hidroxila, índice de, mgKOH/g;Indice de Hidroxila;Fisico-Quimico;True;mgKOH/g;;;4
+pH, 5% p/p aquoso, 25ºC;pH;Fisico-Quimico;True;%;25°C;5% p/p;2
+Aparência, 25°C;Aparencia;Organoleptico;False;°C;25°C;;11
+Água, %p;Teor de Agua;Fisico-Quimico;True;%;;;45
+Índice de acidez, mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;6
+Anilina, %;Anilina;Composicao;True;%;;;2
+Anilina 1EO, %;Anilina;Composicao;True;%;;;2
+Anilina 2EO, %;Anilina;Composicao;True;%;;;2
+Anilina 3EO, %;Anilina;Composicao;True;%;;;2
+pH 5% iso/água 1:1 v/v, 25°C (é análise de processo);pH;Fisico-Quimico;True;°C;25°C;5%;2
+Aparência;Aparencia;Organoleptico;False;;;;20
+Transmitância 800 nm, 1 cm, %T;Transmitancia;Cor;True;%T;;;2
+Material em suspensão a 60°C;Material em Suspensao;Organoleptico;False;°C;60°C;;2
+Viscosidade 25°C, BKF, cp;Viscosidade;Fisico-Quimico;True;cP;25°C;;2
+Dioxana, ppm;Dioxana;Contaminante;True;ppm;;;16
+Aparência temp. ambiente;Aparencia;Organoleptico;False;;ambiente;;2
+Ponto de fusão, °C;Ponto de Fusao;Fisico-Quimico;True;°C;;;2
+Cor Gardner, 60°C;Cor Gardner;Cor;True;°C;60°C;;2
+Índice de saponificação, mgKOH/g;Indice de Saponificacao;Fisico-Quimico;True;mgKOH/g;;;2
+Água, %;Teor de Agua;Fisico-Quimico;True;%;;;16
+Hidroxila, índice de, mg KOH/g;Indice de Hidroxila;Fisico-Quimico;True;mgKOH/g;;;24
+N° ácido, mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;12
+pH, 10% aquoso, 25ºC;pH;Fisico-Quimico;True;°C;25°C;10% aquoso;6
+Saponificação, índice de , mgKOH/g;Indice de Saponificacao;Fisico-Quimico;True;mgKOH/g;;;16
+Cor Gardner, 25ºC;Cor Gardner;Cor;True;°C;25°C;;16
+Cor Gardner, 60ºC;Cor Gardner;Cor;True;°C;60°C;;2
+C10 Caprico, %;Acidos Graxos;Composicao;True;%;;;2
+C12 Laurico, %;Acidos Graxos;Composicao;True;%;;;2
+C14 Miristico, %;Acidos Graxos;Composicao;True;%;;;6
+C16 Palmitico, %;Acidos Graxos;Composicao;True;%;;;6
+C18 Estearico, %;Acidos Graxos;Composicao;True;%;;;8
+C18:1 Oleico, %;Acidos Graxos;Composicao;True;%;;;6
+C18:2 Linoleico, %;Acidos Graxos;Composicao;True;%;;;6
+C6 Caproico, %;Acidos Graxos;Composicao;True;%;;;2
+C8 Caprilico, %;Acidos Graxos;Composicao;True;%;;;2
+Identificação USP;Identificacao;Identificacao;False;;;;6
+Conteudo de Acido Laurico (C12), g/100g;Acidos Graxos;Composicao;True;g/100g;;;2
+Indice de Acidez (C12), mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;2
+Conteúdo de Oxido de Etileno, %;Oxido de Etileno Residual;Contaminante;True;%;;;6
+Cinzas sulfatadas, %;Cinzas;Composicao;True;%;;;6
+Oxido de eteno livre, ppm;Oxido de Etileno Residual;Contaminante;True;ppm;;;6
+Metais pesados, ppm;Metais Pesados;Contaminante;True;ppm;;;12
+pH, 5% aquoso, 25ºC;pH;Fisico-Quimico;True;°C;25°C;5% aquoso;6
+Peróxidos, índice de, Meq/1000g;Indice de Peroxidos;Contaminante;True;mEq/1000g;;;6
+Material em suspensão a 60ºC, Admensional;Material em Suspensao;Organoleptico;False;°C;60°C;;2
+Resíduo de ignição, %p;Residuo;Composicao;True;%;;;4
+Acidez, índice de, mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;19
+Óxido de Etileno Residual, ppm;Oxido de Etileno Residual;Contaminante;True;ppm;;;2
+Aparência, 25ºC;Aparencia;Organoleptico;False;°C;25°C;;20
+Cor Gardner;Cor Gardner;Cor;True;;;;6
+C16 Palmitico e C18 Estearico, %;Acidos Graxos;Composicao;True;%;;;2
+Conteudo de Acidos Estearico e Palmitico (C18 e C16), g/100g;Acidos Graxos;Composicao;True;g/100g;;;2
+Indice de Acidez (C18&C16), mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;2
+Ponto de solidificação, °C;Ponto de Solidificacao;Fisico-Quimico;True;°C;;;2
+C16:1 Hexadecenóico, %;Acidos Graxos;Composicao;True;%;;;4
+C18:3 Linolênico, %;Acidos Graxos;Composicao;True;%;;;4
+Óxido de etileno residual, ppm;Oxido de Etileno Residual;Contaminante;True;ppm;;;6
+pH, 5% p/p, aquoso, 25ºC;pH;Fisico-Quimico;True;%;25°C;5% p/p;8
+Peróxidos, índice de, mEq/1000g;Indice de Peroxidos;Contaminante;True;mEq/1000g;;;2
+Peróxidos, índice de, ppm;Indice de Peroxidos;Contaminante;True;ppm;;;2
+Limpidez, 25ºC;Limpidez;Organoleptico;False;°C;25°C;;6
+Viscosidade, 25°C, cinemática, cSt;Viscosidade;Fisico-Quimico;True;cSt;25°C;;4
+Densidade, 25°C;Densidade;Fisico-Quimico;True;°C;25°C;;2
+Sedimentação, ppm;Sedimentacao;Composicao;True;ppm;;;4
+Conteudo de Acido Oleico (C18:1), g/100g;Acidos Graxos;Composicao;True;g/100g;;;2
+Indice de Acidez (C18:1), mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;2
+Indice de Iodo (C18:1) gl2/100g;Acidos Graxos;Composicao;True;gI2/100g;;;2
+Peso específico a 25°C;Densidade;Fisico-Quimico;True;°C;25°C;;2
+Cor Pt-Co, 25°C;Cor Pt-Co;Cor;True;°C;25°C;;1
+pH 10% p/p, ISSO:H2O 4:1 p/p, 25°C;pH;Fisico-Quimico;True;%;25°C;10% p/p;1
+Acidez, índice de mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;2
+pH, 10% p/p. ISSO em água 4:1 p/p, 25°C;pH;Fisico-Quimico;True;%;25°C;10% p/p;2
+Limpidez, 25°C;Limpidez;Organoleptico;False;°C;25°C;;2
+Cor Pt-Co, temperatura ambiente;Cor Pt-Co;Cor;True;;ambiente;;8
+Cor, 460 nm, 20 mm, %T;Cor (Outro);Cor;True;%T;;;2
+Material em suspensão, Admensional;Material em Suspensao;Organoleptico;False;;;;9
+Alcoois Graxos Livres Totais, %;Acidos Graxos;Composicao;True;%;;;2
+pH 1% p/p, IPA/água 1,1 v/v, 25ºC;pH;Fisico-Quimico;True;%;25°C;1% p/p;2
+pH,1% p/p Sol.Iso/água 10:6/25ºC;pH;Fisico-Quimico;True;%;25°C;1% p/p;2
+Glicóis, teor, %p;Glicois;Composicao;True;%;;;4
+Ponto de névoa, 20% p/p, EBDEG 25% p/p, ºC;Ponto de Nevoa;Fisico-Quimico;True;%;;20% p/p;2
+Cor APHA 40 ºC;Cor APHA;Cor;True;°C;40°C;;4
+Cor Gardner, 25°C;Cor Gardner;Cor;True;°C;25°C;;2
+pH 10% p/p, aquoso, 25ºC;pH;Fisico-Quimico;True;%;25°C;10% p/p;2
+pH 5% p/p, aquoso, 25ºC;pH;Fisico-Quimico;True;%;25°C;5% p/p;2
+pH 1% p/p, aquoso, 25ºC;pH;Fisico-Quimico;True;%;25°C;1% p/p;4
+Ponto de névoa, 1% p/p, aquoso, ºC;Ponto de Nevoa;Fisico-Quimico;True;%;;1% p/p;6
+Cor Pt-Co,  50°C ;Cor Pt-Co;Cor;True;°C;50°C;;2
+Cor Pt-Co,  60°C ;Cor Pt-Co;Cor;True;°C;60°C;;2
+Teor de Água;Teor de Agua;Fisico-Quimico;True;;;;6
+Índice de iodo I2/100g;Indice de Iodo;Composicao;True;gI2/100g;;;2
+Índice de hidroxila - mgKOH/g;Indice de Hidroxila;Fisico-Quimico;True;mgKOH/g;;;2
+Índice de acidez - mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;6
+Cor Pt-Co, 70oC;Cor Pt-Co;Cor;True;°C;70°C;;2
+Número de carbonila, ppm CO;Carbonila;Composicao;True;ppm;;;2
+pH 5% p/p IPA/Água 1:1 v/v;pH;Fisico-Quimico;True;%;;5% p/p;2
+Cor gardner;Cor Gardner;Cor;True;;;;2
+Viscosidade, cP;Viscosidade;Fisico-Quimico;True;cP;;;2
+Viscosidade ao 2% (4% polisorbato 20 e 94% água, cPs;Viscosidade;Fisico-Quimico;True;cP;;2%;2
+pH 5% p/p, ISO em água 1:1 v/v;pH;Fisico-Quimico;True;%;;5% p/p;2
+Saponificação, mgKOH/g;Indice de Saponificacao;Fisico-Quimico;True;mgKOH/g;;;6
+Cor gardner, 60°C;Cor Gardner;Cor;True;°C;60°C;;2
+Acidez, mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;6
+cor PtCo, 25°C;Cor Pt-Co;Cor;True;°C;25°C;;2
+Matéria ativa (PM 296);Materia Ativa;Composicao;True;;;;2
+pH 10% p/p aquoso;pH;Fisico-Quimico;True;%;;10% p/p;4
+cloreto de sódio;Cloreto de Sodio;Composicao;True;;;;2
+sulfato de sódio;Sulfato de Sodio;Composicao;True;;;;2
+insulfatados;Insulfatados;Composicao;True;;;;2
+alcalinidade,  mL HCl 0,1N/g;Alcalinidade;Composicao;True;mL;;;2
+viscosidade, 30°C, BKF, cP;Viscosidade;Fisico-Quimico;True;cP;30°C;;2
+metais pesados;Metais Pesados;Contaminante;True;;;;2
+Transmitância, %;Transmitancia;Cor;True;%;;;2
+Insulfatados, %;Insulfatados;Composicao;True;%;;;6
+Matéria ativa PM 433, %;Materia Ativa;Composicao;True;%;;;2
+Cloreto de sódio, %;Cloreto de Sodio;Composicao;True;%;;;2
+Ferro, ppm;Ferro;Contaminante;True;ppm;;;9
+Dioxana base 100%, pp;Dioxana;Contaminante;True;%;;100%;2
+Aparência 25°C;Aparencia;Organoleptico;False;°C;25°C;;4
+Sulfato de sódio, %;Sulfato de Sodio;Composicao;True;%;;;8
+Alcalinidade, NaOH, %p;Alcalinidade;Composicao;True;%;;;4
+Matéria ativa (PM 430g/mol), %p;Materia Ativa;Composicao;True;%;;;2
+Dioxana, base 100%, ppm;Dioxana;Contaminante;True;ppm;;100%;6
+Sulfato de sódio, %p;Sulfato de Sodio;Composicao;True;%;;;4
+Cor Pt-Co, 20% sol. aquosa;Cor Pt-Co;Cor;True;%;;20%;2
+Ativos, PM 322;Materia Ativa;Composicao;True;;;;2
+Ácido sulfúrico, %;Acido Sulfurico;Composicao;True;%;;;4
+Insulfonados, %;Insulfatados;Composicao;True;%;;;4
+Cor gardner, solução 25% etanólica;Cor Gardner;Cor;True;%;;25%;2
+DMDM Hydantoína como HCOH total, ppm;Formaldeido;Composicao;True;ppm;;;2
+Matéria ativa (PM 384), %p;Materia Ativa;Composicao;True;%;;;2
+Cloreto de sódio, %P;Cloreto de Sodio;Composicao;True;%;;;2
+Insulfatados, %p;Insulfatados;Composicao;True;%;;;4
+pH 10% p/p, aquoso, 25°C;pH;Fisico-Quimico;True;%;25°C;10% p/p;2
+Densidade, 20°C, g/cm3;Densidade;Fisico-Quimico;True;g/cm³;20°C;;2
+Cor PtCo;Cor Pt-Co;Cor;True;;;;2
+Identification Sodium, USP;Identificacao;Identificacao;False;;;;2
+Identification Sulfate, USP;Identificacao;Identificacao;False;;;;2
+pH ( Solução aquosa 1%);pH;Fisico-Quimico;True;%;;1%;2
+Cloreto de Sódio, USP, %;Cloreto de Sodio;Composicao;True;%;;;2
+Sulfato de sódio, USP, %;Sulfato de Sodio;Composicao;True;%;;;2
+Cloreto + Sulfato de sódio, USP, %;Cloreto de Sodio;Composicao;True;%;;;2
+Álcool insulfatado, USP, %;Insulfatados;Composicao;True;%;;;2
+Álcool insulfatado, %;Insulfatados;Composicao;True;%;;;2
+Álcoois totais, USP, %;Alcoois;Composicao;True;%;;;2
+Alcalinidade USP, ( mL/g of 0,1 HCl);Alcalinidade;Composicao;True;mL;;;2
+Matéria-ativa, PM 299, %;Materia Ativa;Composicao;True;%;;;2
+Teor de água, %;Teor de Agua;Fisico-Quimico;True;%;;;2
+Cor iodo, mgI2/100mL;Cor Iodo;Cor;True;mL;;;2
+Teor de sulfonado, %;Sulfonados;Composicao;True;%;;;2
+Matéria ativa, PM 740, %p;Materia Ativa;Composicao;True;%;;;2
+Cloreto de sódio, %p;Cloreto de Sodio;Composicao;True;%;;;4
+Formaldeído, %p;Formaldeido;Composicao;True;%;;;2
+Sólidos, %p;Solidos;Composicao;True;%;;;4
+pH, 2,5% ativos, 25°C;pH;Fisico-Quimico;True;°C;25°C;5%;2
+pH, 1% p/p, aquoso, 25ºC;pH;Fisico-Quimico;True;%;25°C;1% p/p;5
+Cor Pt-Co, 50ºC;Cor Pt-Co;Cor;True;°C;50°C;;2
+Hidroxila, mgKOH/g;Indice de Hidroxila;Fisico-Quimico;True;mgKOH/g;;;2
+Cor gardner, 60ºC;Cor Gardner;Cor;True;°C;60°C;;2
+Ácido graxo e ésteres, mL NaOH 50g;Acidos Graxos;Composicao;True;mL;;;2
+Cor Pt-CO, 25ºC;Cor Pt-Co;Cor;True;°C;25°C;;2
+Cor USP;Cor USP;Cor;True;;;;2
+Densidade, 25/25ºC;Densidade;Fisico-Quimico;True;°C;25°C;;4
+Dietilenoglicol, %;Glicois;Composicao;True;%;;;2
+Glicerina, teor de, %;Glicois;Composicao;True;%;;;2
+Indentificação CG;Identificacao;Identificacao;False;;;;2
+Indentificação IV;Identificacao;Identificacao;False;;;;2
+Impureza totais, %;Impurezas;Composicao;True;%;;;2
+Monoetilenoglicol, %p;Glicois;Composicao;True;%;;;4
+Monopropilenoglicol. %p;Glicois;Composicao;True;%;;;2
+Outras impurezas, %p;Impurezas;Composicao;True;%;;;2
+Resíduo de ignição, ppm;Residuo;Composicao;True;ppm;;;2
+aparência;Aparencia;Organoleptico;False;;;;2
+cor gardner;Cor Gardner;Cor;True;;;;2
+densidade, 25°C, g/cm3;Densidade;Fisico-Quimico;True;g/cm³;25°C;;2
+água, %;Teor de Agua;Fisico-Quimico;True;%;;;2
+Matéria ativa, %p (PM=322);Materia Ativa;Composicao;True;%;;;2
+Transmitância UV 500 nm, cubeta de 20 mm, %T;Transmitancia;Cor;True;%T;;;1
+Peso equivalente;Peso Equivalente;Composicao;True;;;;1
+Nitrogênio Solúvel em água, %p;Teor de Agua;Fisico-Quimico;True;%;;;1
+Material em suspensão;Material em Suspensao;Organoleptico;False;;;;5
+Dietanolamina, %p;Aminas;Composicao;True;%;;;1
+Monoetanolamina, %p;Aminas;Composicao;True;%;;;1
+pH, 3% p/v, aquoso, 25°C;pH;Fisico-Quimico;True;°C;25°C;3% p/v;1
+Cor Pt-Co;Cor Pt-Co;Cor;True;;;;1
+Densidade, 20/20°C;Densidade;Fisico-Quimico;True;°C;20°C;;6
+Faixa de destilação, PIE, °C;Faixa de Destilacao;Composicao;True;°C;;;2
+Faixa de destilação, PS, ºC;Faixa de Destilacao;Composicao;True;°C;;;2
+Antioxidante, ppm;Antioxidante;Composicao;True;ppm;;;4
+Peróxidos ,ppm;Indice de Peroxidos;Contaminante;True;ppm;;;4
+Acidez, como ácido acético, ppm;Indice de Acidez;Fisico-Quimico;True;ppm;;;6
+pH, 25% p/p, aquoso, 25°C;pH;Fisico-Quimico;True;%;25°C;25% p/p;2
+Açucares totais, %;Acucares;Composicao;True;%;;;2
+Ativo aniônico;Materia Ativa;Composicao;True;;;;2
+Umidade,%;Teor de Agua;Fisico-Quimico;True;%;;;2
+pH, 1% p/p aquoso;pH;Fisico-Quimico;True;%;;1% p/p;2
+Amina livre (PM=222);Aminas;Composicao;True;;;;2
+Óxido de amina (PM=238);Aminas;Composicao;True;;;;2
+Peróxido, %;Indice de Peroxidos;Contaminante;True;%;;;2
+Cor apha;Cor APHA;Cor;True;;;;2
+Odor;Odor;Organoleptico;False;;;;2
+Amina livre, PM226, %;Aminas;Composicao;True;%;;;2
+Óxido de Amina, PM242, %;Aminas;Composicao;True;%;;;2
+pH 1% p/p aquoso;pH;Fisico-Quimico;True;%;;1% p/p;2
+Peróxidos, indice de, %;Indice de Peroxidos;Contaminante;True;%;;;2
+Densidade, 25/25°C;Densidade;Fisico-Quimico;True;°C;25°C;;2
+Cor Apha;Cor APHA;Cor;True;;;;2
+Viscosidade ao 4%(4% Polisorbato 20 e 92% Agua), cPs, 25°C, SP 3/20 RPM;Viscosidade;Fisico-Quimico;True;cP;25°C;4%;2
+Viscosidade Procedimento 2, cP;Viscosidade;Fisico-Quimico;True;cP;;;2
+pH, 5% p/p, ISO em água 1:1 v/v;pH;Fisico-Quimico;True;%;;5% p/p;2
+Matéria ativa PM430, %;Materia Ativa;Composicao;True;%;;;2
+Sólidos, %;Solidos;Composicao;True;%;;;4
+pH, 10% aquoso, p/p;pH;Fisico-Quimico;True;%;;10% aquoso;2
+Refração, índice de, 20ºC;Indice de Refracao;Fisico-Quimico;True;°C;20°C;;4
+Acetato de isopentila - AAIP, %p;Aldeidos/Acetatos;Composicao;True;%;;;2
+Piridina, %p;Piridina;Composicao;True;%;;;2
+2-metil-butanol-1, %;Alcoois;Composicao;True;%;;;2
+3-metil-butanol-1, %;Alcoois;Composicao;True;%;;;2
+Isobutanol + N-butanol, ppm;Alcoois;Composicao;True;ppm;;;2
+Isopentanol, %p;Alcoois;Composicao;True;%;;;2
+Aldeídos, como acetaldeído, ppm;Aldeidos/Acetatos;Composicao;True;ppm;;;2
+Resíduo de evaporação, %p;Residuo;Composicao;True;%;;;2
+pH, 1% p/p solução aquosa, 25°C;pH;Fisico-Quimico;True;%;25°C;1% p/p;2
+Índice de Saponificação, mg KOH/g;Indice de Saponificacao;Fisico-Quimico;True;mgKOH/g;;;2
+Material em suspensão, adimencional;Material em Suspensao;Organoleptico;False;;;;2
+Viscosidade, 8ºC, CP;Viscosidade;Fisico-Quimico;True;cP;8°C;;2
+Benzotriazol, %;Componentes Especificos;Composicao;True;%;;;2
+DEA, %;Etanolaminas;Composicao;True;%;;;2
+Difenilamina, %;Aminas;Composicao;True;%;;;2
+Metiltriglicol, %;Glicois;Composicao;True;%;;;2
+Ultrafluid CI 80, %;Componentes Especificos;Composicao;True;%;;;2
+Cor PtCo temperatura ambiente;Cor Pt-Co;Cor;True;;ambiente;;2
+pH, 5% aquoso;pH;Fisico-Quimico;True;%;;5% aquoso;2
+Ponto de névoa 1% p/p, NaCl 5% p/p;Ponto de Nevoa;Fisico-Quimico;True;%;;1% p/p;2
+Índice de acidez;Indice de Acidez;Fisico-Quimico;True;;;;2
+Acidez, índice de (1ª viragem), mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;1
+Acidez, índice de (2ª viragem), mgKOH/g;Indice de Acidez;Fisico-Quimico;True;mgKOH/g;;;1
+Ácido fosfórico livre, %p;Acido Fosforico;Composicao;True;%;;;1
+Diester, %p;Esteres;Composicao;True;%;;;1
+Monoester, %p;Esteres;Composicao;True;%;;;1
+pH 5% p/p aquoso, 25°C;pH;Fisico-Quimico;True;%;25°C;5% p/p;1
+Ponto de névoa 1% p/p, NaCl 5% p/p °C;Ponto de Nevoa;Fisico-Quimico;True;%;;1% p/p;2
+Sólidos totais;Solidos;Composicao;True;;;;1
+pH 1% p/p aquoso, 25°C;pH;Fisico-Quimico;True;%;25°C;1% p/p;1
+Viscosidade, 25ºC,BKF LVT 12rpm, sp3, cP;Viscosidade;Fisico-Quimico;True;cP;25°C;;2
+Aparência, aprox. 25ºC;Aparencia;Organoleptico;False;°C;25°C;;2
+Oxido de etileno residual, ppm;Oxido de Etileno Residual;Contaminante;True;ppm;;;2
+Cor Pt-Co, 25ºC;Cor Pt-Co;Cor;True;°C;25°C;;2
+Matéria ativa, %p -  (PM = 346);Materia Ativa;Composicao;True;%;;;1
+Umidade, %p;Teor de Agua;Fisico-Quimico;True;%;;;1

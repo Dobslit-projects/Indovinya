@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostico Dataset Indovinya</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        h1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        h1 small { display: block; font-weight: normal; font-size: 0.5em; margin-top: 10px; opacity: 0.8; }
+        h2 { color: #667eea; border-bottom: 3px solid #667eea; padding-bottom: 10px; margin: 30px 0 20px; }
+        .card { background: white; border-radius: 10px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .metric { text-align: center; padding: 20px; background: #f8f9ff; border-radius: 8px; }
+        .metric-value { font-size: 2.5em; font-weight: bold; color: #667eea; }
+        .metric-label { color: #666; font-size: 0.9em; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #667eea; color: white; }
+        tr:hover { background: #f8f9ff; }
+        .bar { background: #e0e0e0; border-radius: 4px; height: 20px; overflow: hidden; }
+        .bar-fill { background: linear-gradient(90deg, #667eea, #764ba2); height: 100%; transition: width 0.3s; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 15px; font-size: 0.8em; margin: 2px; }
+        .tag-a { background: #4CAF50; color: white; }
+        .tag-b { background: #8BC34A; color: white; }
+        .tag-c { background: #FFC107; color: #333; }
+        .tag-d { background: #f44336; color: white; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+        .success { background: #d4edda; border-left: 4px solid #28a745; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+        .danger { background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+        .nota-usuario { background: #e3f2fd; border-left: 4px solid #2196F3; padding: 10px 15px; margin: 10px 0; font-style: italic; border-radius: 0 8px 8px 0; }
+        .two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .two-cols { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Diagnostico do Dataset Indovinya
+            <small>Analise do estado atual dos dados - 11/12/2025</small>
+        </h1>
+
+        <div class="card">
+            <h2>1. Visao Geral</h2>
+            <div class="grid">
+                <div class="metric">
+                    <div class="metric-value">872</div>
+                    <div class="metric-label">Registros</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">52</div>
+                    <div class="metric-label">Produtos</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">250</div>
+                    <div class="metric-label">Tipos de Ensaio</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">32.9%</div>
+                    <div class="metric-label">Celulas Vazias</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">117</div>
+                    <div class="metric-label">Metodos</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2. Grau de Etoxilacao</h2>
+            <table>
+                <tr><th>Grau</th><th>Qtd</th><th>%</th><th>Distribuicao</th></tr>
+                <tr>
+                    <td>Não aplicável</td>
+                    <td>364</td>
+                    <td>41.7%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 83.4862385321101%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>20EO</td>
+                    <td>206</td>
+                    <td>23.6%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 47.24770642201835%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>2EO</td>
+                    <td>36</td>
+                    <td>4.1%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 8.256880733944955%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>3 EO</td>
+                    <td>36</td>
+                    <td>4.1%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 8.256880733944955%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>3EO</td>
+                    <td>32</td>
+                    <td>3.7%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 7.339449541284404%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>7EO</td>
+                    <td>26</td>
+                    <td>3.0%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 5.963302752293578%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>6EO</td>
+                    <td>26</td>
+                    <td>3.0%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 5.963302752293578%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>16EO</td>
+                    <td>24</td>
+                    <td>2.8%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 5.5045871559633035%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>150EO</td>
+                    <td>20</td>
+                    <td>2.3%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 4.587155963302752%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>10PO</td>
+                    <td>20</td>
+                    <td>2.3%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 4.587155963302752%"></div></div></td>
+                </tr>
+            </table>
+            <div class="warning">
+                <strong>Atencao:</strong> 43.1% dos registros sao "Nao aplicavel" ou "Nao descrito".
+                Grau de Etoxilacao e util principalmente para o grupo "Ethoxylates and Propoxylates".
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>3. Ensaios Fisico-Quimicos</h2>
+            <div class="danger">
+                <strong>Problema Critico:</strong> 250 variacoes de nome para aproximadamente 30 ensaios reais.
+                Nomenclatura inconsistente impede comparacoes diretas.
+            </div>
+            <h3 style="margin-top: 20px;">Exemplos de duplicatas:</h3>
+            <table>
+                <tr><th>Categoria</th><th>Variacoes encontradas</th></tr>
+                <tr><td>pH</td><td>32 variacoes diferentes</td></tr>
+                <tr><td>Agua</td><td>14 variacoes diferentes</td></tr>
+                <tr><td>Acidez</td><td>12 variacoes diferentes</td></tr>
+                <tr><td>Hidroxila</td><td>4 variacoes diferentes</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>4. Especificacoes</h2>
+            <div class="two-cols">
+                <div>
+                    <h3>Distribuicao por Tipo</h3>
+                    <table>
+                        <tr><th>Tipo</th><th>%</th></tr>
+                        <tr><td>Range (X - Y)</td><td>43.0%</td></tr>
+                        <tr><td>Maximo</td><td>37.2%</td></tr>
+                        <tr><td>Descritiva (texto)</td><td>13.2%</td></tr>
+                        <tr><td>Numerica (outro)</td><td>3.0%</td></tr>
+                        <tr><td>Minimo</td><td>2.8%</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <h3>Exemplos</h3>
+                    <p><strong>Range:</strong> 190,0 - 220,0</p>
+                    <p><strong>Maximo:</strong> 1,0 max.</p>
+                    <p><strong>Descritiva:</strong> liquido livre de material estranho</p>
+                </div>
+            </div>
+            <div class="success">
+                <strong>Conclusao:</strong> Especificacoes majoritariamente numericas (80%). Tratamento diferenciado necessario para descritivas.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>5. Padrao Temporal dos Testes</h2>
+            <table>
+                <tr><th>Periodo</th><th>Preenchido</th><th>%</th><th>Visualizacao</th></tr>
+                <tr>
+                    <td>0 dia</td>
+                    <td>852</td>
+                    <td>97.7%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 97.70642201834863%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>1 sem</td>
+                    <td>60</td>
+                    <td>6.9%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 6.8807339449541285%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>2 sem</td>
+                    <td>61</td>
+                    <td>7.0%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 6.9954128440366965%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>1m</td>
+                    <td>368</td>
+                    <td>42.2%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 42.201834862385326%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>2m</td>
+                    <td>67</td>
+                    <td>7.7%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 7.68348623853211%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>3m</td>
+                    <td>803</td>
+                    <td>92.1%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 92.08715596330275%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>4m</td>
+                    <td>52</td>
+                    <td>6.0%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 5.963302752293578%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>5m</td>
+                    <td>47</td>
+                    <td>5.4%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 5.389908256880735%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>6m</td>
+                    <td>823</td>
+                    <td>94.4%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 94.38073394495413%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>9m</td>
+                    <td>380</td>
+                    <td>43.6%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 43.57798165137615%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>12m</td>
+                    <td>401</td>
+                    <td>46.0%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 45.98623853211009%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>18m</td>
+                    <td>365</td>
+                    <td>41.9%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 41.857798165137616%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>24m</td>
+                    <td>358</td>
+                    <td>41.1%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 41.05504587155963%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>30m</td>
+                    <td>215</td>
+                    <td>24.7%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 24.655963302752294%"></div></div></td>
+                </tr>
+                <tr>
+                    <td>36m</td>
+                    <td>197</td>
+                    <td>22.6%</td>
+                    <td><div class="bar"><div class="bar-fill" style="width: 22.591743119266056%"></div></div></td>
+                </tr>
+            </table>
+            <div class="two-cols" style="margin-top: 20px;">
+                <div class="warning">
+                    <strong>Estudo Acelerado (53%):</strong><br>
+                    Foco: 0 dia → 1m → 3m → 6m
+                </div>
+                <div class="warning">
+                    <strong>Estudo Longa Duracao (47%):</strong><br>
+                    Foco: 0 dia → 3m → 6m → 9m → 12m → 18m → 24m → 30m → 36m
+                </div>
+            </div>
+            <div class="danger">
+                <strong>Diagnostico:</strong> 36 combinacoes diferentes de periodos medidos. Nao ha padronizacao clara.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>6. Qualidade dos Dados - Tiers</h2>
+            <div class="grid">
+                <div class="metric">
+                    <div class="metric-value">4</div>
+                    <div class="metric-label"><span class="tag tag-a">Tier A (&gt;55%)</span></div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">19</div>
+                    <div class="metric-label"><span class="tag tag-b">Tier B (40-55%)</span></div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">22</div>
+                    <div class="metric-label"><span class="tag tag-c">Tier C (25-40%)</span></div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">7</div>
+                    <div class="metric-label"><span class="tag tag-d">Tier D (&lt;25%)</span></div>
+                </div>
+            </div>
+            <h3 style="margin-top: 20px;">Top 10 Produtos por Completude</h3>
+            <table>
+                <tr><th>Produto</th><th>Registros</th><th>Completude</th><th>Tier</th></tr>
+                <tr>
+                    <td>ALKONAT C1618 50/50</td>
+                    <td>12</td>
+                    <td>60.0%</td>
+                    <td><span class="tag tag-a">A</span></td>
+                </tr>
+                <tr>
+                    <td>SURFOM 1322 SC</td>
+                    <td>10</td>
+                    <td>60.0%</td>
+                    <td><span class="tag tag-a">A</span></td>
+                </tr>
+                <tr>
+                    <td>Neominox LA 3832</td>
+                    <td>12</td>
+                    <td>60.0%</td>
+                    <td><span class="tag tag-a">A</span></td>
+                </tr>
+                <tr>
+                    <td>Alkopon 24S35 </td>
+                    <td>2</td>
+                    <td>60.0%</td>
+                    <td><span class="tag tag-a">A</span></td>
+                </tr>
+                <tr>
+                    <td>Glicepol 4PGTO</td>
+                    <td>12</td>
+                    <td>53.3%</td>
+                    <td><span class="tag tag-b">B</span></td>
+                </tr>
+                <tr>
+                    <td>Alkopon 24S35</td>
+                    <td>18</td>
+                    <td>52.6%</td>
+                    <td><span class="tag tag-b">B</span></td>
+                </tr>
+                <tr>
+                    <td>Alkopon ASL</td>
+                    <td>12</td>
+                    <td>51.7%</td>
+                    <td><span class="tag tag-b">B</span></td>
+                </tr>
+                <tr>
+                    <td>Alkopon N </td>
+                    <td>22</td>
+                    <td>48.8%</td>
+                    <td><span class="tag tag-b">B</span></td>
+                </tr>
+                <tr>
+                    <td>Alkont EL 3645</td>
+                    <td>10</td>
+                    <td>46.7%</td>
+                    <td><span class="tag tag-b">B</span></td>
+                </tr>
+                <tr>
+                    <td>Alkopon 24 3S 28 APH</td>
+                    <td>20</td>
+                    <td>45.0%</td>
+                    <td><span class="tag tag-b">B</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>7. Problemas de Organizacao</h2>
+            <div class="danger">
+                <h3>Problemas Identificados:</h3>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Formato Wide:</strong> 15 colunas de tempo dificultam analise temporal</li>
+                    <li><strong>Dados Mistos:</strong> Numeros e texto nos mesmos campos de resultado</li>
+                    <li><strong>Nomenclatura:</strong> 250 nomes para ~30 ensaios reais</li>
+                    <li><strong>Sem Separacao:</strong> Ensaios quantitativos e qualitativos juntos</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="color: white; border-color: white;">8. Resumo Executivo</h2>
+            <div class="two-cols">
+                <div>
+                    <h3 style="color: #90EE90;">Pontos Positivos</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Dados existem e cobrem 2013-2024</li>
+                        <li>Hierarquia implicita funcional</li>
+                        <li>Grau de etoxilacao util para segmentacao</li>
+                        <li>Tipos de estudo bem definidos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #FFB6C1;">Pontos Criticos</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>32.9% de valores nulos</li>
+                        <li>Nomenclatura inconsistente</li>
+                        <li>Formato dificulta analises</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

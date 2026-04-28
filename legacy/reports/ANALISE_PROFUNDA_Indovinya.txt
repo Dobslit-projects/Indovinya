@@ -1,0 +1,579 @@
+====================================================================================================
+ANALISE PROFUNDA - TRATAMENTO DE DADOS INDOVINYA
+Data: 15/12/2025 20:51
+====================================================================================================
+====================================================================================================
+PARTE 1: ANATOMIA DO DATASET - COMO ELE FUNCIONA
+====================================================================================================
+
+ESTRUTURA ATUAL DO DATASET:
+---------------------------
+Cada LINHA representa: 1 Ensaio de 1 Produto em 1 Estudo
+
+Colunas de IDENTIFICACAO:
+  - Item (ID numerico do produto)
+  - Codigo de item (codigo interno)
+  - Nome do produto
+  - Descricao quimica
+
+Colunas de CLASSIFICACAO:
+  - Grau de Etoxilacao
+  - Grupo de Familia
+  - Familia de Produtos
+  - Peso Molecular
+
+Colunas do ESTUDO:
+  - Data inicial do estudo
+  - Tipo de estudo (Acelerado / Longa duracao)
+
+Colunas do ENSAIO:
+  - Ensaios fisico-quimicos (nome do teste)
+  - Metodo (codigo do metodo analitico)
+  - Especificacao (criterio de aceitacao)
+
+Colunas de RESULTADOS (15 pontos temporais):
+  - 0 dia, 1 sem, 2 sem, 1m, 2m, 3m, 4m, 5m, 6m, 9m, 12m, 18m, 24m, 30m, 36m
+
+
+RELACIONAMENTOS IDENTIFICADOS:
+--------------------------------------------------
+  Produtos unicos: 52
+  Codigos de item unicos: 48
+  Items unicos: 50
+
+ESTUDOS POR PRODUTO:
+  Media de estudos por produto: 1.8
+  Minimo: 1
+  Maximo: 2
+====================================================================================================
+PARTE 2: ENSAIOS FISICO-QUIMICOS - ANALISE PROFUNDA
+====================================================================================================
+
+Total de nomes de ensaio unicos: 250
+
+CATEGORIZACAO DOS ENSAIOS:
+----------------------------------------------------------------------
+
+Outros: 79 variacoes
+   [  2x] Anilina, %
+   [  2x] Anilina 1EO, %
+   [  2x] Anilina 2EO, %
+   [  2x] Anilina 3EO, %
+   [  2x] Material em suspensão a 60°C
+   ... e mais 74 variacoes
+
+pH: 29 variacoes
+   [  2x] pH, 5% p/p aquoso, 25ºC
+   [  2x] pH 5% iso/água 1:1 v/v, 25°C (é análise de processo)
+   [  6x] pH, 10% aquoso, 25ºC
+   [  6x] pH, 5% aquoso, 25ºC
+   [  8x] pH, 5% p/p, aquoso, 25ºC
+   ... e mais 24 variacoes
+
+Cor: 29 variacoes
+   [  2x] Cor Gardner, 60°C
+   [ 16x] Cor Gardner, 25ºC
+   [  2x] Cor Gardner, 60ºC
+   [  6x] Cor Gardner
+   [  1x] Cor Pt-Co, 25°C
+   ... e mais 24 variacoes
+
+Acidez: 16 variacoes
+   [  6x] Índice de acidez, mgKOH/g
+   [ 12x] N° ácido, mgKOH/g
+   [  2x] Indice de Acidez (C12), mgKOH/g
+   [ 19x] Acidez, índice de, mgKOH/g
+   [  2x] Indice de Acidez (C18&C16), mgKOH/g
+   ... e mais 11 variacoes
+
+Acidos Graxos: 14 variacoes
+   [  2x] C10 Caprico, %
+   [  2x] C12 Laurico, %
+   [  6x] C14 Miristico, %
+   [  6x] C16 Palmitico, %
+   [  8x] C18 Estearico, %
+   ... e mais 9 variacoes
+
+Agua/Umidade: 10 variacoes
+   [ 45x] Água, %p
+   [ 16x] Água, %
+   [  6x] Teor de Água
+   [  2x] Viscosidade ao 2% (4% polisorbato 20 e 94% água, cPs
+   [  2x] Teor de água, %
+   ... e mais 5 variacoes
+
+Materia Ativa: 10 variacoes
+   [  2x] Matéria ativa (PM 296)
+   [  2x] Matéria ativa PM 433, %
+   [  2x] Matéria ativa (PM 430g/mol), %p
+   [  2x] Ativos, PM 322
+   [  2x] Matéria ativa (PM 384), %p
+   ... e mais 5 variacoes
+
+Cloreto/Sulfato: 10 variacoes
+   [  2x] cloreto de sódio
+   [  2x] sulfato de sódio
+   [  2x] Cloreto de sódio, %
+   [  8x] Sulfato de sódio, %
+   [  4x] Sulfato de sódio, %p
+   ... e mais 5 variacoes
+
+Aparencia: 7 variacoes
+   [ 11x] Aparência, 25°C
+   [ 20x] Aparência
+   [  2x] Aparência temp. ambiente
+   [ 20x] Aparência, 25ºC
+   [  4x] Aparência 25°C
+   ... e mais 2 variacoes
+
+Viscosidade: 7 variacoes
+   [  2x] Viscosidade 25°C, BKF, cp
+   [  4x] Viscosidade, 25°C, cinemática, cSt
+   [  2x] Viscosidade, cP
+   [  2x] viscosidade, 30°C, BKF, cP
+   [  2x] Viscosidade Procedimento 2, cP
+   ... e mais 2 variacoes
+
+Densidade: 7 variacoes
+   [  2x] Densidade, 25°C
+   [  2x] Peso específico a 25°C
+   [  2x] Densidade, 20°C, g/cm3
+   [  4x] Densidade, 25/25ºC
+   [  2x] densidade, 25°C, g/cm3
+   ... e mais 2 variacoes
+
+Peroxidos: 6 variacoes
+   [  6x] Peróxidos, índice de, Meq/1000g
+   [  2x] Peróxidos, índice de, mEq/1000g
+   [  2x] Peróxidos, índice de, ppm
+   [  4x] Peróxidos ,ppm
+   [  2x] Peróxido, %
+   ... e mais 1 variacoes
+
+Ponto (fusao/nevoa/solidif): 6 variacoes
+   [  2x] Ponto de fusão, °C
+   [  2x] Ponto de solidificação, °C
+   [  2x] Ponto de névoa, 20% p/p, EBDEG 25% p/p, ºC
+   [  6x] Ponto de névoa, 1% p/p, aquoso, ºC
+   [  2x] Ponto de névoa 1% p/p, NaCl 5% p/p
+   ... e mais 1 variacoes
+
+Hidroxila: 4 variacoes
+   [  4x] Hidroxila, índice de, mgKOH/g
+   [ 24x] Hidroxila, índice de, mg KOH/g
+   [  2x] Índice de hidroxila - mgKOH/g
+   [  2x] Hidroxila, mgKOH/g
+
+Saponificacao: 4 variacoes
+   [  2x] Índice de saponificação, mgKOH/g
+   [ 16x] Saponificação, índice de , mgKOH/g
+   [  6x] Saponificação, mgKOH/g
+   [  2x] Índice de Saponificação, mg KOH/g
+
+Oxido de Etileno: 4 variacoes
+   [  6x] Conteúdo de Oxido de Etileno, %
+   [  2x] Óxido de Etileno Residual, ppm
+   [  6x] Óxido de etileno residual, ppm
+   [  2x] Oxido de etileno residual, ppm
+
+Dioxana: 3 variacoes
+   [ 16x] Dioxana, ppm
+   [  2x] Dioxana base 100%, pp
+   [  6x] Dioxana, base 100%, ppm
+
+Transmitancia: 3 variacoes
+   [  2x] Transmitância 800 nm, 1 cm, %T
+   [  2x] Transmitância, %
+   [  1x] Transmitância UV 500 nm, cubeta de 20 mm, %T
+
+Indice de Iodo: 2 variacoes
+   [  2x] Indice de Iodo (C18:1) gl2/100g
+   [  2x] Índice de iodo I2/100g
+
+======================================================================
+PROPOSTA DE NORMALIZACAO DE ENSAIOS:
+======================================================================
+
+MAPEAMENTO SUGERIDO (ensaio_original -> ensaio_normalizado):
+
+  pH:
+    <- 'pH, 5% p/p aquoso, 25ºC'
+    <- 'pH 5% iso/água 1:1 v/v, 25°C (é análise de processo)'
+    <- 'pH, 10% aquoso, 25ºC'
+    ... e mais 29
+
+  Indice de Acidez:
+    <- 'Índice de acidez, mgKOH/g'
+    <- 'N° ácido, mgKOH/g'
+    <- 'Indice de Acidez (C12), mgKOH/g'
+    ... e mais 10
+
+  Indice de Hidroxila:
+    <- 'Hidroxila, índice de, mgKOH/g'
+    <- 'Hidroxila, índice de, mg KOH/g'
+    <- 'Índice de hidroxila - mgKOH/g'
+    ... e mais 1
+
+  Teor de Agua:
+    <- 'Água, %p'
+    <- 'pH 5% iso/água 1:1 v/v, 25°C (é análise de processo)'
+    <- 'Água, %'
+    ... e mais 13
+
+  Aparencia:
+    <- 'Aparência, 25°C'
+    <- 'Aparência'
+    <- 'Aparência temp. ambiente'
+    ... e mais 4
+
+  Cor Gardner:
+    <- 'Cor Gardner, 60°C'
+    <- 'Cor Gardner, 25ºC'
+    <- 'Cor Gardner, 60ºC'
+    ... e mais 7
+
+  Cor Pt-Co:
+    <- 'Cor Pt-Co, 25°C'
+    <- 'Cor Pt-Co, temperatura ambiente'
+    <- 'Cor Pt-Co,  50°C '
+    ... e mais 10
+
+  Cor APHA:
+    <- 'Cor APHA 40 ºC'
+    <- 'Cor apha'
+    <- 'Cor Apha'
+
+  Viscosidade:
+    <- 'Viscosidade 25°C, BKF, cp'
+    <- 'Viscosidade, 25°C, cinemática, cSt'
+    <- 'Viscosidade, cP'
+    ... e mais 6
+
+  Indice de Saponificacao:
+    <- 'Índice de saponificação, mgKOH/g'
+    <- 'Saponificação, índice de , mgKOH/g'
+    <- 'Saponificação, mgKOH/g'
+    ... e mais 1
+
+  Dioxana:
+    <- 'Dioxana, ppm'
+    <- 'Dioxana base 100%, pp'
+    <- 'Dioxana, base 100%, ppm'
+
+  Indice de Peroxidos:
+    <- 'Peróxidos, índice de, Meq/1000g'
+    <- 'Peróxidos, índice de, mEq/1000g'
+    <- 'Peróxidos, índice de, ppm'
+    ... e mais 3
+
+  Densidade:
+    <- 'Densidade, 25°C'
+    <- 'Peso específico a 25°C'
+    <- 'Densidade, 20°C, g/cm3'
+    ... e mais 4
+
+  Ponto de Fusao:
+    <- 'Ponto de fusão, °C'
+
+  Ponto de Nevoa:
+    <- 'Ponto de névoa, 20% p/p, EBDEG 25% p/p, ºC'
+    <- 'Ponto de névoa, 1% p/p, aquoso, ºC'
+    <- 'Ponto de névoa 1% p/p, NaCl 5% p/p'
+    ... e mais 1
+
+  Materia Ativa:
+    <- 'Matéria ativa (PM 296)'
+    <- 'Matéria ativa PM 433, %'
+    <- 'Matéria ativa (PM 430g/mol), %p'
+    ... e mais 5
+
+  Oxido de Etileno Residual:
+    <- 'Conteúdo de Oxido de Etileno, %'
+    <- 'Óxido de Etileno Residual, ppm'
+    <- 'Óxido de etileno residual, ppm'
+    ... e mais 1
+====================================================================================================
+PARTE 3: ESPECIFICACOES - ANALISE PROFUNDA
+====================================================================================================
+
+Total de especificacoes unicas: 335
+
+DISTRIBUICAO POR TIPO DE ESPECIFICACAO:
+--------------------------------------------------
+
+RANGE: 171 especificacoes
+   Exemplo: '190,0 - 220,0'
+            -> min=190.0, max=220.0
+   Exemplo: '6,0 - 8,0'
+            -> min=6.0, max=8.0
+   Exemplo: '95 - 100'
+            -> min=95, max=100
+
+MAXIMO: 100 especificacoes
+   Exemplo: '1,0 máx.'
+            -> min=None, max=1.0
+   Exemplo: '0,1 máx.'
+            -> min=None, max=0.1
+   Exemplo: '6,0 máx.'
+            -> min=None, max=6.0
+
+DESCRITIVA: 37 especificacoes
+   Exemplo: 'líquido livre de material estranho'
+   Exemplo: 'líquido claro a escuro, solido se frio'
+   Exemplo: 'substancialmente livre'
+
+OUTRO: 13 especificacoes
+   Exemplo: '16,0 mnáx.'
+   Exemplo: '34,0 a 36,0'
+   Exemplo: 'ASE'
+
+MINIMO: 12 especificacoes
+   Exemplo: '94,0 mín'
+            -> min=94.0, max=None
+   Exemplo: '90,0 mín.'
+            -> min=90.0, max=None
+   Exemplo: '52,0 mín'
+            -> min=52.0, max=None
+
+SEM_SPEC: 2 especificacoes
+   Exemplo: '----'
+   Exemplo: 'Monitoramento'
+
+======================================================================
+RELACAO ENSAIO x TIPO DE ESPECIFICACAO:
+======================================================================
+
+Ensaios com especificacoes DESCRITIVAS (qualitativos):
+   - Aparência
+   - Aparência 25°C
+   - Aparência temp. ambiente
+   - Aparência, 25°C
+   - Aparência, 25ºC
+   - Aparência, aprox. 25ºC
+   - Cor USP
+   - Identification Sodium, USP
+   - Identification Sulfate, USP
+   - Identificação USP
+   Total: 20 ensaios qualitativos
+
+Ensaios com especificacoes NUMERICAS (quantitativos):
+   Total: 218 ensaios quantitativos
+====================================================================================================
+PARTE 4: ESTUDO ACELERADO vs LONGA DURACAO
+====================================================================================================
+
+ACELERADO: 462 registros (53.0%)
+LONGA DURACAO: 410 registros (47.0%)
+
+----------------------------------------------------------------------
+COMPARATIVO DE PREENCHIMENTO TEMPORAL:
+----------------------------------------------------------------------
+
+Periodo          Acelerado   Longa Duracao       Diferenca
+-------------------------------------------------------
+0 dia                98.9%           96.3%           +2.6% 
+1 sem                13.0%            0.0%          +13.0% 
+2 sem                13.2%            0.0%          +13.2% 
+1m                   79.7%            0.0%          +79.7% <<<
+2m                   14.5%            0.0%          +14.5% 
+3m                   95.5%           88.3%           +7.2% 
+4m                   11.3%            0.0%          +11.3% 
+5m                   10.2%            0.0%          +10.2% 
+6m                   98.7%           89.5%           +9.2% 
+9m                    3.5%           88.8%          -85.3% <<<
+12m                   0.0%           97.8%          -97.8% <<<
+18m                   0.0%           89.0%          -89.0% <<<
+24m                   0.0%           87.3%          -87.3% <<<
+30m                   0.0%           52.4%          -52.4% <<<
+36m                   0.0%           48.0%          -48.0% <<<
+
+----------------------------------------------------------------------
+ENSAIOS POR TIPO DE ESTUDO:
+----------------------------------------------------------------------
+
+Ensaios APENAS em Acelerado: 23
+   - Cor Pt-Co, 25°C
+   - Acidez, índice de mgKOH/g
+   - Transmitância UV 500 nm, cubeta de 20 mm, %T
+   - Monoetanolamina, %p
+   - Diester, %p
+
+Ensaios APENAS em Longa Duracao: 0
+
+Ensaios em AMBOS: 227
+
+----------------------------------------------------------------------
+PRODUTOS POR TIPO DE ESTUDO:
+----------------------------------------------------------------------
+
+Produtos APENAS em Acelerado: 9
+Produtos APENAS em Longa Duracao: 0
+Produtos em AMBOS os estudos: 43
+
+Produtos com AMBOS os tipos de estudo:
+   - Glicenat: 15 acel + 15 longa
+   - Oxisense S 0440: 4 acel + 4 longa
+   - Glicepol 4PGTO: 6 acel + 6 longa
+   - Surfom 9131: 9 acel + 9 longa
+   - Alkest TW 60 FGM K: 19 acel + 19 longa
+   - ALKOPON NS ECO 92 N: 15 acel + 15 longa
+   - Alkonat L 30: 16 acel + 16 longa
+   - Alkest SP 20 FGM K: 6 acel + 6 longa
+   - Alkopon 24 3S 70 BPH: 8 acel + 8 longa
+   - Oxitive 7140: 7 acel + 7 longa
+====================================================================================================
+PARTE 5: ANALISE DOS VALORES (RESULTADOS)
+====================================================================================================
+
+TIPOS DE VALORES NAS COLUNAS TEMPORAIS:
+--------------------------------------------------
+
+0 dia:
+   NUMERICO  :  671 ( 76.9%)
+   TEXTO     :  132 ( 15.1%)
+   MISTO     :   49 (  5.6%)
+   NULO      :   20 (  2.3%)
+
+3m:
+   NUMERICO  :  625 ( 71.7%)
+   TEXTO     :  137 ( 15.7%)
+   NULO      :   69 (  7.9%)
+   MISTO     :   41 (  4.7%)
+
+6m:
+   NUMERICO  :  646 ( 74.1%)
+   TEXTO     :  140 ( 16.1%)
+   NULO      :   49 (  5.6%)
+   MISTO     :   37 (  4.2%)
+
+12m:
+   NULO      :  471 ( 54.0%)
+   NUMERICO  :  311 ( 35.7%)
+   TEXTO     :   68 (  7.8%)
+   MISTO     :   22 (  2.5%)
+
+----------------------------------------------------------------------
+EXEMPLOS DE VALORES TEXTO (nao-numericos):
+----------------------------------------------------------------------
+
+Total de valores texto unicos: 120
+
+Exemplos:
+   - limpido
+   -  <1 
+   - Pasta Turva Amarelada
+   - < 0
+   - <0,01
+   - flocos brancos
+   - <5
+   - Líquido, límpido, amarelado
+   - Líquido amarelado
+   - Limpido
+   - <20
+   - líquido, límpido e incolor
+   - < 5
+   - Pastoso, Límpido, Incolor
+   - Substancialmente livre
+   - Pasta amarelada
+   - sólido
+   - Líquido turvo amarelado
+   - granulos branco
+   - Sólido, branco, granulado
+====================================================================================================
+PARTE 6: RECOMENDACOES DE TRATAMENTO
+====================================================================================================
+
+TRATAMENTOS NECESSARIOS:
+========================
+
+1. NORMALIZACAO DE ENSAIOS
+   -------------------------
+   Problema: 250 nomes diferentes para ~20 ensaios reais
+   Solucao: Criar tabela DE-PARA com ensaio_original -> ensaio_normalizado
+   Prioridade: ALTA (bloqueia qualquer analise comparativa)
+
+   Sugestao de categorias normalizadas:
+   - pH
+   - Indice de Acidez
+   - Indice de Hidroxila
+   - Teor de Agua
+   - Aparencia
+   - Cor (Gardner / Pt-Co / APHA)
+   - Viscosidade
+   - Indice de Saponificacao
+   - Dioxana
+   - Indice de Peroxidos
+   - Densidade
+   - Materia Ativa
+   - Oxido de Etileno Residual
+   - Acidos Graxos
+   - Outros
+
+2. SEPARACAO QUANTITATIVO vs QUALITATIVO
+   --------------------------------------
+   Problema: Ensaios numericos e descritivos misturados
+   Solucao: Criar flag is_quantitativo baseado no tipo de especificacao
+   Prioridade: ALTA (tratamento diferente para cada tipo)
+
+   Quantitativos: pH, Acidez, Hidroxila, Agua, Viscosidade, etc.
+   Qualitativos: Aparencia, Limpidez, Material em suspensao, etc.
+
+3. PARSE DE ESPECIFICACOES
+   ------------------------
+   Problema: Especificacoes em texto livre
+   Solucao: Extrair campos estruturados:
+     - tipo: RANGE / MAXIMO / MINIMO / DESCRITIVA / SEM_SPEC
+     - valor_min: numero ou null
+     - valor_max: numero ou null
+     - descricao: texto para descritivas
+   Prioridade: ALTA (necessario para validacao de conformidade)
+
+4. SEPARACAO POR TIPO DE ESTUDO
+   -----------------------------
+   Problema: Acelerado e Longa Duracao tem cronogramas diferentes
+   Solucao: Processar separadamente ou criar views filtradas
+   Prioridade: MEDIA
+
+   Acelerado: foco em 0dia, 1m, 3m, 6m
+   Longa Duracao: foco em 0dia, 3m, 6m, 9m, 12m, 18m, 24m, 30m, 36m
+
+5. TRATAMENTO DE VALORES MISTOS
+   -----------------------------
+   Problema: Colunas temporais tem numeros E texto
+   Solucao:
+     - Para quantitativos: converter para float, tratar virgula como decimal
+     - Para qualitativos: manter como texto, criar encoding se necessario
+   Prioridade: ALTA
+
+6. FORMATO DOS DADOS
+   ------------------
+   Problema: Formato WIDE (15 colunas de tempo)
+   Solucao: Converter para formato LONG se necessario para series temporais
+     - Manter WIDE para visualizacao por produto
+     - Criar LONG para analises de tendencia
+   Prioridade: MEDIA (depende do uso)
+
+
+
+======================================================================
+ORDEM SUGERIDA DE TRATAMENTO:
+======================================================================
+
+FASE 1 - Estruturacao Basica:
+  1.1 Criar tabela de normalizacao de ensaios
+  1.2 Classificar ensaios em quantitativo/qualitativo
+  1.3 Parsear especificacoes
+
+FASE 2 - Limpeza de Valores:
+  2.1 Converter valores numericos (tratar virgula)
+  2.2 Padronizar valores texto
+  2.3 Tratar valores ausentes
+
+FASE 3 - Separacao por Contexto:
+  3.1 Separar por tipo de estudo (Acelerado / Longa)
+  3.2 Separar por tipo de ensaio (Quant / Qual)
+
+FASE 4 - Validacao:
+  4.1 Verificar conformidade com especificacoes
+  4.2 Identificar outliers
+  4.3 Gerar alertas

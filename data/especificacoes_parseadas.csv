@@ -1,0 +1,336 @@
+﻿spec_original;spec_tipo;spec_min;spec_max;spec_descricao;frequencia
+190,0 - 220,0;RANGE;190.0;220.0;;2
+6,0 - 8,0;RANGE;6.0;8.0;;8
+líquido livre de material estranho;DESCRITIVA;;;líquido livre de material estranho;2
+1,0 máx.;MAXIMO;;1.0;;20
+ ----;SEM_SPEC;;;;2
+0,1 máx.;MAXIMO;;0.1;;4
+94,0 mín;MINIMO;94.0;;;2
+6,0 máx.;MAXIMO;;6.0;;4
+7,0 máx.;MAXIMO;;7.0;;2
+líquido claro a escuro, solido se frio;DESCRITIVA;;;líquido claro a escuro, solido se frio;2
+0,20 máx.;MAXIMO;;0.2;;4
+95 - 100;RANGE;95.0;100.0;;2
+substancialmente livre;DESCRITIVA;;;substancialmente livre;5
+9,0 máx.;MAXIMO;;9.0;;2
+900 - 1000000;RANGE;900.0;1000000.0;;2
+125 máx.;MAXIMO;;125.0;;2
+flocos amarelados;DESCRITIVA;;;flocos amarelados;2
+52,0 - 57,0;RANGE;52.0;57.0;;2
+3 máx.;MAXIMO;;3.0;;8
+13,0 - 25,0;RANGE;13.0;25.0;;2
+2,0 máx.;MAXIMO;;2.0;;10
+330,0 - 358,0;RANGE;330.0;358.0;;2
+8,0 máx.;MAXIMO;;8.0;;10
+3,0 -11,0;RANGE;3.0;11.0;;2
+158,0 - 170,0;RANGE;158.0;170.0;;2
+5,0 máx.;MAXIMO;;5.0;;8
+235,0 - 260,0;RANGE;235.0;260.0;;2
+10,0 máx.;MAXIMO;;10.0;;20
+5,0 - 9,0;RANGE;5.0;9.0;;2
+147,0 - 157,0;RANGE;147.0;157.0;;2
+195,0 - 215,0;RANGE;195.0;215.0;;2
+3,0 - 11,0;RANGE;3.0;11.0;;2
+145,0 - 160,0;RANGE;145.0;160.0;;2
+8,5 máx.;MAXIMO;;8.5;;2
+10 máx.;MAXIMO;;10.0;;12
+40,0 - 60,0;RANGE;40.0;60.0;;4
+14,0 - 25,0;RANGE;14.0;25.0;;2
+7,0 - 15,0;RANGE;7.0;15.0;;2
+7,0  máx.;MAXIMO;;7.0;;2
+11,0  máx.;MAXIMO;;11.0;;2
+3,0 máx.;MAXIMO;;3.0;;8
+10,0  máx.;MAXIMO;;10.0;;2
+passa;DESCRITIVA;;;passa;6
+15 - 17;RANGE;15.0;17.0;;2
+250 - 275;RANGE;250.0;275.0;;2
+70,0 - 74,0;RANGE;70.0;74.0;;2
+96,5 - 107,5;RANGE;96.5;107.5;;2
+0,25 máx.;MAXIMO;;0.25;;10
+5,0 - 7,0;RANGE;5.0;7.0;;6
+40,0 - 50,0;RANGE;40.0;50.0;;2
+Subst. Livre;DESCRITIVA;;;Subst. Livre;2
+81 - 96;RANGE;81.0;96.0;;2
+1,8 máx.;MAXIMO;;1.8;;2
+Monitoramento;SEM_SPEC;;;;6
+Pasta Amarelada;DESCRITIVA;;;Pasta Amarelada;2
+45 - 55;RANGE;45.0;55.0;;4
+2,0 - 3,0;RANGE;2.0;3.0;;4
+90,0 mín.;MINIMO;90.0;;;2
+21,5 - 26,0;RANGE;21.5;26.0;;2
+200,0 - 212,0;RANGE;200.0;212.0;;2
+65,0 - 69,5;RANGE;65.0;69.5;;4
+81,0 - 96,0;RANGE;81.0;96.0;;2
+pasta amarelada;DESCRITIVA;;;pasta amarelada;2
+45,0 - 55,0;RANGE;45.0;55.0;;4
+52,0 mín;MINIMO;52.0;;;2
+5 máx.;MAXIMO;;5.0;;2
+16 máx.;MAXIMO;;16.0;;2
+8 máx.;MAXIMO;;8.0;;4
+6 máx.;MAXIMO;;6.0;;6
+58 mín.;MINIMO;58.0;;;2
+18 máx.;MAXIMO;;18.0;;2
+4 máx.;MAXIMO;;4.0;;2
+65 - 80;RANGE;65.0;80.0;;2
+1 máx.;MAXIMO;;1.0;;2
+5,8 - 6,8;RANGE;5.8;6.8;;2
+líquido amarelado;DESCRITIVA;;;líquido amarelado;2
+100 máx.;MAXIMO;;100.0;;8
+límpido;DESCRITIVA;;;límpido;4
+300 - 500;RANGE;300.0;500.0;;2
+1,06 - 1,09;RANGE;1.06;1.09;;2
+16,0 mnáx.;MAXIMO;;16.0;;2
+58,0 mín;MINIMO;58.0;;;2
+18,0 máx.;MAXIMO;;18.0;;2
+4,0 máx.;MAXIMO;;4.0;;2
+22,0 - 24,0;RANGE;22.0;24.0;;2
+193,0 - 206,0;RANGE;193.0;206.0;;2
+80,0 - 92,0;RANGE;80.0;92.0;;2
+65,0 - 80,0;RANGE;65.0;80.0;;2
+6,0 - 7,0;RANGE;6.0;7.0;;2
+300,0 - 500,0;RANGE;300.0;500.0;;2
+1,0600 - 1,0900;RANGE;1.06;1.09;;2
+Máx. 1,0;MAXIMO;;1.0;;3
+Máx. 80,0;MAXIMO;;80.0;;1
+5,20 - 7,30;RANGE;5.2;7.3;;1
+Líquido, límpido;DESCRITIVA;;;Líquido, límpido;3
+63,0 - 71,0;RANGE;63.0;71.0;;2
+0,0 - 1,00;RANGE;0.0;1.0;;2
+5,7 - 7,3;RANGE;5.7;7.3;;4
+Límpido;DESCRITIVA;;;Límpido;4
+Máx. 5;MAXIMO;;5.0;;2
+Máx. 0,6;MAXIMO;;0.6;;2
+Máx. 80;MAXIMO;;80.0;;2
+82 - 100;RANGE;82.0;100.0;;2
+Substancialmente Livre;DESCRITIVA;;;Substancialmente Livre;9
+166,0 - 175,0;RANGE;166.0;175.0;;2
+0,0 - 20,0;RANGE;0.0;20.0;;2
+0,0 - 0,5;RANGE;0.0;0.5;;4
+0 - 1;RANGE;0.0;1.0;;6
+0 - 10,0;RANGE;0.0;10.0;;2
+6,6 - 7,4;RANGE;6.6;7.4;;2
+Líquido, Límpido a turvo;DESCRITIVA;;;Líquido, Límpido a turvo;2
+0,0 - 1,3;RANGE;0.0;1.3;;2
+48,0 - 54,0;RANGE;48.0;54.0;;2
+0,00 - 0,30;RANGE;0.0;0.3;;2
+0 - 50;RANGE;0.0;50.0;;10
+0,00 - 0,90;RANGE;0.0;0.9;;2
+109,0 - 116,0 ;RANGE;109.0;116.0;;2
+0,0 - 0,2;RANGE;0.0;0.2;;3
+6,00 - 8,00;RANGE;6.0;8.0;;2
+5,0 - 8,0;RANGE;5.0;8.0;;4
+0,0 - 3,0;RANGE;0.0;3.0;;5
+52,0 - 59,0;RANGE;52.0;59.0;;2
+Máx. 0,10;MAXIMO;;0.1;;4
+214 - 225;RANGE;214.0;225.0;;2
+Máx. 10;MAXIMO;;10.0;;2
+Máx. 50;MAXIMO;;50.0;;2
+máximo 9,0;MAXIMO;;9.0;;2
+5,00 - 7,00 ;RANGE;5.0;7.0;;2
+3,0 máximo;MAXIMO;;3.0;;2
+26,0 - 30,0;RANGE;26.0;30.0;;4
+2000 - 2500;RANGE;2000.0;2500.0;;2
+3500,0 - 4700;RANGE;3500.0;4700.0;;2
+4,5-6,5;RANGE;4.5;6.5;;2
+14-20;RANGE;14.0;20.0;;2
+max. 2;MAXIMO;;2.0;;2
+max. 3;MAXIMO;;3.0;;2
+max. 8,8;MAXIMO;;8.8;;2
+30 - 50;RANGE;30.0;50.0;;2
+110 - 145;RANGE;110.0;145.0;;2
+líquido âmbar;DESCRITIVA;;;líquido âmbar;2
+máx. 8;MAXIMO;;8.0;;2
+máx. 3;MAXIMO;;3.0;;2
+líquido  amarelado;DESCRITIVA;;;líquido  amarelado;2
+34,0 a 36,0;RANGE;34.0;36.0;;2
+6,5 - 8,5;RANGE;6.5;8.5;;2
+0,7 máx.;MAXIMO;;0.7;;4
+0,5 máx.;MAXIMO;;0.5;;4
+0,02 máx.;MAXIMO;;0.02;;2
+1000 máx.;MAXIMO;;1000.0;;2
+83 - 100;RANGE;83.0;100.0;;2
+0,70 - 1,10;RANGE;0.7;1.1;;2
+27,5 - 28,5;RANGE;27.5;28.5;;2
+0,20 máximo;MAXIMO;;0.2;;2
+3 máximo;MAXIMO;;3.0;;2
+50 máximo;MAXIMO;;50.0;;2
+11,0 - 13,0;RANGE;11.0;13.0;;4
+líquido limpido incolor a amarelado;DESCRITIVA;;;líquido limpido incolor a amarelado;2
+0,60 máximo;MAXIMO;;0.6;;2
+0,19 - 0,32;RANGE;0.19;0.32;;2
+0 - 10;RANGE;0.0;10.0;;9
+0,00 - 3,00;RANGE;0.0;3.0;;2
+68,0 - 72,0;RANGE;68.0;72.0;;2
+máx. 70;MAXIMO;;70.0;;2
+7,0 - 9,0;RANGE;7.0;9.0;;2
+líquido límpido incolor;DESCRITIVA;;;líquido límpido incolor;2
+máx. 2,00;MAXIMO;;2.0;;2
+0,0 - 40,0;RANGE;0.0;40.0;;2
+máximo 1,0;MAXIMO;;1.0;;2
+95,0 mínimo;MINIMO;95.0;;;2
+170,0 - 190,0;RANGE;170.0;190.0;;2
+2,0 máximo;MAXIMO;;2.0;;2
+2,5 máximo;MAXIMO;;2.5;;2
+ASE;DESCRITIVA;;;ASE;8
+290 - 420;RANGE;290.0;420.0;;2
+26,3 - 27,0;RANGE;26.3;27.0;;2
+0,10 máx.;MAXIMO;;0.1;;2
+45 máx.;MAXIMO;;45.0;;2
+0,9 máx.;MAXIMO;;0.9;;2
+7,0 - 8,5;RANGE;7.0;8.5;;4
+líquido  ;DESCRITIVA;;;líquido;2
+0,6 máx.;MAXIMO;;0.6;;2
+1,03 - 1,04;RANGE;1.03;1.04;;2
+Branco a ligeiramente amarelado;DESCRITIVA;;;Branco a ligeiramente amarelado;2
+Passa;DESCRITIVA;;;Passa;10
+9,5 - 11,5;RANGE;9.5;11.5;;2
+0,45 máx;MAXIMO;;0.45;;2
+1,44 máx;MAXIMO;;1.44;;2
+2,50 máx;MAXIMO;;2.5;;2
+7,0 max;MAXIMO;;7.0;;2
+3,5 máx;MAXIMO;;3.5;;2
+1,5 max;MAXIMO;;1.5;;2
+59,0 min;MINIMO;59.0;;;2
+0,5 max;MAXIMO;;0.5;;2
+20 max;MAXIMO;;20.0;;2
+95 min;MINIMO;95.0;;;2
+3,8 min;MINIMO;3.8;;;2
+Max. 2;MAXIMO;;2.0;;2
+17,2 - 21,8;RANGE;17.2;21.8;;2
+39,2 - 43,8;RANGE;39.2;43.8;;2
+Max. 0,4;MAXIMO;;0.4;;2
+0,08 - 0,10;RANGE;0.08;0.1;;2
+41,2 - 47,8;RANGE;41.2;47.8;;2
+1,7 - 2,3;RANGE;1.7;2.3;;2
+6,6 - 7,8;RANGE;6.6;7.8;;2
+Líquido incolor a amarelado;DESCRITIVA;;;Líquido incolor a amarelado;2
+Max. 0,9;MAXIMO;;0.9;;2
+126,0 - 140,0;RANGE;126.0;140.0;;2
+0,00 - 0,50;RANGE;0.0;0.5;;4
+39,0 - 45,0;RANGE;39.0;45.0;;2
+Max. 16;MAXIMO;;16.0;;2
+Max. 1,5;MAXIMO;;1.5;;2
+Max. 4,2;MAXIMO;;4.2;;2
+Max. 1;MAXIMO;;1.0;;2
+Max. 2,5;MAXIMO;;2.5;;2
+Max. 0,50;MAXIMO;;0.5;;2
+Max. 0,30;MAXIMO;;0.3;;2
+Líquido, límpido, viscoso;DESCRITIVA;;;Líquido, límpido, viscoso;2
+Max. 10;MAXIMO;;10.0;;2
+1,2613 - 1,2690;RANGE;1.2613;1.269;;2
+Max. 0,025;MAXIMO;;0.025;;6
+Min. 99,7;MINIMO;99.7;;;2
+Max. 1,0;MAXIMO;;1.0;;2
+Max. 0,1;MAXIMO;;0.1;;2
+Max. 70;MAXIMO;;70.0;;2
+máx. 3,3;MAXIMO;;3.3;;2
+139 - 151;RANGE;139.0;151.0;;2
+líquido amarelado/ambar;DESCRITIVA;;;líquido amarelado/ambar;2
+máx. 1;MAXIMO;;1.0;;2
+96,0 - 98,0;RANGE;96.0;98.0;;2
+175 - 191;RANGE;175.0;191.0;;2
+1,5 máx.;MAXIMO;;1.5;;4
+92 - 100;RANGE;92.0;100.0;;1
+61,0 - 62,5;RANGE;61.0;62.5;;1
+22,0 - 23,0;RANGE;22.0;23.0;;1
+0,0 - 2,0;RANGE;0.0;2.0;;2
+99,5 - 100,0;RANGE;99.5;100.0;;1
+10,0 - 12,1;RANGE;10.0;12.1;;1
+Líquido Límpido Incolor;DESCRITIVA;;;Líquido Límpido Incolor;1
+1,017 - 1,021;RANGE;1.017;1.021;;1
+0,0 - 0,1;RANGE;0.0;0.1;;3
+191 - 198;RANGE;191.0;198.0;;2
+Máx. 198;MAXIMO;;198.0;;2
+20 - 50;RANGE;20.0;50.0;;2
+0,00 - 0,09;RANGE;0.0;0.09;;2
+0 - 100;RANGE;0.0;100.0;;2
+5,50 - 7,50;RANGE;5.5;7.5;;2
+Líquido Límpido;DESCRITIVA;;;Líquido Límpido;4
+0,00 - 0,10;RANGE;0.0;0.1;;2
+1,021 - 1,025;RANGE;1.021;1.025;;2
+1,4 - 2,6;RANGE;1.4;2.6;;2
+86,5 mín.;MINIMO;86.5;;;2
+particulas sólidas;DESCRITIVA;;;particulas sólidas;2
+5,6 máx.;MAXIMO;;5.6;;2
+líquido límpido;DESCRITIVA;;;líquido límpido;4
+5,8 a 9,0;RANGE;5.8;9.0;;2
+31,0 a 33,0;RANGE;31.0;33.0;;2
+característico suave;DESCRITIVA;;;característico suave;2
+0,35 máx.;MAXIMO;;0.35;;2
+29,0 - 31,0;RANGE;29.0;31.0;;2
+7,0 - 8,0;RANGE;7.0;8.0;;2
+0,10 - 0,20;RANGE;0.1;0.2;;2
+0,965 - 0,980;RANGE;0.965;0.98;;2
+2200 - 2700;RANGE;2200.0;2700.0;;2
+0,0 - 9,0;RANGE;0.0;9.0;;2
+25,3 - 26,2;RANGE;25.3;26.2;;2
+0,18 máx.;MAXIMO;;0.18;;2
+30,0 - 36,0;RANGE;30.0;36.0;;2
+500 máx.;MAXIMO;;500.0;;4
+4,7 - 6,3;RANGE;4.7;6.3;;2
+líquido límpido incolor a amarelado;DESCRITIVA;;;líquido límpido incolor a amarelado;2
+0,55 máx.;MAXIMO;;0.55;;2
+0,18 - 0,29;RANGE;0.18;0.29;;2
+1,400 - 1,404;RANGE;1.4;1.404;;2
+Substancialmente livre;DESCRITIVA;;;Substancialmente livre;4
+0,1 máx;MAXIMO;;0.1;;4
+10 máx;MAXIMO;;10.0;;4
+99,0 min;MINIMO;99.0;;;2
+200 máx;MAXIMO;;200.0;;2
+0,868 - 0,878;RANGE;0.868;0.878;;2
+0,00 - 0,03;RANGE;0.0;0.03;;2
+5 - 35;RANGE;5.0;35.0;;2
+65 - 95;RANGE;65.0;95.0;;2
+0 - 1000;RANGE;0.0;1000.0;;2
+99,0 - 100,0;RANGE;99.0;100.0;;2
+1,4050 - 1,4100;RANGE;1.405;1.41;;2
+0 - 500;RANGE;0.0;500.0;;2
+0,810 - 0,815;RANGE;0.81;0.815;;2
+0 - 15;RANGE;0.0;15.0;;2
+0,00 - 0,01;RANGE;0.0;0.01;;2
+Líquido incolor a levemente amarelado;DESCRITIVA;;;Líquido incolor a levemente amarelado;2
+8 - 20;RANGE;8.0;20.0;;2
+3,0 - 7,0;RANGE;3.0;7.0;;2
+6,2 a 7,3;RANGE;6.2;7.3;;2
+Líquido, Límpido;DESCRITIVA;;;Líquido, Límpido;2
+Max. 100000;MAXIMO;;100000.0;;2
+Máx. 2,5;MAXIMO;;2.5;;2
+30,5 a 32,5;RANGE;30.5;32.5;;2
+67,5 a 69,5;RANGE;67.5;69.5;;2
+3,1 - 3,6;RANGE;3.1;3.6;;4
+25,0 - 28,7;RANGE;25.0;28.7;;2
+10,0 - 11,6;RANGE;10.0;11.6;;2
+46,0 - 52,0;RANGE;46.0;52.0;;2
+máximo 2,5;MAXIMO;;2.5;;2
+7,0 a 8,0;RANGE;7.0;8.0;;2
+65 a 85;RANGE;65.0;85.0;;2
+37 a 57;RANGE;37.0;57.0;;2
+líquido viscoso, límpido e turvo, amarelo e âmbar;DESCRITIVA;;;líquido viscoso, límpido e turvo, amarelo e âmbar;2
+20,0 - 27,0;RANGE;20.0;27.0;;1
+44,0 - 52,0;RANGE;44.0;52.0;;1
+28,0 - 35,0;RANGE;28.0;35.0;;1
+1,5 - 2,7;RANGE;1.5;2.7;;1
+Líquido viscoso, amarelo a marrom claro;DESCRITIVA;;;Líquido viscoso, amarelo a marrom claro;1
+59 - 63;RANGE;59.0;63.0;;1
+0,0 - 2,3;RANGE;0.0;2.3;;1
+39 - 42;RANGE;39.0;42.0;;1
+8,0 - 8,8;RANGE;8.0;8.8;;1
+Líquido, límpido, viscoso, incolor a amarelado;DESCRITIVA;;;Líquido, límpido, viscoso, incolor a amarelado;1
+74,0 - 85,0;RANGE;74.0;85.0;;1
+0,0 - 5,0;RANGE;0.0;5.0;;1
+81,0 - 89,0;RANGE;81.0;89.0;;2
+1800 - 3800;RANGE;1800.0;3800.0;;2
+Liquido Amarelado;DESCRITIVA;;;Liquido Amarelado;2
+11,0 - 19,0;RANGE;11.0;19.0;;2
+0 - 6;RANGE;0.0;6.0;;2
+80 - 110;RANGE;80.0;110.0;;2
+0,02 - 10000,00;RANGE;0.02;10000.0;;2
+Líquido, Límpido, incolor a amarelo ;DESCRITIVA;;;Líquido, Límpido, incolor a amarelo;2
+58,0 - 62,0;RANGE;58.0;62.0;;2
+0,0 - 0,4;RANGE;0.0;0.4;;2
+0 - 200;RANGE;0.0;200.0;;2
+19,5 - 23,5;RANGE;19.5;23.5;;1
+5 - 8;RANGE;5.0;8.0;;1
+Líquido turvo amarelo;DESCRITIVA;;;Líquido turvo amarelo;1
+1,0265 - 1,0380;RANGE;1.0265;1.038;;1
+23 - 26;RANGE;23.0;26.0;;1
