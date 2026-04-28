@@ -7,8 +7,9 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
-ENV NODE_OPTIONS="--max-old-space-size=2048"
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 ENV GENERATE_SOURCEMAP=false
+ENV TURBOPACK=0
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
